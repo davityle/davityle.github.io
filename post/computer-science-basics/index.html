@@ -64,35 +64,9 @@
     </header>
 
     <section class="post-content">
-        <nav>
-<ul>
-<li><a href="#links-hugoshortcode-1:518b2f5003323319962c76bffd2d10ed">Links</a></li>
-<li><a href="#data-structures:518b2f5003323319962c76bffd2d10ed">Data Structures</a>
-<ul>
-<li><a href="#hash-map:518b2f5003323319962c76bffd2d10ed">Hash Map</a>
-<ul>
-<li><a href="#hash-map-collision-algorithms:518b2f5003323319962c76bffd2d10ed">Hash Map Collision Algorithms</a></li>
-</ul></li>
-<li><a href="#graph:518b2f5003323319962c76bffd2d10ed">Graph</a>
-<ul>
-<li><a href="#graph-interface:518b2f5003323319962c76bffd2d10ed">Graph Interface</a></li>
-<li><a href="#adjacency-list-graph:518b2f5003323319962c76bffd2d10ed">Adjacency List Graph</a></li>
-<li><a href="#adjacency-matrix-graph:518b2f5003323319962c76bffd2d10ed">Adjacency Matrix Graph</a></li>
-</ul></li>
-<li><a href="#array-list:518b2f5003323319962c76bffd2d10ed">Array List</a></li>
-<li><a href="#linked-list:518b2f5003323319962c76bffd2d10ed">Linked List</a></li>
-<li><a href="#tree:518b2f5003323319962c76bffd2d10ed">Tree</a></li>
-<li><a href="#binary-heap:518b2f5003323319962c76bffd2d10ed">Binary Heap</a></li>
-<li><a href="#trie:518b2f5003323319962c76bffd2d10ed">Trie</a></li>
-</ul></li>
-<li><a href="#algorithms:518b2f5003323319962c76bffd2d10ed">Algorithms</a>
-<ul>
-<li><a href="#quick-sort:518b2f5003323319962c76bffd2d10ed">Quick Sort</a></li>
-<li><a href="#merge-sort:518b2f5003323319962c76bffd2d10ed">Merge Sort</a></li>
-<li><a href="#a:518b2f5003323319962c76bffd2d10ed">A*</a></li>
-<li><a href="#convex-hull:518b2f5003323319962c76bffd2d10ed">Convex Hull</a></li>
-</ul>
-</nav>
+        
+
+<h4 id="description:518b2f5003323319962c76bffd2d10ed">Description</h4>
 
 <p>This post contains the implementations, in Java 8, of a few data structures and algorithms commonly discussed within computer science.</p>
 
@@ -100,27 +74,25 @@
 
 <p>The tests for the data structures and algorithms can be found <a href="https://github.com/davityle/cs-basics-java/tree/master/test/com/github/davityle/csbasics">here</a></p>
 
-<h6 id="links-hugoshortcode-1:518b2f5003323319962c76bffd2d10ed">Links</h6>
+<p><a href="/post/computer-science-basics/#hash-map:518b2f5003323319962c76bffd2d10ed">Hash Map</a></p>
 
-<p><a href="#hash-map:518b2f5003323319962c76bffd2d10ed">Hash Map</a></p>
+<p><a href="/post/computer-science-basics/#graph:518b2f5003323319962c76bffd2d10ed">Graph</a></p>
 
-<p><a href="#graph:518b2f5003323319962c76bffd2d10ed">Graph</a></p>
+<p><a href="/post/computer-science-basics/#array-list:518b2f5003323319962c76bffd2d10ed">Array List</a></p>
 
-<p><a href="#array-list:518b2f5003323319962c76bffd2d10ed">Array List</a></p>
+<p><a href="/post/computer-science-basics/#linked-list:518b2f5003323319962c76bffd2d10ed">Linked List</a></p>
 
-<p><a href="#linked-list:518b2f5003323319962c76bffd2d10ed">Linked List</a></p>
+<p><a href="/post/computer-science-basics/#tree:518b2f5003323319962c76bffd2d10ed">Tree</a></p>
 
-<p><a href="#tree:518b2f5003323319962c76bffd2d10ed">Tree</a></p>
+<p><a href="/post/computer-science-basics/#trie:518b2f5003323319962c76bffd2d10ed">Trie</a></p>
 
-<p><a href="#trie:518b2f5003323319962c76bffd2d10ed">Trie</a></p>
+<p><a href="/post/computer-science-basics/#quick-sort:518b2f5003323319962c76bffd2d10ed">Quick Sort</a></p>
 
-<p><a href="#quick-sort:518b2f5003323319962c76bffd2d10ed">Quick Sort</a></p>
+<p><a href="/post/computer-science-basics/#merge-sort:518b2f5003323319962c76bffd2d10ed">Marge Sort</a></p>
 
-<p><a href="#merge-sort:518b2f5003323319962c76bffd2d10ed">Marge Sort</a></p>
+<p><a href="/post/computer-science-basics/#a:518b2f5003323319962c76bffd2d10ed">A*</a></p>
 
-<p><a href="#a:518b2f5003323319962c76bffd2d10ed">A*</a></p>
-
-<p><a href="#convex-hull:518b2f5003323319962c76bffd2d10ed">Convex Hull</a></p>
+<p><a href="/post/computer-science-basics/#convex-hull:518b2f5003323319962c76bffd2d10ed">Convex Hull</a></p>
 
 <h4 id="data-structures:518b2f5003323319962c76bffd2d10ed">Data Structures</h4>
 
@@ -566,13 +538,13 @@
         <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">value</span><span style="color: #f92672">;</span>
     <span style="color: #f92672">}</span>
 
-    <span style="color: #66d9ef">public</span> <span style="color: #f8f8f2">Optional</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Integer</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">indexOf</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">T</span> <span style="color: #f8f8f2">value</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">public</span> <span style="color: #f8f8f2">OptionalInt</span> <span style="color: #a6e22e">indexOf</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">T</span> <span style="color: #f8f8f2">value</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
         <span style="color: #66d9ef">for</span> <span style="color: #f92672">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">i</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span><span style="color: #f92672">;</span> <span style="color: #f8f8f2">i</span> <span style="color: #f92672">&lt;</span> <span style="color: #f8f8f2">size</span><span style="color: #f92672">;</span> <span style="color: #f8f8f2">i</span><span style="color: #f92672">++)</span> <span style="color: #f92672">{</span>
-            <span style="color: #66d9ef">if</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">list</span><span style="color: #f92672">[</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">].</span><span style="color: #a6e22e">equals</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">value</span><span style="color: #f92672">))</span> <span style="color: #f92672">{</span>
-                <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">Optional</span><span style="color: #f92672">.</span><span style="color: #a6e22e">of</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">);</span>
+            <span style="color: #66d9ef">if</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">list</span><span style="color: #f92672">[</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">]</span> <span style="color: #f92672">!=</span> <span style="color: #66d9ef">null</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f8f8f2">list</span><span style="color: #f92672">[</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">].</span><span style="color: #a6e22e">equals</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">value</span><span style="color: #f92672">))</span> <span style="color: #f92672">{</span>
+                <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">OptionalInt</span><span style="color: #f92672">.</span><span style="color: #a6e22e">of</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">);</span>
             <span style="color: #f92672">}</span>
         <span style="color: #f92672">}</span>
-        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">Optional</span><span style="color: #f92672">.</span><span style="color: #a6e22e">empty</span><span style="color: #f92672">();</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">OptionalInt</span><span style="color: #f92672">.</span><span style="color: #a6e22e">empty</span><span style="color: #f92672">();</span>
     <span style="color: #f92672">}</span>
 
     <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">boolean</span> <span style="color: #a6e22e">has</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">T</span> <span style="color: #f8f8f2">value</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
@@ -663,16 +635,18 @@
         <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">n</span><span style="color: #f92672">.</span><span style="color: #a6e22e">value</span><span style="color: #f92672">;</span>
     <span style="color: #f92672">}</span>
 
-    <span style="color: #66d9ef">public</span> <span style="color: #f8f8f2">Optional</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">Integer</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">indexOf</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">T</span> <span style="color: #f8f8f2">value</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+    <span style="color: #66d9ef">public</span> <span style="color: #f8f8f2">OptionalInt</span> <span style="color: #a6e22e">indexOf</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">T</span> <span style="color: #f8f8f2">value</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+        <span style="color: #66d9ef">if</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">value</span> <span style="color: #f92672">==</span> <span style="color: #66d9ef">null</span><span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">throw</span> <span style="color: #66d9ef">new</span> <span style="color: #a6e22e">IllegalArgumentException</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;value must not be null&quot;</span><span style="color: #f92672">);</span>
         <span style="color: #f8f8f2">Node</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">T</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">n</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">headNode</span><span style="color: #f92672">.</span><span style="color: #a6e22e">next</span><span style="color: #f92672">;</span>
         <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">i</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span><span style="color: #f92672">;</span>
         <span style="color: #66d9ef">while</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">n</span> <span style="color: #f92672">!=</span> <span style="color: #66d9ef">null</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
             <span style="color: #66d9ef">if</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">value</span><span style="color: #f92672">.</span><span style="color: #a6e22e">equals</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">n</span><span style="color: #f92672">.</span><span style="color: #a6e22e">value</span><span style="color: #f92672">))</span>
-                <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">Optional</span><span style="color: #f92672">.</span><span style="color: #a6e22e">of</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">);</span>
+                <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">OptionalInt</span><span style="color: #f92672">.</span><span style="color: #a6e22e">of</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">i</span><span style="color: #f92672">);</span>
             <span style="color: #f8f8f2">i</span><span style="color: #f92672">++;</span>
             <span style="color: #f8f8f2">n</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">n</span><span style="color: #f92672">.</span><span style="color: #a6e22e">next</span><span style="color: #f92672">;</span>
         <span style="color: #f92672">}</span>
-        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">Optional</span><span style="color: #f92672">.</span><span style="color: #a6e22e">empty</span><span style="color: #f92672">();</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">OptionalInt</span><span style="color: #f92672">.</span><span style="color: #a6e22e">empty</span><span style="color: #f92672">();</span>
     <span style="color: #f92672">}</span>
 
     <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">boolean</span> <span style="color: #a6e22e">has</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">T</span> <span style="color: #f8f8f2">value</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>

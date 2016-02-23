@@ -15,51 +15,9 @@
       <pubDate>Tue, 23 Feb 2016 05:27:09 -0600</pubDate>
       
       <guid>http://davityle.github.io/post/computer-science-basics/</guid>
-      <description>&lt;nav&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#links-hugoshortcode-1:518b2f5003323319962c76bffd2d10ed&#34;&gt;&lt;a href=&#34;#data-structures:518b2f5003323319962c76bffd2d10ed&#34;&gt;Links&lt;/a&gt;&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#data-structures:518b2f5003323319962c76bffd2d10ed&#34;&gt;Data Structures&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#hash-map:518b2f5003323319962c76bffd2d10ed&#34;&gt;Hash Map&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#hash-map-collision-algorithms:518b2f5003323319962c76bffd2d10ed&#34;&gt;Hash Map Collision Algorithms&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#graph:518b2f5003323319962c76bffd2d10ed&#34;&gt;Graph&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#graph-interface:518b2f5003323319962c76bffd2d10ed&#34;&gt;Graph Interface&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#adjacency-list-graph:518b2f5003323319962c76bffd2d10ed&#34;&gt;Adjacency List Graph&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#adjacency-matrix-graph:518b2f5003323319962c76bffd2d10ed&#34;&gt;Adjacency Matrix Graph&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#array-list:518b2f5003323319962c76bffd2d10ed&#34;&gt;Array List&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#linked-list:518b2f5003323319962c76bffd2d10ed&#34;&gt;Linked List&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#tree:518b2f5003323319962c76bffd2d10ed&#34;&gt;Tree&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#binary-heap:518b2f5003323319962c76bffd2d10ed&#34;&gt;Binary Heap&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#trie:518b2f5003323319962c76bffd2d10ed&#34;&gt;Trie&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#algorithms:518b2f5003323319962c76bffd2d10ed&#34;&gt;Algorithms&lt;/a&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#quick-sort:518b2f5003323319962c76bffd2d10ed&#34;&gt;Quick Sort&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#merge-sort:518b2f5003323319962c76bffd2d10ed&#34;&gt;Merge Sort&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#a:518b2f5003323319962c76bffd2d10ed&#34;&gt;A*&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;#convex-hull:518b2f5003323319962c76bffd2d10ed&#34;&gt;Convex Hull&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/nav&gt;
+      <description>
+
+&lt;h4 id=&#34;description:518b2f5003323319962c76bffd2d10ed&#34;&gt;Description&lt;/h4&gt;
 
 &lt;p&gt;This post contains the implementations, in Java 8, of a few data structures and algorithms commonly discussed within computer science.&lt;/p&gt;
 
@@ -67,27 +25,25 @@
 
 &lt;p&gt;The tests for the data structures and algorithms can be found &lt;a href=&#34;https://github.com/davityle/cs-basics-java/tree/master/test/com/github/davityle/csbasics&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 
-&lt;h6 id=&#34;links-hugoshortcode-1:518b2f5003323319962c76bffd2d10ed&#34;&gt;&lt;a href=&#34;#data-structures:518b2f5003323319962c76bffd2d10ed&#34;&gt;Links&lt;/a&gt;&lt;/h6&gt;
+&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#hash-map:518b2f5003323319962c76bffd2d10ed&#34;&gt;Hash Map&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;#hash-map:518b2f5003323319962c76bffd2d10ed&#34;&gt;Hash Map&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#graph:518b2f5003323319962c76bffd2d10ed&#34;&gt;Graph&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;#graph:518b2f5003323319962c76bffd2d10ed&#34;&gt;Graph&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#array-list:518b2f5003323319962c76bffd2d10ed&#34;&gt;Array List&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;#array-list:518b2f5003323319962c76bffd2d10ed&#34;&gt;Array List&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#linked-list:518b2f5003323319962c76bffd2d10ed&#34;&gt;Linked List&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;#linked-list:518b2f5003323319962c76bffd2d10ed&#34;&gt;Linked List&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#tree:518b2f5003323319962c76bffd2d10ed&#34;&gt;Tree&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;#tree:518b2f5003323319962c76bffd2d10ed&#34;&gt;Tree&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#trie:518b2f5003323319962c76bffd2d10ed&#34;&gt;Trie&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;#trie:518b2f5003323319962c76bffd2d10ed&#34;&gt;Trie&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#quick-sort:518b2f5003323319962c76bffd2d10ed&#34;&gt;Quick Sort&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;#quick-sort:518b2f5003323319962c76bffd2d10ed&#34;&gt;Quick Sort&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#merge-sort:518b2f5003323319962c76bffd2d10ed&#34;&gt;Marge Sort&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;#merge-sort:518b2f5003323319962c76bffd2d10ed&#34;&gt;Marge Sort&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#a:518b2f5003323319962c76bffd2d10ed&#34;&gt;A*&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;#a:518b2f5003323319962c76bffd2d10ed&#34;&gt;A*&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;#convex-hull:518b2f5003323319962c76bffd2d10ed&#34;&gt;Convex Hull&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#convex-hull:518b2f5003323319962c76bffd2d10ed&#34;&gt;Convex Hull&lt;/a&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;data-structures:518b2f5003323319962c76bffd2d10ed&#34;&gt;Data Structures&lt;/h4&gt;
 
@@ -533,13 +489,13 @@
         &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;;&lt;/span&gt;
     &lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
 
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;Optional&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Integer&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;indexOf&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;T&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;OptionalInt&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;indexOf&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;T&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
         &lt;span style=&#34;color: #66d9ef&#34;&gt;for&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;i&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;i&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;size&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;i&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;++)&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;list&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;].&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;equals&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;))&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
-                &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;Optional&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;of&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;);&lt;/span&gt;
+            &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;list&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;]&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;null&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;list&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;[&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;].&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;equals&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;))&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
+                &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;OptionalInt&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;of&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;);&lt;/span&gt;
             &lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
         &lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;Optional&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;empty&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;();&lt;/span&gt;
+        &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;OptionalInt&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;empty&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;();&lt;/span&gt;
     &lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
 
     &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;has&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;T&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
@@ -630,16 +586,18 @@
         &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;n&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;;&lt;/span&gt;
     &lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
 
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;Optional&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Integer&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;indexOf&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;T&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
+    &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;OptionalInt&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;indexOf&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;T&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
+        &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;value&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;==&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt;
+            &lt;span style=&#34;color: #66d9ef&#34;&gt;throw&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;IllegalArgumentException&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;value must not be null&amp;quot;&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;);&lt;/span&gt;
         &lt;span style=&#34;color: #f8f8f2&#34;&gt;Node&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;T&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;n&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;headNode&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;next&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;;&lt;/span&gt;
         &lt;span style=&#34;color: #66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;i&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #ae81ff&#34;&gt;0&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;;&lt;/span&gt;
         &lt;span style=&#34;color: #66d9ef&#34;&gt;while&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;n&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;!=&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;null&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
             &lt;span style=&#34;color: #66d9ef&#34;&gt;if&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;equals&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;n&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;))&lt;/span&gt;
-                &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;Optional&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;of&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;);&lt;/span&gt;
+                &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;OptionalInt&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;of&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;i&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;);&lt;/span&gt;
             &lt;span style=&#34;color: #f8f8f2&#34;&gt;i&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;++;&lt;/span&gt;
             &lt;span style=&#34;color: #f8f8f2&#34;&gt;n&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;n&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;next&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;;&lt;/span&gt;
         &lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
-        &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;Optional&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;empty&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;();&lt;/span&gt;
+        &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;OptionalInt&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;empty&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;();&lt;/span&gt;
     &lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
 
     &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;has&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;T&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;value&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
