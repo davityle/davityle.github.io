@@ -1,0 +1,822 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Android on If You Care</title>
+    <link>http://tylerdavis.info/categories/android/</link>
+    <description>Recent content in Android on If You Care</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 09 Sep 2015 21:15:59 -0600</lastBuildDate>
+    <atom:link href="http://tylerdavis.info/categories/android/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Login Screen with NgAndroid</title>
+      <link>http://tylerdavis.info/post/login-ngandroid/</link>
+      <pubDate>Wed, 09 Sep 2015 21:15:59 -0600</pubDate>
+      
+      <guid>http://tylerdavis.info/post/login-ngandroid/</guid>
+      <description>
+
+&lt;p&gt;&lt;br&gt;
+&lt;br&gt;
+I really don&amp;rsquo;t like writing user interface glue code. Enough said about that.&lt;/p&gt;
+
+&lt;h2 id=&#34;tl-dr:dd43b496b4e8887ed65740d406136809&#34;&gt;TL;DR&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/davityle/ngAndroid&#34;&gt;NgAndroid&lt;/a&gt; is an &lt;strong&gt;effecient compile time annotation processor&lt;/strong&gt; that generates &lt;strong&gt;two data binding&lt;/strong&gt; and layout controllers for Android &lt;strong&gt;MVC&lt;/strong&gt;. &lt;a href=&#34;https://github.com/davityle/ngAndroid&#34;&gt;NgAndroid&lt;/a&gt; is currently unstable.&lt;/p&gt;
+
+&lt;p&gt;The code for a login screen can be found below or &lt;a href=&#34;https://github.com/davityle/NgAndroid-Login-Demo&#34;&gt;here&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h4 id=&#34;controller-scope:dd43b496b4e8887ed65740d406136809&#34;&gt;Controller Scope&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;@NgScope(name=&amp;quot;Login&amp;quot;)
+public class LoginScope {
+    @NgModel
+    User user;
+    @NgModel
+    NetworkCall call;
+
+    void onSubmit(Context context) {
+        call.setActive(true);
+        Toast.makeText(context, user.getUsername() + &amp;quot; : &amp;quot; +user.getPassword(), Toast.LENGTH_SHORT ).show();
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;user-model:dd43b496b4e8887ed65740d406136809&#34;&gt;User Model&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;public class User {
+    private String username = &amp;quot;&amp;quot;, password = &amp;quot;&amp;quot;;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;layout:dd43b496b4e8887ed65740d406136809&#34;&gt;Layout&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;RelativeLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
+    xmlns:tools=&amp;quot;http://schemas.android.com/tools&amp;quot;
+    xmlns:x=&amp;quot;http://schemas.android.com/apk/res-auto&amp;quot;
+    android:layout_width=&amp;quot;match_parent&amp;quot;
+    android:layout_height=&amp;quot;match_parent&amp;quot;
+    android:padding=&amp;quot;60dp&amp;quot;
+    tools:context=&amp;quot;.LoginActivity&amp;quot;
+    tools:ignore=&amp;quot;MissingPrefix&amp;quot;
+    x:ngScope=&amp;quot;Login&amp;quot;&amp;gt;
+
+    &amp;lt;EditText
+        android:id=&amp;quot;@+id/username&amp;quot;
+        android:layout_width=&amp;quot;match_parent&amp;quot;
+        android:layout_height=&amp;quot;wrap_content&amp;quot;
+        android:inputType=&amp;quot;text&amp;quot;
+        android:layout_above=&amp;quot;@+id/password&amp;quot;
+        x:ngModel=&amp;quot;user.username&amp;quot;/&amp;gt;
+
+    &amp;lt;EditText
+        android:id=&amp;quot;@+id/password&amp;quot;
+        android:layout_width=&amp;quot;match_parent&amp;quot;
+        android:layout_height=&amp;quot;wrap_content&amp;quot;
+        android:inputType=&amp;quot;textPassword&amp;quot;
+        android:layout_above=&amp;quot;@+id/submit&amp;quot;
+        x:ngModel=&amp;quot;user.password&amp;quot;/&amp;gt;
+
+    &amp;lt;Button
+        android:id=&amp;quot;@+id/submit&amp;quot;
+        android:layout_width=&amp;quot;match_parent&amp;quot;
+        android:layout_height=&amp;quot;wrap_content&amp;quot;
+        android:layout_centerInParent=&amp;quot;true&amp;quot;
+        android:text=&amp;quot;@string/submit&amp;quot;
+        x:ngDisabled=&amp;quot;user.username.length() &amp;amp;lt; 6 || user.password.length() &amp;amp;lt; 6&amp;quot;
+        x:ngClick=&amp;quot;onSubmit($view.context)&amp;quot;
+        x:ngInvisible=&amp;quot;call.active&amp;quot;/&amp;gt;
+
+
+    &amp;lt;ProgressBar
+        android:id=&amp;quot;@+id/progress&amp;quot;
+        android:layout_width=&amp;quot;match_parent&amp;quot;
+        android:layout_height=&amp;quot;wrap_content&amp;quot;
+        android:layout_centerInParent=&amp;quot;true&amp;quot;
+        x:ngInvisible=&amp;quot;!call.active&amp;quot;/&amp;gt;
+
+&amp;lt;/RelativeLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;activity:dd43b496b4e8887ed65740d406136809&#34;&gt;Activity&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;public class LoginActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+        LoginScope scope = new LoginScope();
+        ActivityLoginController controller = new ActivityLoginController(new NgOptions.Builder().build(), scope);
+        controller.attach(findViewById(android.R.id.content));
+    }
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;product:dd43b496b4e8887ed65740d406136809&#34;&gt;Product&lt;/h4&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tylerdavis.info/images/working_login.gif&#34; alt=&#34;Working login&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;explanation:dd43b496b4e8887ed65740d406136809&#34;&gt;Explanation&lt;/h2&gt;
+
+&lt;p&gt;Here is how to create an Android login screen using &lt;a href=&#34;https://github.com/davityle/ngAndroid&#34;&gt;NgAndroid&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;I&amp;rsquo;m going to assume that you know how to set up an Android project. If you don&amp;rsquo;t you can start &lt;a href=&#34;http://developer.android.com/training/basics/firstapp/index.html&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Create a new Blank Activity called LoginActivity and open activity_login.xml&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tylerdavis.info/images/new_activity.png&#34; alt=&#34;Android Studio create activity view&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Change the root view of the layout to &lt;code&gt;RelativeLayout&lt;/code&gt; and change the padding to &lt;code&gt;android:padding=&amp;quot;60dp&amp;quot;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Add a &lt;code&gt;Button&lt;/code&gt; and two &lt;code&gt;EditText&lt;/code&gt; views.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;EditText
+    android:id=&amp;quot;@+id/username&amp;quot;
+    android:layout_width=&amp;quot;match_parent&amp;quot;
+    android:layout_height=&amp;quot;wrap_content&amp;quot;
+    android:inputType=&amp;quot;text&amp;quot;
+    android:layout_above=&amp;quot;@+id/password&amp;quot;/&amp;gt;
+
+&amp;lt;EditText
+    android:id=&amp;quot;@+id/password&amp;quot;
+    android:layout_width=&amp;quot;match_parent&amp;quot;
+    android:layout_height=&amp;quot;wrap_content&amp;quot;
+    android:inputType=&amp;quot;textPassword&amp;quot;
+    android:layout_above=&amp;quot;@+id/submit&amp;quot;/&amp;gt;
+
+&amp;lt;Button
+    android:id=&amp;quot;@+id/submit&amp;quot;
+    android:layout_width=&amp;quot;match_parent&amp;quot;
+    android:layout_height=&amp;quot;wrap_content&amp;quot;
+    android:text=&amp;quot;Submit&amp;quot;
+    android:layout_centerInParent=&amp;quot;true&amp;quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;If you run your app you should have something that looks like this (on Android Lollipop).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tylerdavis.info/images/not_disabled.png&#34; alt=&#34;App screenshot&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now lets add in NgAndroid. If you open up your project build.gradle file you will see something like this.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath &#39;com.android.tools.build:gradle:1.3.0&#39;
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In buildscript.dependencies add a new classpath &lt;code&gt;classpath &#39;com.neenbedankt.gradle.plugins:android-apt:1.4&#39;&lt;/code&gt; and in allprojects.repositories add&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;maven {
+    url &#39;http://oss.sonatype.org/content/repositories/snapshots&#39;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;So your build.gradle would then look like this.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath &#39;com.android.tools.build:gradle:1.3.0&#39;
+        classpath &#39;com.neenbedankt.gradle.plugins:android-apt:1.4&#39;
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+
+        maven {
+            url &#39;http://oss.sonatype.org/content/repositories/snapshots&#39;
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The maven.url is only necessary because you are going to be using a snapshot build of NgAndroid.&lt;/p&gt;
+
+&lt;p&gt;Now open up your app&amp;rsquo;s build.gradle and add &lt;code&gt;apply plugin: &#39;com.neenbedankt.android-apt&#39;&lt;/code&gt; below &lt;code&gt;apply plugin: &#39;com.android.application&#39;&lt;/code&gt; and add&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;compile &#39;com.github.davityle:ngandroid:1.0.10-SNAPSHOT&#39;
+apt &#39;com.github.davityle:ng-processor:1.0.10-SNAPSHOT&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;to your dependencies.&lt;/p&gt;
+
+&lt;p&gt;Now create a class called LoginScope. Your scope is important. It is the base reference for all of your bindings.
+To make LoginScope a scope that NgAndroid will recognize you need to add &lt;code&gt;@NgScope(name=&amp;quot;Login&amp;quot;)&lt;/code&gt; to the class declaration.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@NgScope(name=&amp;quot;Login&amp;quot;)
+public class LoginScope {
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now create a User model class for your data.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class User {
+
+    private String username, password;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Add a user field to &lt;code&gt;LoginScope&lt;/code&gt; annotated with &lt;code&gt;@NgModel&lt;/code&gt;.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;@NgScope(name=&amp;quot;Login&amp;quot;)
+public class LoginScope {
+    @NgModel
+    User user;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;By annotating a class with the &lt;code&gt;@NgModel&lt;/code&gt; annotation you are telling NgAndroid to create a subclass of that class that will handle all of the view bindings.
+It also means that NgAndroid will inject that field. There is no need to instantiate it.&lt;/p&gt;
+
+&lt;p&gt;Let&amp;rsquo;s create some bindings. Open up activity_login.xml again and add &lt;code&gt;xmlns:x=&amp;quot;http://schemas.android.com/apk/res-auto&amp;quot;&lt;/code&gt;
+below &lt;code&gt;xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;&lt;/code&gt; in your &lt;code&gt;RelativeLayout&lt;/code&gt;.
+Then declare the scope of the xml file by adding &lt;code&gt;x:ngScope=&amp;quot;Login&amp;quot;&lt;/code&gt; as well. You should have something that looks like this.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;RelativeLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
+    xmlns:tools=&amp;quot;http://schemas.android.com/tools&amp;quot;
+    xmlns:x=&amp;quot;http://schemas.android.com/apk/res-auto&amp;quot;
+    android:layout_width=&amp;quot;match_parent&amp;quot;
+    android:layout_height=&amp;quot;match_parent&amp;quot;
+    android:padding=&amp;quot;60dp&amp;quot;
+    x:ngScope=&amp;quot;Login&amp;quot;
+    tools:ignore=&amp;quot;MissingPrefix&amp;quot; &amp;gt;
+
+    ...
+
+
+&amp;lt;/RelativeLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I also like to add &lt;code&gt;tools:ignore=&amp;quot;MissingPrefix&amp;quot;&lt;/code&gt; to the root layout.
+Otherwise Android Studio will complain about adding non android prefix attributes to standard views.&lt;/p&gt;
+
+&lt;p&gt;You can now reference any methods or models declared in your scope directly in xml attributes.&lt;/p&gt;
+
+&lt;p&gt;Now bind your &lt;code&gt;User&lt;/code&gt; to your username and password &lt;code&gt;EditText&lt;/code&gt; views by adding &lt;code&gt;x:ngModel=&amp;quot;user.username&amp;quot;&lt;/code&gt; and &lt;code&gt;x:ngModel=&amp;quot;user.password&amp;quot;&lt;/code&gt; respectively.
+Also, make your submit button only be enabled if the lengths of the username and password are both greater than 6 by adding
+&lt;code&gt;x:ngDisabled=&amp;quot;user.username.length() &amp;amp;lt; 6 || user.password.length() &amp;amp;lt; 6&amp;quot;&lt;/code&gt; to your submit button. All together it should look
+like this.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;EditText
+    android:id=&amp;quot;@+id/username&amp;quot;
+    android:layout_width=&amp;quot;match_parent&amp;quot;
+    android:layout_height=&amp;quot;wrap_content&amp;quot;
+    android:layout_above=&amp;quot;@+id/password&amp;quot;
+    android:inputType=&amp;quot;text&amp;quot;
+    x:ngModel=&amp;quot;user.username&amp;quot; /&amp;gt;
+
+&amp;lt;EditText
+    android:id=&amp;quot;@+id/password&amp;quot;
+    android:layout_width=&amp;quot;match_parent&amp;quot;
+    android:layout_height=&amp;quot;wrap_content&amp;quot;
+    android:inputType=&amp;quot;textPassword&amp;quot;
+    android:layout_above=&amp;quot;@+id/submit&amp;quot;
+    x:ngModel=&amp;quot;user.password&amp;quot;/&amp;gt;
+
+&amp;lt;Button
+    android:id=&amp;quot;@+id/submit&amp;quot;
+    android:layout_width=&amp;quot;match_parent&amp;quot;
+    android:layout_height=&amp;quot;wrap_content&amp;quot;
+    android:text=&amp;quot;Submit&amp;quot;
+    android:layout_centerInParent=&amp;quot;true&amp;quot;
+    x:ngDisabled=&amp;quot;user.username.length() &amp;amp;lt; 6 || user.password.length() &amp;amp;lt; 6&amp;quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The &lt;code&gt;&amp;amp;lt;&lt;/code&gt; is the symbol for &lt;code&gt;&amp;lt;&lt;/code&gt; in an xml attribute. &lt;code&gt;&amp;amp;gt;&lt;/code&gt; is the symbol for &lt;code&gt;&amp;gt;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now run your app.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tylerdavis.info/images/not_disabled.png&#34; alt=&#34;App screenshot&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;But wait, why isn&amp;rsquo;t the submit button disabled until after you start typing?
+If you check your logs you&amp;rsquo;ll see &lt;code&gt;Unable to get initial value for view &#39;submit&#39; because of null pointer&lt;/code&gt;
+That is just saying that when NgAndroid tried finding whether or not the submit button should be disabled something was &lt;code&gt;null&lt;/code&gt;.
+Initializing &lt;code&gt;username&lt;/code&gt; and &lt;code&gt;password&lt;/code&gt; will fix that. &lt;code&gt;private String username = &amp;quot;&amp;quot;, password = &amp;quot;&amp;quot;;&lt;/code&gt;.
+If you run it again it&amp;rsquo;ll be disabled like expected.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tylerdavis.info/images/disabled.png&#34; alt=&#34;App screenshot&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you type in 6 or more characters in both the username and the password fields than you will see that the submit button is enabled.&lt;/p&gt;
+
+&lt;p&gt;In order to do something when the submit button is clicked create a method in your scope.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;void onSubmit(Context context) {
+    Toast.makeText(context, user.getUsername() + &amp;quot; : &amp;quot; +user.getPassword(), Toast.LENGTH_SHORT ).show();
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then create an event binding in your layout file.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;Button
+    android:id=&amp;quot;@+id/submit&amp;quot;
+    ...
+    x:ngClick=&amp;quot;onSubmit($view.context)&amp;quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You&amp;rsquo;ll notice the &lt;code&gt;$view&lt;/code&gt; syntax. &lt;code&gt;$&lt;/code&gt; is a symbol that allows you to reference predefined NgAndroid variables.
+$view is a reference to the view that will be bound to the click event. You can use &lt;code&gt;.context&lt;/code&gt; as a shortcut to
+&lt;code&gt;.getContext()&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Now you have a working login screen. If you want to add an animation to that it&amp;rsquo;s extremely easy.
+Add the &lt;code&gt;ProgressBar&lt;/code&gt; to your layout with an &lt;code&gt;ngInvisible&lt;/code&gt; attribute to make it only visible while
+your network call is active.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;ProgressBar
+    android:id=&amp;quot;@+id/progress&amp;quot;
+    android:layout_width=&amp;quot;match_parent&amp;quot;
+    android:layout_height=&amp;quot;wrap_content&amp;quot;
+    android:layout_centerInParent=&amp;quot;true&amp;quot;
+    x:ngInvisible=&amp;quot;!call.active&amp;quot;/&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Add &lt;code&gt;x:ngInvisible=&amp;quot;call.active&amp;quot;&lt;/code&gt; to your submit button to hide it when your call is active.&lt;/p&gt;
+
+&lt;p&gt;Finally add your &lt;code&gt;NetworkCall&lt;/code&gt; model to your &lt;code&gt;LoginScope&lt;/code&gt; and set it as active.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class LoginScope {
+    //...
+    @NgModel
+    NetworkCall call;
+
+    void onSubmit(Context context) {
+        call.setActive(true);
+        //...
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;It&amp;rsquo;s that easy.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tylerdavis.info/images/working_login.gif&#34; alt=&#34;Working login&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>NgAndroid Introduction</title>
+      <link>http://tylerdavis.info/post/ngandroid-intro/</link>
+      <pubDate>Wed, 18 Feb 2015 00:05:28 -0700</pubDate>
+      
+      <guid>http://tylerdavis.info/post/ngandroid-intro/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;http://tylerdavis.info/images/ngandroid.png&#34; alt=&#34;NgAndroid&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s finally here. The Android UI framework has become as simple and powerful as &lt;a href=&#34;https://angularjs.org/&#34;&gt;AngularJS&lt;/a&gt;. Sort of.&lt;/p&gt;
+
+&lt;p&gt;The project &lt;a href=&#34;https://github.com/davityle/ngAndroid&#34;&gt;ngAndroid&lt;/a&gt; (which is still in beta) on Github has done something that some might not think is possible; NgAndroid brings Angular type directives and data-binding to Android xml attributes.&lt;/p&gt;
+
+&lt;p&gt;If you don&amp;rsquo;t know anything about AngularJS then you probably don&amp;rsquo;t know why this is such an exciting anouncement. You can learn more at Angular&amp;rsquo;s
+&lt;a href=&#34;https://angularjs.org/&#34;&gt;website&lt;/a&gt; but a previous knowledge of AngularJS is not required to revel in the epicness that is about to be laid before your eyes.&lt;/p&gt;
+
+&lt;h2 id=&#34;two-way-data-binding:be1842cb0b9d1ce83a7c8d76094c4a38&#34;&gt;Two Way Data Binding&lt;/h2&gt;
+
+&lt;p&gt;When you create a view in XML that the user is going to interact with you usually end up with something that looks like this.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+&amp;lt;RelativeLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
+    ...&amp;gt;
+
+    &amp;lt;TextView
+        android:id=&amp;quot;@+id/tv_title&amp;quot;
+        .../&amp;gt;
+
+    &amp;lt;CheckBox
+        android:id=&amp;quot;@+id/cb_active&amp;quot;
+        .../&amp;gt;
+
+    &amp;lt;EditText
+        android:id=&amp;quot;@+id/et_text&amp;quot;
+        ... /&amp;gt;
+
+    &amp;lt;ImageView
+        android:id=&amp;quot;@+id/iv_ico&amp;quot;
+        .../&amp;gt;
+&amp;lt;/RelativeLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;public class Model {
+    private String title;
+    private String text;
+    private boolean isActive;
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+}
+
+// View
+
+private Model model;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_demo);
+
+    TextView tv = (TextView) findViewById(R.id.tv_title);
+    tv.setText(model.getTitle());
+
+    CheckBox cb = (CheckBox) findViewById(R.id.cb_active);
+    cb.setChecked(model.isActive());
+    cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            model.setIsActive(isChecked);
+        }
+    });
+
+
+    EditText et = (EditText) findViewById(R.id.et_text);
+    et.addTextChangedListener(new TextWatcher() {
+        @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+        @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+        @Override
+        public void afterTextChanged(Editable s) {
+            model.setText(s.toString());
+        }
+    });
+
+    findViewById(R.id.iv_ico).setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // do stuff here
+        }
+    });
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Most of that code is template code. You are doing the same mundane work every time you make a new view.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Most templating systems bind data in only one direction: they merge template and model components together into a view. After the merge occurs, changes to the model or related sections of the view are NOT automatically reflected in the view. Worse, any changes that the user makes to the view are not reflected in the model. This means that the developer has to write code that constantly syncs the view with the model and the model with the view.&lt;/p&gt;
+
+&lt;p&gt;-AngularJs
+(&lt;a href=&#34;https://docs.angularjs.org/guide/databinding&#34;&gt;https://docs.angularjs.org/guide/databinding&lt;/a&gt;)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;What if you could bind your view to your model in a two way fashion. All of the changes to your model would automatically be propogated to your view and all the changes the user made in the view would automatically be refected in your model.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The model is the single-source-of-truth for the application state, greatly simplifying the programming model for the developer. You can think of the view as simply an instant projection of your model.&lt;/p&gt;
+
+&lt;p&gt;-AngularJs
+(&lt;a href=&#34;https://docs.angularjs.org/guide/databinding&#34;&gt;https://docs.angularjs.org/guide/databinding&lt;/a&gt;)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;With ngAndroid now your view can look like this.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+&amp;lt;RelativeLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
+    xmlns:ngAndroid=&amp;quot;http://schemas.android.com/apk/res-auto&amp;quot;
+    xmlns:tools=&amp;quot;http://schemas.android.com/tools&amp;quot;
+    tools:ignore=&amp;quot;MissingPrefix&amp;quot;
+    ...&amp;gt;
+
+    &amp;lt;TextView
+        android:id=&amp;quot;@+id/tv_title&amp;quot;
+        ngAndroid:ngModel=&amp;quot;model.title&amp;quot;
+        .../&amp;gt;
+
+    &amp;lt;CheckBox
+        android:id=&amp;quot;@+id/cb_active&amp;quot;
+        ngAndroid:ngModel=&amp;quot;model.isActive&amp;quot;
+        .../&amp;gt;
+
+    &amp;lt;EditText
+        android:id=&amp;quot;@+id/et_text&amp;quot;
+        ngAndroid:ngModel=&amp;quot;model.text&amp;quot;
+        .../&amp;gt;
+
+    &amp;lt;ImageView
+        android:id=&amp;quot;@+id/iv_ico&amp;quot;
+        ngAndroid:ngClick=&amp;quot;onIvClick()&amp;quot;
+        .../&amp;gt;
+&amp;lt;/RelativeLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;public interface Model {
+    public boolean isActive();
+    public void setIsActive(boolean isActive);
+    public String getText();
+    public void setText(String text);
+    public String getTitle();
+    public void setTitle(String title);
+}
+
+private NgAndroid ngAndroid = NgAndroid.getInstance();
+private Model model;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    ngAndroid.setContentView(this, R.layout.activity_ng_android);
+}
+
+private void onIvClick(){
+    // do something with the click
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With just that you have two way databinding. Your model will always reflect your application state. We also get identical funcionality to the previous code. Pretty sweet ey?&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.wintellect.com/devcenter/jlikness/10-reasons-web-developers-should-learn-angularjs&#34;&gt;Most&lt;/a&gt; &lt;a href=&#34;http://code.tutsplus.com/tutorials/5-awesome-angularjs-features--net-25651&#34;&gt;people&lt;/a&gt; &lt;a href=&#34;http://anandmanisankar.com/posts/angularjs-best-parts/&#34;&gt;agree&lt;/a&gt; that two-way data binding is an amazing, if not the best, feature of AngularJS. I tend to agree with them. I also believe that it is one of the greatest features of NgAndroid but it does not end there.&lt;/p&gt;
+
+&lt;p&gt;Stay tuned more more posts on this exciting new library and in the meantime check out the &lt;a href=&#34;https://github.com/davityle/ngAndroid&#34;&gt;NgAndroid github repo&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&amp;ldquo;&lt;a href=&#34;https://github.com/angular/angular.js/tree/master/images/logo&#34;&gt;AngularJS logo.svg&lt;/a&gt;&amp;rdquo; by &lt;a href=&#34;https://angularjs.org/&#34;&gt;AngularJS&lt;/a&gt; is licensed under &lt;a rel=&#34;nofollow&#34; class=&#34;external text&#34; href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;Creative Commons Attribution-ShareAlike 3.0 Unported License&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Creating a striped view in Android</title>
+      <link>http://tylerdavis.info/post/stripes-in-android/</link>
+      <pubDate>Sat, 07 Feb 2015 11:30:53 -0700</pubDate>
+      
+      <guid>http://tylerdavis.info/post/stripes-in-android/</guid>
+      <description>&lt;p&gt;Have you ever said to yourself, &amp;lsquo;Wow, this view needs some stripes, but there is no android:stripes=&amp;ldquo;true&amp;rdquo; attribute and I don&amp;rsquo;t know how to draw stripes using the canvas&amp;rsquo;? If so, this is the perfect place for you. Or, if you need to draw stripes and figured you&amp;rsquo;d check the internet for an easy solution before you tried it yourself than you are also in the right place.&lt;/p&gt;
+
+&lt;p&gt;For those of you who just want the code here it is.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class StripedView extends View {
+
+    private static final float STRIPE_WIDTH_PERCT = .05f;
+    private static final float STRIPE_OFFSET_PERCT = .2f;
+    private Path stripespath = new Path();
+    private Paint blackPaint = new Paint();
+
+    public StripedView(Context context) {
+        super(context);
+    }
+
+    public StripedView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public StripedView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public StripedView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+    }
+    //init()
+    {
+        blackPaint.setAntiAlias(true);
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        drawStripes(canvas, 0, getHeight(), 0, getWidth(), blackPaint);
+    }
+
+    private void drawStripes(Canvas canvas, float topy, float bottomy, float startx, float endx, Paint p){
+        if(bottomy - topy &amp;lt; 1){
+            return;
+        }
+        stripespath.reset();
+        float width = (bottomy - topy) * STRIPE_WIDTH_PERCT;
+        float offset = (bottomy - topy) * STRIPE_OFFSET_PERCT;
+        for(float xPos = startx - offset; xPos &amp;lt;= endx; xPos += offset + width){
+            stripespath.moveTo(xPos, topy);
+            stripespath.lineTo(xPos + width, topy);
+            stripespath.lineTo(xPos + offset + width, bottomy);
+            stripespath.lineTo(xPos + offset, bottomy);
+            stripespath.lineTo(xPos, topy);
+        }
+        canvas.drawPath(stripespath, p);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Which will result in something that looks like this.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tylerdavis.info/images/device-2015-02-07-125851.png&#34; alt=&#34;Screenshot of stripes&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Drawing stripes is pretty straight forward. You need a defined width of your stripe and an offset between the top and the bottom of the stripe. If the &lt;a href=&#34;http://developer.android.com/reference/android/graphics/Canvas.html&#34;&gt;Canvas&lt;/a&gt; class in Android had a draw polygon class then we could then just draw a bunch of Polygons. Instead we have to use the &lt;a href=&#34;http://developer.android.com/reference/android/graphics/Path.html&#34;&gt;Path&lt;/a&gt; object. Fortunately, the Path object is fairly simple and intuitive to use.&lt;/p&gt;
+
+&lt;p&gt;Grab your width of your stripe. I&amp;rsquo;m using a percentage of height of the view but any width is fine.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;float width = (bottomy - topy) * STRIPE_WIDTH_PERCT;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Next grab an offset for each stripe.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;float offset = (bottomy - topy) * STRIPE_OFFSET_PERCT;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now you need to loop across the width of your view. For this example I start off of the view by the width of the offset in order to get the end of the first stripe at the bottom left of the view.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;float xPos = startx - offset
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You&amp;rsquo;ll want to increment the x position by the offset plus the width so that you get evenly spaced stripes. This is important if you want to animate it and have it look good.&lt;/p&gt;
+
+&lt;p&gt;When you draw your stripes you can actually use a single path for all of the stripes. You &amp;lsquo;move&amp;rsquo; the path to the top left corner of the stripe which is just (x,y) then you draw a line across to (x + stripeWidth, y), down to (x + stripeWidth + offset, y + height), over to (x + offset, y + height, and then back to (x,y). Then you increment x by the width and the offset and repeat the process until your x position is greater than the width of your view.&lt;/p&gt;
+
+&lt;p&gt;You&amp;rsquo;re code will look something like this.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;for(float xPos = startx - offset; xPos &amp;lt;= endx; xPos += offset + width){
+    stripespath.moveTo(xPos, topy);
+    stripespath.lineTo(xPos + width, topy);
+    stripespath.lineTo(xPos + offset + width, bottomy);
+    stripespath.lineTo(xPos + offset, bottomy);
+    stripespath.lineTo(xPos, topy);
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After that drawing it is as simple as&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;canvas.drawPath(stripespath, p);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Now lets have some fun with it. What would happen if we changed our starting position based off of what time it was.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private static final long ANIMATION_SPEED = 30;
+
+float xPos = startx - (System.currentTimeMillis()/ANIMATION_SPEED) % (long)(offset + width)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and then redrew the view at a regular interval.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;private static final long REFRESH_RATE = 33;
+protected void onDraw(Canvas canvas) {
+    super.onDraw(canvas);
+    drawStripes(canvas, 0, getHeight(), 0, getWidth(), blackPaint);
+    postDelayed(invalidateRunnable, REFRESH_RATE);
+}
+
+private final Runnable invalidateRunnable = new Runnable() {
+    public void run() {
+        invalidate();
+    }
+};
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;You would get this.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tylerdavis.info/images/imageedit_3_3395727418.gif&#34; alt=&#34;Animated Stripes&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Or what if you only want to draw the stripes in a small area of your view. Then you can clip the canvas to only draw in the section that you have clipped.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;canvas.save();
+canvas.clipRect(20, 20, getWidth() - 20, getHeight() - 20);
+drawStripes(canvas, 20, getHeight() - 20, 20, getWidth() - 20, redPaint);
+canvas.restore();
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tylerdavis.info/images/device-2015-02-07-153205.png&#34; alt=&#34;Clipped Stripes&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You can flip the direction of the stripes by swapping the y values.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;stripespath.moveTo(xPos, bottomy);
+stripespath.lineTo(xPos + width, bottomy);
+stripespath.lineTo(xPos + offset + width, topy);
+stripespath.lineTo(xPos + offset, topy);
+stripespath.lineTo(xPos, bottomy);
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tylerdavis.info/images/device-2015-02-07-153631.png&#34; alt=&#34;Swapped Values&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;And finally you can draw stripes on any view that you want. Such as a Button.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class StripedButton extends Button {
+    private static final float STRIPE_WIDTH_PERCT = .1f;
+    private static final float STRIPE_OFFSET_PERCT = .15f;
+    private Path stripespath = new Path();
+    private Paint redPaint = new Paint();
+
+    public StripedButton(Context context) {
+        super(context);
+    }
+
+    public StripedButton(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public StripedButton(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public StripedButton(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+    }
+    //init()
+    {
+        redPaint.setAntiAlias(true);
+        redPaint.setColor(0xFFFF5555);
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        drawStripes(canvas, getPaddingLeft(), getHeight() - getPaddingBottom(), getPaddingLeft(), getWidth() - getPaddingRight(), redPaint);
+        super.onDraw(canvas);
+    }
+
+    private void drawStripes(Canvas canvas, float topy, float bottomy, float startx, float endx, Paint p){
+        if(bottomy - topy &amp;lt; 1){
+            return;
+        }
+        stripespath.reset();
+        float width = (bottomy - topy) * STRIPE_WIDTH_PERCT;
+        float offset = (bottomy - topy) * STRIPE_OFFSET_PERCT;
+        for(float xPos = startx - offset; xPos &amp;lt;= endx; xPos += offset + width){
+            stripespath.moveTo(xPos, bottomy);
+            stripespath.lineTo(xPos + width, bottomy);
+            stripespath.lineTo(xPos + offset + width, topy);
+            stripespath.lineTo(xPos + offset, topy);
+            stripespath.lineTo(xPos, bottomy);
+        }
+        canvas.drawPath(stripespath, p);
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;http://tylerdavis.info/images/device-2015-02-07-154645.png&#34; alt=&#34;Button With Stripes&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

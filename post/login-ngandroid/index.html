@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Login Screen with NgAndroid</title>
+  <link href="http://tylerdavis.info//css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="http://tylerdavis.info//css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+  <style type="text/css">
+  
+    footer.page-footer{background-image: url(http://tylerdavis.info//images/default.png);}
+  
+  </style>
+</head>
+<body>
+  <ul id="slide-out" class="side-nav">
+    <li><a href="http://tylerdavis.info/"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="http://tylerdavis.info//categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="http://tylerdavis.info//tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+  </ul>
+  <div id="index-banner" class="parallax-container">
+  <a data-activates="slide-out" class="btn-floating button-collapse" style="top: 5px; left: 5px;"><i class="mdi-navigation-menu"></i></a>
+    <div class="section no-pad-bot">
+      <div class="container">
+        
+        <h1 class="header center teal-text text-lighten-2">If You Care</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">A software development blog by Tyler Davis</h5>
+        </div>
+        <div class="row center">
+        
+          <a href="https://github.com/davityle"><img src="http://tylerdavis.info//images/github2-dreamstale35.png"></a>
+        
+        
+        
+        
+        
+          <a href="https://www.linkedin.com/in/davityle"><img src="http://tylerdavis.info//images/linkedin-dreamstale45.png"></a>
+        
+          <a href="http://tylerdavis.info//index.xml"><img src="http://tylerdavis.info//images/feed-dreamstale27.png"></a>
+        </div>
+      </div>
+    </div>
+    <div class="parallax">
+    
+      <img src="http://tylerdavis.info///images/fam-pic.jpg">
+    
+    </div>
+  </div>
+
+
+
+<div class="container">
+  <div class="section">
+
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel">
+          <h4>Login Screen with NgAndroid</h4>
+          <p>
+          
+            
+              <a href="http://tylerdavis.info//categories/development/">Development</a>
+            
+              <a href="http://tylerdavis.info//categories/android/">Android</a>
+            
+          
+          </p>
+          <p>
+
+<p><br>
+<br>
+I really don&rsquo;t like writing user interface glue code. Enough said about that.</p>
+
+<h2 id="tl-dr:dd43b496b4e8887ed65740d406136809">TL;DR</h2>
+
+<p><a href="https://github.com/davityle/ngAndroid">NgAndroid</a> is an <strong>effecient compile time annotation processor</strong> that generates <strong>two data binding</strong> and layout controllers for Android <strong>MVC</strong>. <a href="https://github.com/davityle/ngAndroid">NgAndroid</a> is currently unstable.</p>
+
+<p>The code for a login screen can be found below or <a href="https://github.com/davityle/NgAndroid-Login-Demo">here</a>.</p>
+
+<h4 id="controller-scope:dd43b496b4e8887ed65740d406136809">Controller Scope</h4>
+
+<pre><code>@NgScope(name=&quot;Login&quot;)
+public class LoginScope {
+    @NgModel
+    User user;
+    @NgModel
+    NetworkCall call;
+
+    void onSubmit(Context context) {
+        call.setActive(true);
+        Toast.makeText(context, user.getUsername() + &quot; : &quot; +user.getPassword(), Toast.LENGTH_SHORT ).show();
+    }
+}
+</code></pre>
+
+<h4 id="user-model:dd43b496b4e8887ed65740d406136809">User Model</h4>
+
+<pre><code>public class User {
+    private String username = &quot;&quot;, password = &quot;&quot;;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}
+</code></pre>
+
+<h4 id="layout:dd43b496b4e8887ed65740d406136809">Layout</h4>
+
+<pre><code>&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    xmlns:x=&quot;http://schemas.android.com/apk/res-auto&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:padding=&quot;60dp&quot;
+    tools:context=&quot;.LoginActivity&quot;
+    tools:ignore=&quot;MissingPrefix&quot;
+    x:ngScope=&quot;Login&quot;&gt;
+
+    &lt;EditText
+        android:id=&quot;@+id/username&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:inputType=&quot;text&quot;
+        android:layout_above=&quot;@+id/password&quot;
+        x:ngModel=&quot;user.username&quot;/&gt;
+
+    &lt;EditText
+        android:id=&quot;@+id/password&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:inputType=&quot;textPassword&quot;
+        android:layout_above=&quot;@+id/submit&quot;
+        x:ngModel=&quot;user.password&quot;/&gt;
+
+    &lt;Button
+        android:id=&quot;@+id/submit&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_centerInParent=&quot;true&quot;
+        android:text=&quot;@string/submit&quot;
+        x:ngDisabled=&quot;user.username.length() &amp;lt; 6 || user.password.length() &amp;lt; 6&quot;
+        x:ngClick=&quot;onSubmit($view.context)&quot;
+        x:ngInvisible=&quot;call.active&quot;/&gt;
+
+
+    &lt;ProgressBar
+        android:id=&quot;@+id/progress&quot;
+        android:layout_width=&quot;match_parent&quot;
+        android:layout_height=&quot;wrap_content&quot;
+        android:layout_centerInParent=&quot;true&quot;
+        x:ngInvisible=&quot;!call.active&quot;/&gt;
+
+&lt;/RelativeLayout&gt;
+</code></pre>
+
+<h4 id="activity:dd43b496b4e8887ed65740d406136809">Activity</h4>
+
+<pre><code>public class LoginActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+        LoginScope scope = new LoginScope();
+        ActivityLoginController controller = new ActivityLoginController(new NgOptions.Builder().build(), scope);
+        controller.attach(findViewById(android.R.id.content));
+    }
+
+}
+</code></pre>
+
+<h4 id="product:dd43b496b4e8887ed65740d406136809">Product</h4>
+
+<p><img src="/images/working_login.gif" alt="Working login" /></p>
+
+<h2 id="explanation:dd43b496b4e8887ed65740d406136809">Explanation</h2>
+
+<p>Here is how to create an Android login screen using <a href="https://github.com/davityle/ngAndroid">NgAndroid</a>.</p>
+
+<p>I&rsquo;m going to assume that you know how to set up an Android project. If you don&rsquo;t you can start <a href="http://developer.android.com/training/basics/firstapp/index.html">here</a></p>
+
+<p>Create a new Blank Activity called LoginActivity and open activity_login.xml</p>
+
+<p><img src="/images/new_activity.png" alt="Android Studio create activity view" /></p>
+
+<p>Change the root view of the layout to <code>RelativeLayout</code> and change the padding to <code>android:padding=&quot;60dp&quot;</code>.</p>
+
+<p>Add a <code>Button</code> and two <code>EditText</code> views.</p>
+
+<pre><code>&lt;EditText
+    android:id=&quot;@+id/username&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:inputType=&quot;text&quot;
+    android:layout_above=&quot;@+id/password&quot;/&gt;
+
+&lt;EditText
+    android:id=&quot;@+id/password&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:inputType=&quot;textPassword&quot;
+    android:layout_above=&quot;@+id/submit&quot;/&gt;
+
+&lt;Button
+    android:id=&quot;@+id/submit&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:text=&quot;Submit&quot;
+    android:layout_centerInParent=&quot;true&quot;/&gt;
+</code></pre>
+
+<p>If you run your app you should have something that looks like this (on Android Lollipop).</p>
+
+<p><img src="/images/not_disabled.png" alt="App screenshot" /></p>
+
+<p>Now lets add in NgAndroid. If you open up your project build.gradle file you will see something like this.</p>
+
+<pre><code>buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.3.0'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+</code></pre>
+
+<p>In buildscript.dependencies add a new classpath <code>classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'</code> and in allprojects.repositories add</p>
+
+<pre><code>maven {
+    url 'http://oss.sonatype.org/content/repositories/snapshots'
+}
+</code></pre>
+
+<p>So your build.gradle would then look like this.</p>
+
+<pre><code>buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:1.3.0'
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter()
+
+        maven {
+            url 'http://oss.sonatype.org/content/repositories/snapshots'
+        }
+    }
+}
+</code></pre>
+
+<p>The maven.url is only necessary because you are going to be using a snapshot build of NgAndroid.</p>
+
+<p>Now open up your app&rsquo;s build.gradle and add <code>apply plugin: 'com.neenbedankt.android-apt'</code> below <code>apply plugin: 'com.android.application'</code> and add</p>
+
+<pre><code>compile 'com.github.davityle:ngandroid:1.0.10-SNAPSHOT'
+apt 'com.github.davityle:ng-processor:1.0.10-SNAPSHOT'
+</code></pre>
+
+<p>to your dependencies.</p>
+
+<p>Now create a class called LoginScope. Your scope is important. It is the base reference for all of your bindings.
+To make LoginScope a scope that NgAndroid will recognize you need to add <code>@NgScope(name=&quot;Login&quot;)</code> to the class declaration.</p>
+
+<pre><code>@NgScope(name=&quot;Login&quot;)
+public class LoginScope {
+
+}
+</code></pre>
+
+<p>Now create a User model class for your data.</p>
+
+<pre><code>public class User {
+
+    private String username, password;
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+}
+</code></pre>
+
+<p>Add a user field to <code>LoginScope</code> annotated with <code>@NgModel</code>.</p>
+
+<pre><code>@NgScope(name=&quot;Login&quot;)
+public class LoginScope {
+    @NgModel
+    User user;
+}
+</code></pre>
+
+<p>By annotating a class with the <code>@NgModel</code> annotation you are telling NgAndroid to create a subclass of that class that will handle all of the view bindings.
+It also means that NgAndroid will inject that field. There is no need to instantiate it.</p>
+
+<p>Let&rsquo;s create some bindings. Open up activity_login.xml again and add <code>xmlns:x=&quot;http://schemas.android.com/apk/res-auto&quot;</code>
+below <code>xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</code> in your <code>RelativeLayout</code>.
+Then declare the scope of the xml file by adding <code>x:ngScope=&quot;Login&quot;</code> as well. You should have something that looks like this.</p>
+
+<pre><code>&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    xmlns:x=&quot;http://schemas.android.com/apk/res-auto&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;match_parent&quot;
+    android:padding=&quot;60dp&quot;
+    x:ngScope=&quot;Login&quot;
+    tools:ignore=&quot;MissingPrefix&quot; &gt;
+
+    ...
+
+
+&lt;/RelativeLayout&gt;
+</code></pre>
+
+<p>I also like to add <code>tools:ignore=&quot;MissingPrefix&quot;</code> to the root layout.
+Otherwise Android Studio will complain about adding non android prefix attributes to standard views.</p>
+
+<p>You can now reference any methods or models declared in your scope directly in xml attributes.</p>
+
+<p>Now bind your <code>User</code> to your username and password <code>EditText</code> views by adding <code>x:ngModel=&quot;user.username&quot;</code> and <code>x:ngModel=&quot;user.password&quot;</code> respectively.
+Also, make your submit button only be enabled if the lengths of the username and password are both greater than 6 by adding
+<code>x:ngDisabled=&quot;user.username.length() &amp;lt; 6 || user.password.length() &amp;lt; 6&quot;</code> to your submit button. All together it should look
+like this.</p>
+
+<pre><code>&lt;EditText
+    android:id=&quot;@+id/username&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:layout_above=&quot;@+id/password&quot;
+    android:inputType=&quot;text&quot;
+    x:ngModel=&quot;user.username&quot; /&gt;
+
+&lt;EditText
+    android:id=&quot;@+id/password&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:inputType=&quot;textPassword&quot;
+    android:layout_above=&quot;@+id/submit&quot;
+    x:ngModel=&quot;user.password&quot;/&gt;
+
+&lt;Button
+    android:id=&quot;@+id/submit&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:text=&quot;Submit&quot;
+    android:layout_centerInParent=&quot;true&quot;
+    x:ngDisabled=&quot;user.username.length() &amp;lt; 6 || user.password.length() &amp;lt; 6&quot;/&gt;
+</code></pre>
+
+<p>The <code>&amp;lt;</code> is the symbol for <code>&lt;</code> in an xml attribute. <code>&amp;gt;</code> is the symbol for <code>&gt;</code>.</p>
+
+<p>Now run your app.</p>
+
+<p><img src="/images/not_disabled.png" alt="App screenshot" /></p>
+
+<p>But wait, why isn&rsquo;t the submit button disabled until after you start typing?
+If you check your logs you&rsquo;ll see <code>Unable to get initial value for view 'submit' because of null pointer</code>
+That is just saying that when NgAndroid tried finding whether or not the submit button should be disabled something was <code>null</code>.
+Initializing <code>username</code> and <code>password</code> will fix that. <code>private String username = &quot;&quot;, password = &quot;&quot;;</code>.
+If you run it again it&rsquo;ll be disabled like expected.</p>
+
+<p><img src="/images/disabled.png" alt="App screenshot" /></p>
+
+<p>If you type in 6 or more characters in both the username and the password fields than you will see that the submit button is enabled.</p>
+
+<p>In order to do something when the submit button is clicked create a method in your scope.</p>
+
+<pre><code>void onSubmit(Context context) {
+    Toast.makeText(context, user.getUsername() + &quot; : &quot; +user.getPassword(), Toast.LENGTH_SHORT ).show();
+}
+</code></pre>
+
+<p>Then create an event binding in your layout file.</p>
+
+<pre><code>&lt;Button
+    android:id=&quot;@+id/submit&quot;
+    ...
+    x:ngClick=&quot;onSubmit($view.context)&quot;/&gt;
+</code></pre>
+
+<p>You&rsquo;ll notice the <code>$view</code> syntax. <code>$</code> is a symbol that allows you to reference predefined NgAndroid variables.
+$view is a reference to the view that will be bound to the click event. You can use <code>.context</code> as a shortcut to
+<code>.getContext()</code>.</p>
+
+<p>Now you have a working login screen. If you want to add an animation to that it&rsquo;s extremely easy.
+Add the <code>ProgressBar</code> to your layout with an <code>ngInvisible</code> attribute to make it only visible while
+your network call is active.</p>
+
+<pre><code>&lt;ProgressBar
+    android:id=&quot;@+id/progress&quot;
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:layout_centerInParent=&quot;true&quot;
+    x:ngInvisible=&quot;!call.active&quot;/&gt;
+</code></pre>
+
+<p>Add <code>x:ngInvisible=&quot;call.active&quot;</code> to your submit button to hide it when your call is active.</p>
+
+<p>Finally add your <code>NetworkCall</code> model to your <code>LoginScope</code> and set it as active.</p>
+
+<pre><code>public class LoginScope {
+    //...
+    @NgModel
+    NetworkCall call;
+
+    void onSubmit(Context context) {
+        call.setActive(true);
+        //...
+    }
+}
+</code></pre>
+
+<p>It&rsquo;s that easy.</p>
+
+<p><img src="/images/working_login.gif" alt="Working login" /></p>
+</p>
+          <p>9 Sep 2015
+            
+              
+                <a href="http://tylerdavis.info//tags/android/">#android</a>
+              
+                <a href="http://tylerdavis.info//tags/ngandroid/">#ngandroid</a>
+              
+            
+          </p>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s3 m1">
+      
+        <a class="btn-floating btn-large waves-effect waves-light" href="http://tylerdavis.info/post/QuickSort-Randomizing%20does%20not%20remove%20worst%20case/"><i class="mdi-navigation-arrow-back"></i></a>
+      
+      </div>
+      <div class="col s6 m10 center">&nbsp</div>
+      <div class="col s3 m1">
+      
+        <a class="btn-floating btn-large waves-effect waves-light" href="http://tylerdavis.info/post/ngandroid-intro/"><i class="mdi-navigation-arrow-forward"></i></a>
+      
+      </div>
+    </div>
+
+  </div>
+</div>
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">
+      <div class="right">Design <a class="grey-text text-lighten-4" href="http://pdevty.github.io/blog/">pdevty</a></div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="http://tylerdavis.info//js/materialize.min.js"></script>
+  <script src="http://tylerdavis.info//js/init.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  </body>
+</html>
+

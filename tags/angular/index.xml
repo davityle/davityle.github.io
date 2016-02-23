@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Angular on If You Care</title>
+    <link>http://tylerdavis.info/tags/angular/</link>
+    <description>Recent content in Angular on If You Care</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 18 Feb 2015 00:05:28 -0700</lastBuildDate>
+    <atom:link href="http://tylerdavis.info/tags/angular/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>NgAndroid Introduction</title>
+      <link>http://tylerdavis.info/post/ngandroid-intro/</link>
+      <pubDate>Wed, 18 Feb 2015 00:05:28 -0700</pubDate>
+      
+      <guid>http://tylerdavis.info/post/ngandroid-intro/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;http://tylerdavis.info/images/ngandroid.png&#34; alt=&#34;NgAndroid&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;br&gt;&lt;/p&gt;
+
+&lt;p&gt;It&amp;rsquo;s finally here. The Android UI framework has become as simple and powerful as &lt;a href=&#34;https://angularjs.org/&#34;&gt;AngularJS&lt;/a&gt;. Sort of.&lt;/p&gt;
+
+&lt;p&gt;The project &lt;a href=&#34;https://github.com/davityle/ngAndroid&#34;&gt;ngAndroid&lt;/a&gt; (which is still in beta) on Github has done something that some might not think is possible; NgAndroid brings Angular type directives and data-binding to Android xml attributes.&lt;/p&gt;
+
+&lt;p&gt;If you don&amp;rsquo;t know anything about AngularJS then you probably don&amp;rsquo;t know why this is such an exciting anouncement. You can learn more at Angular&amp;rsquo;s
+&lt;a href=&#34;https://angularjs.org/&#34;&gt;website&lt;/a&gt; but a previous knowledge of AngularJS is not required to revel in the epicness that is about to be laid before your eyes.&lt;/p&gt;
+
+&lt;h2 id=&#34;two-way-data-binding:be1842cb0b9d1ce83a7c8d76094c4a38&#34;&gt;Two Way Data Binding&lt;/h2&gt;
+
+&lt;p&gt;When you create a view in XML that the user is going to interact with you usually end up with something that looks like this.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+&amp;lt;RelativeLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
+    ...&amp;gt;
+
+    &amp;lt;TextView
+        android:id=&amp;quot;@+id/tv_title&amp;quot;
+        .../&amp;gt;
+
+    &amp;lt;CheckBox
+        android:id=&amp;quot;@+id/cb_active&amp;quot;
+        .../&amp;gt;
+
+    &amp;lt;EditText
+        android:id=&amp;quot;@+id/et_text&amp;quot;
+        ... /&amp;gt;
+
+    &amp;lt;ImageView
+        android:id=&amp;quot;@+id/iv_ico&amp;quot;
+        .../&amp;gt;
+&amp;lt;/RelativeLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;public class Model {
+    private String title;
+    private String text;
+    private boolean isActive;
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+}
+
+// View
+
+private Model model;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_demo);
+
+    TextView tv = (TextView) findViewById(R.id.tv_title);
+    tv.setText(model.getTitle());
+
+    CheckBox cb = (CheckBox) findViewById(R.id.cb_active);
+    cb.setChecked(model.isActive());
+    cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            model.setIsActive(isChecked);
+        }
+    });
+
+
+    EditText et = (EditText) findViewById(R.id.et_text);
+    et.addTextChangedListener(new TextWatcher() {
+        @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+        @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+        @Override
+        public void afterTextChanged(Editable s) {
+            model.setText(s.toString());
+        }
+    });
+
+    findViewById(R.id.iv_ico).setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // do stuff here
+        }
+    });
+
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Most of that code is template code. You are doing the same mundane work every time you make a new view.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Most templating systems bind data in only one direction: they merge template and model components together into a view. After the merge occurs, changes to the model or related sections of the view are NOT automatically reflected in the view. Worse, any changes that the user makes to the view are not reflected in the model. This means that the developer has to write code that constantly syncs the view with the model and the model with the view.&lt;/p&gt;
+
+&lt;p&gt;-AngularJs
+(&lt;a href=&#34;https://docs.angularjs.org/guide/databinding&#34;&gt;https://docs.angularjs.org/guide/databinding&lt;/a&gt;)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;What if you could bind your view to your model in a two way fashion. All of the changes to your model would automatically be propogated to your view and all the changes the user made in the view would automatically be refected in your model.&lt;/p&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;The model is the single-source-of-truth for the application state, greatly simplifying the programming model for the developer. You can think of the view as simply an instant projection of your model.&lt;/p&gt;
+
+&lt;p&gt;-AngularJs
+(&lt;a href=&#34;https://docs.angularjs.org/guide/databinding&#34;&gt;https://docs.angularjs.org/guide/databinding&lt;/a&gt;)&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;With ngAndroid now your view can look like this.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;
+&amp;lt;RelativeLayout xmlns:android=&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;
+    xmlns:ngAndroid=&amp;quot;http://schemas.android.com/apk/res-auto&amp;quot;
+    xmlns:tools=&amp;quot;http://schemas.android.com/tools&amp;quot;
+    tools:ignore=&amp;quot;MissingPrefix&amp;quot;
+    ...&amp;gt;
+
+    &amp;lt;TextView
+        android:id=&amp;quot;@+id/tv_title&amp;quot;
+        ngAndroid:ngModel=&amp;quot;model.title&amp;quot;
+        .../&amp;gt;
+
+    &amp;lt;CheckBox
+        android:id=&amp;quot;@+id/cb_active&amp;quot;
+        ngAndroid:ngModel=&amp;quot;model.isActive&amp;quot;
+        .../&amp;gt;
+
+    &amp;lt;EditText
+        android:id=&amp;quot;@+id/et_text&amp;quot;
+        ngAndroid:ngModel=&amp;quot;model.text&amp;quot;
+        .../&amp;gt;
+
+    &amp;lt;ImageView
+        android:id=&amp;quot;@+id/iv_ico&amp;quot;
+        ngAndroid:ngClick=&amp;quot;onIvClick()&amp;quot;
+        .../&amp;gt;
+&amp;lt;/RelativeLayout&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code&gt;public interface Model {
+    public boolean isActive();
+    public void setIsActive(boolean isActive);
+    public String getText();
+    public void setText(String text);
+    public String getTitle();
+    public void setTitle(String title);
+}
+
+private NgAndroid ngAndroid = NgAndroid.getInstance();
+private Model model;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    ngAndroid.setContentView(this, R.layout.activity_ng_android);
+}
+
+private void onIvClick(){
+    // do something with the click
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With just that you have two way databinding. Your model will always reflect your application state. We also get identical funcionality to the previous code. Pretty sweet ey?&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.wintellect.com/devcenter/jlikness/10-reasons-web-developers-should-learn-angularjs&#34;&gt;Most&lt;/a&gt; &lt;a href=&#34;http://code.tutsplus.com/tutorials/5-awesome-angularjs-features--net-25651&#34;&gt;people&lt;/a&gt; &lt;a href=&#34;http://anandmanisankar.com/posts/angularjs-best-parts/&#34;&gt;agree&lt;/a&gt; that two-way data binding is an amazing, if not the best, feature of AngularJS. I tend to agree with them. I also believe that it is one of the greatest features of NgAndroid but it does not end there.&lt;/p&gt;
+
+&lt;p&gt;Stay tuned more more posts on this exciting new library and in the meantime check out the &lt;a href=&#34;https://github.com/davityle/ngAndroid&#34;&gt;NgAndroid github repo&lt;/a&gt;&lt;/p&gt;
+
+&lt;hr /&gt;
+
+&lt;p&gt;&amp;ldquo;&lt;a href=&#34;https://github.com/angular/angular.js/tree/master/images/logo&#34;&gt;AngularJS logo.svg&lt;/a&gt;&amp;rdquo; by &lt;a href=&#34;https://angularjs.org/&#34;&gt;AngularJS&lt;/a&gt; is licensed under &lt;a rel=&#34;nofollow&#34; class=&#34;external text&#34; href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;Creative Commons Attribution-ShareAlike 3.0 Unported License&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

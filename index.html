@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>If You Care</title>
+  <link href="http://tylerdavis.info//css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="http://tylerdavis.info//css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+  <style type="text/css">
+  
+    footer.page-footer{background-image: url(http://tylerdavis.info//images/default.png);}
+  
+  </style>
+</head>
+<body>
+  <ul id="slide-out" class="side-nav">
+    <li><a href="http://tylerdavis.info/"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="http://tylerdavis.info//categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="http://tylerdavis.info//tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+  </ul>
+  <div id="index-banner" class="parallax-container">
+  <a data-activates="slide-out" class="btn-floating button-collapse" style="top: 5px; left: 5px;"><i class="mdi-navigation-menu"></i></a>
+    <div class="section no-pad-bot">
+      <div class="container">
+        
+        <h1 class="header center teal-text text-lighten-2">If You Care</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">A software development blog by Tyler Davis</h5>
+        </div>
+        <div class="row center">
+        
+          <a href="https://github.com/davityle"><img src="http://tylerdavis.info//images/github2-dreamstale35.png"></a>
+        
+        
+        
+        
+        
+          <a href="https://www.linkedin.com/in/davityle"><img src="http://tylerdavis.info//images/linkedin-dreamstale45.png"></a>
+        
+          <a href="http://tylerdavis.info//index.xml"><img src="http://tylerdavis.info//images/feed-dreamstale27.png"></a>
+        </div>
+      </div>
+    </div>
+    <div class="parallax">
+    
+      <img src="http://tylerdavis.info///images/fam-pic.jpg">
+    
+    </div>
+  </div>
+
+
+<div class="container">
+  <div class="section">
+
+
+<div class="row">
+
+  
+  <div class="col m4 s12">
+    <div class="card-panel">
+      <h4><a href="http://tylerdavis.info/post/QuickSort-Randomizing%20does%20not%20remove%20worst%20case/">QuickSort-Randomizing does not remove worst case</a></h4>
+      <p>
+      
+        
+          <a href="http://tylerdavis.info//categories/algorithms/">algorithms</a>
+        
+       
+      </p>
+      <p><h2 id="problem:f1244a5550aaa86ef2466aa9d905d4f0">Problem</h2>
+
+<p>I&rsquo;ve read in a few places that Randomizing the pivot point removes the worst case of O(n<span style="position: relative; bottom: 1ex; font-size: 80%;">2</span>) from the quicksort algorithm. <a href="http://en.wikipedia.org/wiki/Quicksort#Analysis_of_randomized_quicksort">Wikipedia</a> is one of those places. Other places write the whole story but don&rsquo;t show any proof. The whole story is that randomizing the pivot point does not, necessarily, remove the worst case. It&rsquo;s easy to show that this is the case. This article assumes basic knowledge of the quicksort algorithm and big O notation.</p>
+
+<p>The worst case in quick sort happens when each pivot point always contains the next lowest, or always contains the next highest, number in the sequence.</p>
+
+<p>For example. <br> You have an unsorted array</p>
+
+<pre><code>array = {44,88,7,2,1,999,1040,23,123,89,2009}
+</code></pre>
+
+<p>and you want to traverse this array using random pivots. Lets just say that the random number generator produces theses numbers.</p>
+
+<pre><code>4,3,2,7,4,7,9,8,8,9
+</code></pre>
+
+<p>Those look random enough. In fact, I would be perfectly comfortable sorting my array with those random numbers just off of the first glance.</p>
+
+<p>Look at what actually happens when you sort the array using those pivots.</p>
+
+<pre><code>pivot: 4, array[4] == 1
+</code></pre>
+
+<p>the pivot index is 4, the value at index 4 is 1. Notice that 1 is the lowest number in the array. After the first iteration you end up with this array</p>
+
+<pre><code>{1,88,7,2,44,999,1040,23,123,89,2009}
+</code></pre>
+
+<p>I&rsquo;m just going to run through the rest of the iterations here. Try not to get lost.</p>
+
+<pre><code>pivot: 3	 value: 2
+array = {1,88,7,2,44,999,1040,23,123,89,2009}
+
+pivot: 2	 value: 7
+array = {1,2,7,88,44,999,1040,23,123,89,2009}
+
+pivot: 7	 value: 23
+array = {1,2,7,88,44,999,1040,23,123,89,2009}
+
+pivot: 4	 value: 44
+array = {1,2,7,23,44,999,1040,88,123,89,2009}
+
+pivot: 7	 value: 88
+{1,2,7,23,44,999,1040,88,123,89,2009}
+
+pivot: 9	 value: 89
+{1,2,7,23,44,88,1040,999,123,89,2009}
+
+pivot: 8	 value: 123
+{1,2,7,23,44,88,89,999,123,1040,2009}
+
+pivot: 8	 value: 999
+{1,2,7,23,44,88,89,123,999,1040,2009}
+
+pivot: 9	 value: 1040
+{1,2,7,23,44,88,89,123,999,1040,2009}
+</code></pre>
+</p>
+      <p>
+      3 Oct 2015
+      
+        
+          <a href="http://tylerdavis.info//tags/algorithms/">#algorithms</a>
+        
+          <a href="http://tylerdavis.info//tags/quicksort/">#quicksort</a>
+        
+          <a href="http://tylerdavis.info//tags/java/">#java</a>
+        
+          <a href="http://tylerdavis.info//tags/big-o/">#big-o</a>
+        
+       
+      </p>
+    </div>
+  </div>
+
+  
+  <div class="col m4 s12">
+    <div class="card-panel">
+      <h4><a href="http://tylerdavis.info/post/login-ngandroid/">Login Screen with NgAndroid</a></h4>
+      <p>
+      
+        
+          <a href="http://tylerdavis.info//categories/development/">Development</a>
+        
+          <a href="http://tylerdavis.info//categories/android/">Android</a>
+        
+       
+      </p>
+      <p><p><br>
+<br>
+I really don&rsquo;t like writing user interface glue code. Enough said about that.</p>
+
+<h2 id="tl-dr:dd43b496b4e8887ed65740d406136809">TL;DR</h2>
+
+<p><a href="https://github.com/davityle/ngAndroid">NgAndroid</a> is an <strong>effecient compile time annotation processor</strong> that generates <strong>two data binding</strong> and layout controllers for Android <strong>MVC</strong>. <a href="https://github.com/davityle/ngAndroid">NgAndroid</a> is currently unstable.</p>
+
+<p>The code for a login screen can be found below or <a href="https://github.com/davityle/NgAndroid-Login-Demo">here</a>.</p>
+</p>
+      <p>
+      9 Sep 2015
+      
+        
+          <a href="http://tylerdavis.info//tags/android/">#android</a>
+        
+          <a href="http://tylerdavis.info//tags/ngandroid/">#ngandroid</a>
+        
+       
+      </p>
+    </div>
+  </div>
+
+  
+  <div class="col m4 s12">
+    <div class="card-panel">
+      <h4><a href="http://tylerdavis.info/post/ngandroid-intro/">NgAndroid Introduction</a></h4>
+      <p>
+      
+        
+          <a href="http://tylerdavis.info//categories/development/">Development</a>
+        
+          <a href="http://tylerdavis.info//categories/android/">Android</a>
+        
+       
+      </p>
+      <p><p><img src="/images/ngandroid.png" alt="NgAndroid" /></p>
+
+<p><br></p>
+
+<p>It&rsquo;s finally here. The Android UI framework has become as simple and powerful as <a href="https://angularjs.org/">AngularJS</a>. Sort of.</p>
+
+<p>The project <a href="https://github.com/davityle/ngAndroid">ngAndroid</a> (which is still in beta) on Github has done something that some might not think is possible; NgAndroid brings Angular type directives and data-binding to Android xml attributes.</p>
+
+<p>If you don&rsquo;t know anything about AngularJS then you probably don&rsquo;t know why this is such an exciting anouncement. You can learn more at Angular&rsquo;s
+<a href="https://angularjs.org/">website</a> but a previous knowledge of AngularJS is not required to revel in the epicness that is about to be laid before your eyes.</p>
+</p>
+      <p>
+      18 Feb 2015
+      
+        
+          <a href="http://tylerdavis.info//tags/android/">#android</a>
+        
+          <a href="http://tylerdavis.info//tags/angular/">#angular</a>
+        
+       
+      </p>
+    </div>
+  </div>
+
+  
+</div>
+<div class="row">
+  
+  <div class="col m4 s12">
+    <div class="card-panel">
+      <h4><a href="http://tylerdavis.info/post/democracy-in-america/">Democracy in America</a></h4>
+      <p>
+      
+        
+          <a href="http://tylerdavis.info//categories/polisci/">polisci</a>
+        
+       
+      </p>
+      <p><h4 id="this-is-an-essay-that-i-wrote-when-i-have-more-time-i-will-elaborate-more-on-my-stance-and-take-out-the-essayness:507f84182d69c5ebcf490990adb9a307">This is an essay that I wrote. When I have more time I will elaborate more on my stance and take out the essayness.</h4>
+
+<div style="text-align: center;"><h3>Dahl and the Constitution</h3></div>
+</p>
+      <p>
+      14 Feb 2015
+      
+        
+          <a href="http://tylerdavis.info//tags/government/">#government</a>
+        
+          <a href="http://tylerdavis.info//tags/democracy/">#democracy</a>
+        
+       
+      </p>
+    </div>
+  </div>
+
+  
+  <div class="col m4 s12">
+    <div class="card-panel">
+      <h4><a href="http://tylerdavis.info/post/stripes-in-android/">Creating a striped view in Android</a></h4>
+      <p>
+      
+        
+          <a href="http://tylerdavis.info//categories/android/">android</a>
+        
+       
+      </p>
+      <p><p>Have you ever said to yourself, &lsquo;Wow, this view needs some stripes, but there is no android:stripes=&ldquo;true&rdquo; attribute and I don&rsquo;t know how to draw stripes using the canvas&rsquo;? If so, this is the perfect place for you. Or, if you need to draw stripes and figured you&rsquo;d check the internet for an easy solution before you tried it yourself than you are also in the right place.</p>
+
+<p>For those of you who just want the code here it is.</p>
+
+<pre><code>public class StripedView extends View {
+
+    private static final float STRIPE_WIDTH_PERCT = .05f;
+    private static final float STRIPE_OFFSET_PERCT = .2f;
+    private Path stripespath = new Path();
+    private Paint blackPaint = new Paint();
+
+    public StripedView(Context context) {
+        super(context);
+    }
+
+    public StripedView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public StripedView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public StripedView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+    }
+    //init()
+    {
+        blackPaint.setAntiAlias(true);
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        drawStripes(canvas, 0, getHeight(), 0, getWidth(), blackPaint);
+    }
+
+    private void drawStripes(Canvas canvas, float topy, float bottomy, float startx, float endx, Paint p){
+        if(bottomy - topy &lt; 1){
+            return;
+        }
+        stripespath.reset();
+        float width = (bottomy - topy) * STRIPE_WIDTH_PERCT;
+        float offset = (bottomy - topy) * STRIPE_OFFSET_PERCT;
+        for(float xPos = startx - offset; xPos &lt;= endx; xPos += offset + width){
+            stripespath.moveTo(xPos, topy);
+            stripespath.lineTo(xPos + width, topy);
+            stripespath.lineTo(xPos + offset + width, bottomy);
+            stripespath.lineTo(xPos + offset, bottomy);
+            stripespath.lineTo(xPos, topy);
+        }
+        canvas.drawPath(stripespath, p);
+    }
+}
+</code></pre>
+</p>
+      <p>
+      7 Feb 2015
+      
+        
+          <a href="http://tylerdavis.info//tags/dev/">#dev</a>
+        
+          <a href="http://tylerdavis.info//tags/android/">#android</a>
+        
+          <a href="http://tylerdavis.info//tags/ui/">#ui</a>
+        
+          <a href="http://tylerdavis.info//tags/animation/">#animation</a>
+        
+       
+      </p>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="row">
+  <div class="col s3 m1">
+  
+    <a class="btn-floating btn-large disabled"><i class="mdi-navigation-arrow-back"></i></a>
+  
+  </div>
+  <div class="col s6 m10 center">&nbsp</div>
+  <div class="col s3 m1">
+  
+    <a class="btn-floating btn-large disabled"><i class="mdi-navigation-arrow-forward"></i></a>
+  
+  </div>
+</div>
+
+
+  </div>
+</div>
+
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">
+      <div class="right">Design <a class="grey-text text-lighten-4" href="http://pdevty.github.io/blog/">pdevty</a></div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="http://tylerdavis.info//js/materialize.min.js"></script>
+  <script src="http://tylerdavis.info//js/init.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  </body>
+</html>
+

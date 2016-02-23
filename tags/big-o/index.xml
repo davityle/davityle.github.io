@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Big O on If You Care</title>
+    <link>http://tylerdavis.info/tags/big-o/</link>
+    <description>Recent content in Big O on If You Care</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 03 Oct 2015 10:01:16 -0700</lastBuildDate>
+    <atom:link href="http://tylerdavis.info/tags/big-o/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>QuickSort-Randomizing does not remove worst case</title>
+      <link>http://tylerdavis.info/post/QuickSort-Randomizing%20does%20not%20remove%20worst%20case/</link>
+      <pubDate>Sat, 03 Oct 2015 10:01:16 -0700</pubDate>
+      
+      <guid>http://tylerdavis.info/post/QuickSort-Randomizing%20does%20not%20remove%20worst%20case/</guid>
+      <description>
+
+&lt;h2 id=&#34;problem:f1244a5550aaa86ef2466aa9d905d4f0&#34;&gt;Problem&lt;/h2&gt;
+
+&lt;p&gt;I&amp;rsquo;ve read in a few places that Randomizing the pivot point removes the worst case of O(n&lt;span style=&#34;position: relative; bottom: 1ex; font-size: 80%;&#34;&gt;2&lt;/span&gt;) from the quicksort algorithm. &lt;a href=&#34;http://en.wikipedia.org/wiki/Quicksort#Analysis_of_randomized_quicksort&#34;&gt;Wikipedia&lt;/a&gt; is one of those places. Other places write the whole story but don&amp;rsquo;t show any proof. The whole story is that randomizing the pivot point does not, necessarily, remove the worst case. It&amp;rsquo;s easy to show that this is the case. This article assumes basic knowledge of the quicksort algorithm and big O notation.&lt;/p&gt;
+
+&lt;p&gt;The worst case in quick sort happens when each pivot point always contains the next lowest, or always contains the next highest, number in the sequence.&lt;/p&gt;
+
+&lt;p&gt;For example. &lt;br&gt; You have an unsorted array&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;array = {44,88,7,2,1,999,1040,23,123,89,2009}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;and you want to traverse this array using random pivots. Lets just say that the random number generator produces theses numbers.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;4,3,2,7,4,7,9,8,8,9
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Those look random enough. In fact, I would be perfectly comfortable sorting my array with those random numbers just off of the first glance.&lt;/p&gt;
+
+&lt;p&gt;Look at what actually happens when you sort the array using those pivots.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pivot: 4, array[4] == 1
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;the pivot index is 4, the value at index 4 is 1. Notice that 1 is the lowest number in the array. After the first iteration you end up with this array&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;{1,88,7,2,44,999,1040,23,123,89,2009}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;I&amp;rsquo;m just going to run through the rest of the iterations here. Try not to get lost.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;pivot: 3	 value: 2
+array = {1,88,7,2,44,999,1040,23,123,89,2009}
+
+pivot: 2	 value: 7
+array = {1,2,7,88,44,999,1040,23,123,89,2009}
+
+pivot: 7	 value: 23
+array = {1,2,7,88,44,999,1040,23,123,89,2009}
+
+pivot: 4	 value: 44
+array = {1,2,7,23,44,999,1040,88,123,89,2009}
+
+pivot: 7	 value: 88
+{1,2,7,23,44,999,1040,88,123,89,2009}
+
+pivot: 9	 value: 89
+{1,2,7,23,44,88,1040,999,123,89,2009}
+
+pivot: 8	 value: 123
+{1,2,7,23,44,88,89,999,123,1040,2009}
+
+pivot: 8	 value: 999
+{1,2,7,23,44,88,89,123,999,1040,2009}
+
+pivot: 9	 value: 1040
+{1,2,7,23,44,88,89,123,999,1040,2009}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Hurray! The list is sorted. What do you notice about the number of iterations it took though? What do you notice about the values of the numbers?&lt;/p&gt;
+
+&lt;p&gt;Notice that it took about n iterations , and each iteration handled every number that wasn&amp;rsquo;t already sorted. This results in a n operations over n iterations, or O(n&lt;span style=&#34;position: relative; bottom: 1ex; font-size: 80%;&#34;&gt;2&lt;/span&gt;), operation.&lt;/p&gt;
+
+&lt;p&gt;Even though this array is sorted using a random pivot it still hit the worst possible case.&lt;/p&gt;
+
+&lt;h2 id=&#34;proof:f1244a5550aaa86ef2466aa9d905d4f0&#34;&gt;Proof&lt;/h2&gt;
+
+&lt;p&gt;What if you had a way to generate this worst case scenario? Luckily, I was able to reverse engineer the quicksort algorithm and produce a shuffle that always shuffles the array into the worst case scenario for quicksort (if they have the same random seed). The simple algorithm is defined below.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/**
+ * This class creates the worst case scenario for a quick sort
+ */
+public class QuickShuffle {
+	/**
+	* assumes a sorted array is passed in
+	*/
+	public static void quickShuffle(int[] a, Random rand){		
+		int length = a.length - 1;
+		int[] indexes= new int[length];
+		for(int index = 0; index &amp;lt; length; index++){
+			int w = index + rand.nextInt(length - index);
+			indexes[index] = w;
+		}
+		for(int index = indexes.length - 1; index &amp;gt;= 0; index--){
+			swap(a, index, indexes[index]);
+		}
+	}
+
+	private static void swap(int[] a, int index1, int index2) {
+		int temp = a[index1];
+		a[index1] = a[index2];
+		a[index2] = temp;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Then with a quicksort that looks like this&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class QuickSort {
+
+	private Random rand;
+
+	private QuickSort(Random rand){
+		this.rand = rand;
+	}
+
+	public static void quickSort(int[] a, Random rand){
+		new QuickSort(rand).quickSort(a, 0, a.length - 1);
+	}
+
+	private QuickSort quickSort(int[] a, int bottomIndex, int topIndex){
+		if(bottomIndex&amp;lt;topIndex){
+			int pivot =switchPivot(a,bottomIndex,topIndex);
+			quickSort(a,bottomIndex,pivot);
+			quickSort(a,pivot+1,topIndex);
+		}
+		return this;
+	}
+
+	private int switchPivot(int[] a, int bottomIndex, int topIndex) {
+		int index = bottomIndex + rand.nextInt(topIndex - bottomIndex);
+		int value = a[index];
+		int bottomSearch = bottomIndex-1 ;
+		int topSearch = topIndex+1 ;
+
+		while (true) {
+		    do{
+		    	bottomSearch++;
+		    }while ( bottomSearch &amp;lt; topIndex &amp;amp;&amp;amp; a[bottomSearch] &amp;lt; value);
+
+		    do{
+		    	topSearch--;
+		    }while (topSearch &amp;gt; bottomIndex &amp;amp;&amp;amp; a[topSearch] &amp;gt; value);
+
+		    if (bottomSearch &amp;lt; topSearch)
+		    	swap(a, bottomSearch, topSearch);
+		    else
+		    	return topSearch;
+		}
+	}
+
+	private void swap(int[] a, int index1, int index2) {
+		int temp = a[index1];
+		a[index1] = a[index2];
+		a[index2] = temp;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;We can do some profiling and check to see if their is any validity to this worst case scenario.
+I threw together this simple profiler to check out the results of a worst case scenario. (I had to increase Java&amp;rsquo;s stack size using -Xss to run this)&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;public class Main {
+
+	private static final int NUMBER_OF_ITERATIONS= 12;
+	private static final int STARTING_N = 256;
+
+	public static void main(String[] args) {
+		int n = STARTING_N;
+		for(int index = 0; index &amp;lt; NUMBER_OF_ITERATIONS; index++){
+			int[] array = new int[n];
+			for(int i = 0; i &amp;lt; array.length;){
+				array[i] = ++i;
+			}
+			QuickShuffle.quickShuffle(array, new Random(3));
+			long start = System.currentTimeMillis();
+			QuickSort.quickSort(array, new Random(3));
+			long sameSeedResults = System.currentTimeMillis() - start;
+			if(!isSorted(array))
+				throw new RuntimeException();
+			QuickShuffle.quickShuffle(array, new Random(3));
+			start = System.currentTimeMillis();
+			QuickSort.quickSort(array, new Random(4));
+			long differentSeedResults = System.currentTimeMillis() - start;
+			System.out.println(&amp;quot;Same seed      : size = &amp;quot; + n + &amp;quot;\ttime = &amp;quot; + sameSeedResults);
+			System.out.println(&amp;quot;Different seeds: size = &amp;quot; + n + &amp;quot;\ttime = &amp;quot; + differentSeedResults);
+			n &amp;lt;&amp;lt;= 1;
+		}			
+	}
+
+	public static boolean isSorted(int[] array){
+		for(int index = 0; index &amp;lt; array.length - 1; index++){
+			if(array[index] &amp;gt; array[index + 1])
+				return false;
+		}
+		return true;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The profiler starts at n = 256 and then increases n by a power of 2 for each following iteration. Each iteration, an array of size n is created and filled with numbers from 1 - n. The array is shuffled and sorted using the same seed then the array is shuffled and sorted using different seeds. Here is the output from that profiler.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Same seed      : size = 256	time = 1
+Different seeds: size = 256	time = 1
+Same seed      : size = 512	time = 0
+Different seeds: size = 512	time = 1
+Same seed      : size = 1024	time = 1
+Different seeds: size = 1024	time = 1
+Same seed      : size = 2048	time = 6
+Different seeds: size = 2048	time = 1
+Same seed      : size = 4096	time = 3
+Different seeds: size = 4096	time = 0
+Same seed      : size = 8192	time = 12
+Different seeds: size = 8192	time = 1
+Same seed      : size = 16384	time = 47
+Different seeds: size = 16384	time = 2
+Same seed      : size = 32768	time = 187
+Different seeds: size = 32768	time = 3
+Same seed      : size = 65536	time = 743
+Different seeds: size = 65536	time = 8
+Same seed      : size = 131072	time = 2960
+Different seeds: size = 131072	time = 19
+Same seed      : size = 262144	time = 11936
+Different seeds: size = 262144	time = 34
+Same seed      : size = 524288	time = 48304
+Different seeds: size = 524288	time = 72
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Holy cow. Lets look at that in a graph. (They are sorting the exact same array!)
+&lt;img src=&#34;http://tylerdavis.info/images/20150202030320.png&#34; alt=&#34;Graph showing exponential curve&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;The sorter using the same seed as the shuffler definitely looks exponential while the sorter using a different seed is hardly seen at all.&lt;/p&gt;
+
+&lt;h2 id=&#34;conclusion:f1244a5550aaa86ef2466aa9d905d4f0&#34;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;There is a possiblity to hit the worst case using a randomized pivot point for your quicksort algorithm, but I &amp;lsquo;forgot&amp;rsquo; to mention that the possiblity of you finding one of these arrays that match up do perfectly in the &amp;lsquo;wild&amp;rsquo; is extremely rare. Using a random pivot is still probably the safest way to do it. Just don&amp;rsquo;t forget that it is not a guarantee that you will always perform at O(n*log(n)).&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,83 @@
+/* Custom Stylesheet */
+
+body p {
+  font-size: 14px;
+}
+
+.highlight {
+    border-radius: 4px;
+}
+
+.highlight pre {
+  padding: 15px;
+}
+
+nav ul a,
+nav .brand-logo {
+  color: #444;
+}
+p {
+  line-height: 2rem;
+}
+
+.button-collapse {
+  color: #26a69a;
+}
+
+.parallax-container {
+  min-height: 380px;
+  line-height: 0;
+  height: auto;
+  color: rgba(255,255,255,.9);
+}
+
+.parallax-container .section {
+  width: 100%;
+}
+
+.card-panel img {
+  max-width: 100%;
+}
+
+.container .section .row .col.m4 .card-panel {
+  max-height: 600px;
+  overflow: hidden;
+  border-bottom: 20px solid white;
+}
+
+.parallax-container {
+  color: black;
+}
+
+.parallax {
+  filter: grayscale(60%);
+  -webkit-filter: grayscale(60%);
+  -moz-filter: grayscale(60%);
+  -o-filter: grayscale(60%);
+  -ms-filter: grayscale(60%);
+}
+
+@media only screen and (max-width : 992px) {
+  .parallax-container .section {
+    position: absolute;
+    top: 40%;
+  }
+  #index-banner .section {
+    top: 10%;
+  }
+}
+
+@media only screen and (max-width : 600px) {
+  #index-banner .section {
+    top: 0;
+  }
+}
+
+
+.icon-block {
+  padding: 0 15px;
+}
+
+footer.page-footer {
+  margin: 0;
+}

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>NgAndroid Introduction</title>
+  <link href="http://tylerdavis.info//css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="http://tylerdavis.info//css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+  <style type="text/css">
+  
+    footer.page-footer{background-image: url(http://tylerdavis.info//images/default.png);}
+  
+  </style>
+</head>
+<body>
+  <ul id="slide-out" class="side-nav">
+    <li><a href="http://tylerdavis.info/"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="http://tylerdavis.info//categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="http://tylerdavis.info//tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+  </ul>
+  <div id="index-banner" class="parallax-container">
+  <a data-activates="slide-out" class="btn-floating button-collapse" style="top: 5px; left: 5px;"><i class="mdi-navigation-menu"></i></a>
+    <div class="section no-pad-bot">
+      <div class="container">
+        
+        <h1 class="header center teal-text text-lighten-2">If You Care</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">A software development blog by Tyler Davis</h5>
+        </div>
+        <div class="row center">
+        
+          <a href="https://github.com/davityle"><img src="http://tylerdavis.info//images/github2-dreamstale35.png"></a>
+        
+        
+        
+        
+        
+          <a href="https://www.linkedin.com/in/davityle"><img src="http://tylerdavis.info//images/linkedin-dreamstale45.png"></a>
+        
+          <a href="http://tylerdavis.info//index.xml"><img src="http://tylerdavis.info//images/feed-dreamstale27.png"></a>
+        </div>
+      </div>
+    </div>
+    <div class="parallax">
+    
+      <img src="http://tylerdavis.info///images/fam-pic.jpg">
+    
+    </div>
+  </div>
+
+
+
+<div class="container">
+  <div class="section">
+
+    <div class="row">
+      <div class="col s12">
+        <div class="card-panel">
+          <h4>NgAndroid Introduction</h4>
+          <p>
+          
+            
+              <a href="http://tylerdavis.info//categories/development/">Development</a>
+            
+              <a href="http://tylerdavis.info//categories/android/">Android</a>
+            
+          
+          </p>
+          <p>
+
+<p><img src="/images/ngandroid.png" alt="NgAndroid" /></p>
+
+<p><br></p>
+
+<p>It&rsquo;s finally here. The Android UI framework has become as simple and powerful as <a href="https://angularjs.org/">AngularJS</a>. Sort of.</p>
+
+<p>The project <a href="https://github.com/davityle/ngAndroid">ngAndroid</a> (which is still in beta) on Github has done something that some might not think is possible; NgAndroid brings Angular type directives and data-binding to Android xml attributes.</p>
+
+<p>If you don&rsquo;t know anything about AngularJS then you probably don&rsquo;t know why this is such an exciting anouncement. You can learn more at Angular&rsquo;s
+<a href="https://angularjs.org/">website</a> but a previous knowledge of AngularJS is not required to revel in the epicness that is about to be laid before your eyes.</p>
+
+<h2 id="two-way-data-binding:be1842cb0b9d1ce83a7c8d76094c4a38">Two Way Data Binding</h2>
+
+<p>When you create a view in XML that the user is going to interact with you usually end up with something that looks like this.</p>
+
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    ...&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/tv_title&quot;
+        .../&gt;
+
+    &lt;CheckBox
+        android:id=&quot;@+id/cb_active&quot;
+        .../&gt;
+
+    &lt;EditText
+        android:id=&quot;@+id/et_text&quot;
+        ... /&gt;
+
+    &lt;ImageView
+        android:id=&quot;@+id/iv_ico&quot;
+        .../&gt;
+&lt;/RelativeLayout&gt;
+</code></pre>
+
+<pre><code>public class Model {
+    private String title;
+    private String text;
+    private boolean isActive;
+
+    public boolean isActive() {
+        return isActive;
+    }
+
+    public void setActive(boolean isActive) {
+        this.isActive = isActive;
+    }
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+}
+
+// View
+
+private Model model;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_demo);
+
+    TextView tv = (TextView) findViewById(R.id.tv_title);
+    tv.setText(model.getTitle());
+
+    CheckBox cb = (CheckBox) findViewById(R.id.cb_active);
+    cb.setChecked(model.isActive());
+    cb.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+        @Override
+        public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+            model.setIsActive(isChecked);
+        }
+    });
+
+
+    EditText et = (EditText) findViewById(R.id.et_text);
+    et.addTextChangedListener(new TextWatcher() {
+        @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+        @Override public void onTextChanged(CharSequence s, int start, int before, int count) {}
+        @Override
+        public void afterTextChanged(Editable s) {
+            model.setText(s.toString());
+        }
+    });
+
+    findViewById(R.id.iv_ico).setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            // do stuff here
+        }
+    });
+
+}
+</code></pre>
+
+<p>Most of that code is template code. You are doing the same mundane work every time you make a new view.</p>
+
+<blockquote>
+<p>Most templating systems bind data in only one direction: they merge template and model components together into a view. After the merge occurs, changes to the model or related sections of the view are NOT automatically reflected in the view. Worse, any changes that the user makes to the view are not reflected in the model. This means that the developer has to write code that constantly syncs the view with the model and the model with the view.</p>
+
+<p>-AngularJs
+(<a href="https://docs.angularjs.org/guide/databinding">https://docs.angularjs.org/guide/databinding</a>)</p>
+</blockquote>
+
+<p>What if you could bind your view to your model in a two way fashion. All of the changes to your model would automatically be propogated to your view and all the changes the user made in the view would automatically be refected in your model.</p>
+
+<blockquote>
+<p>The model is the single-source-of-truth for the application state, greatly simplifying the programming model for the developer. You can think of the view as simply an instant projection of your model.</p>
+
+<p>-AngularJs
+(<a href="https://docs.angularjs.org/guide/databinding">https://docs.angularjs.org/guide/databinding</a>)</p>
+</blockquote>
+
+<p>With ngAndroid now your view can look like this.</p>
+
+<pre><code>&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;
+&lt;RelativeLayout xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;
+    xmlns:ngAndroid=&quot;http://schemas.android.com/apk/res-auto&quot;
+    xmlns:tools=&quot;http://schemas.android.com/tools&quot;
+    tools:ignore=&quot;MissingPrefix&quot;
+    ...&gt;
+
+    &lt;TextView
+        android:id=&quot;@+id/tv_title&quot;
+        ngAndroid:ngModel=&quot;model.title&quot;
+        .../&gt;
+
+    &lt;CheckBox
+        android:id=&quot;@+id/cb_active&quot;
+        ngAndroid:ngModel=&quot;model.isActive&quot;
+        .../&gt;
+
+    &lt;EditText
+        android:id=&quot;@+id/et_text&quot;
+        ngAndroid:ngModel=&quot;model.text&quot;
+        .../&gt;
+
+    &lt;ImageView
+        android:id=&quot;@+id/iv_ico&quot;
+        ngAndroid:ngClick=&quot;onIvClick()&quot;
+        .../&gt;
+&lt;/RelativeLayout&gt;
+</code></pre>
+
+<pre><code>public interface Model {
+    public boolean isActive();
+    public void setIsActive(boolean isActive);
+    public String getText();
+    public void setText(String text);
+    public String getTitle();
+    public void setTitle(String title);
+}
+
+private NgAndroid ngAndroid = NgAndroid.getInstance();
+private Model model;
+
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    ngAndroid.setContentView(this, R.layout.activity_ng_android);
+}
+
+private void onIvClick(){
+    // do something with the click
+}
+</code></pre>
+
+<p>With just that you have two way databinding. Your model will always reflect your application state. We also get identical funcionality to the previous code. Pretty sweet ey?</p>
+
+<p><a href="http://www.wintellect.com/devcenter/jlikness/10-reasons-web-developers-should-learn-angularjs">Most</a> <a href="http://code.tutsplus.com/tutorials/5-awesome-angularjs-features--net-25651">people</a> <a href="http://anandmanisankar.com/posts/angularjs-best-parts/">agree</a> that two-way data binding is an amazing, if not the best, feature of AngularJS. I tend to agree with them. I also believe that it is one of the greatest features of NgAndroid but it does not end there.</p>
+
+<p>Stay tuned more more posts on this exciting new library and in the meantime check out the <a href="https://github.com/davityle/ngAndroid">NgAndroid github repo</a></p>
+
+<hr />
+
+<p>&ldquo;<a href="https://github.com/angular/angular.js/tree/master/images/logo">AngularJS logo.svg</a>&rdquo; by <a href="https://angularjs.org/">AngularJS</a> is licensed under <a rel="nofollow" class="external text" href="http://creativecommons.org/licenses/by-sa/3.0/">Creative Commons Attribution-ShareAlike 3.0 Unported License</a></p>
+</p>
+          <p>18 Feb 2015
+            
+              
+                <a href="http://tylerdavis.info//tags/android/">#android</a>
+              
+                <a href="http://tylerdavis.info//tags/angular/">#angular</a>
+              
+            
+          </p>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col s3 m1">
+      
+        <a class="btn-floating btn-large waves-effect waves-light" href="http://tylerdavis.info/post/login-ngandroid/"><i class="mdi-navigation-arrow-back"></i></a>
+      
+      </div>
+      <div class="col s6 m10 center">&nbsp</div>
+      <div class="col s3 m1">
+      
+        <a class="btn-floating btn-large waves-effect waves-light" href="http://tylerdavis.info/post/democracy-in-america/"><i class="mdi-navigation-arrow-forward"></i></a>
+      
+      </div>
+    </div>
+
+  </div>
+</div>
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">
+      <div class="right">Design <a class="grey-text text-lighten-4" href="http://pdevty.github.io/blog/">pdevty</a></div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="http://tylerdavis.info//js/materialize.min.js"></script>
+  <script src="http://tylerdavis.info//js/init.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  </body>
+</html>
+

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Ui</title>
+  <link href="http://tylerdavis.info//css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="http://tylerdavis.info//css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+  <style type="text/css">
+  
+    footer.page-footer{background-image: url(http://tylerdavis.info//images/default.png);}
+  
+  </style>
+</head>
+<body>
+  <ul id="slide-out" class="side-nav">
+    <li><a href="http://tylerdavis.info/"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="http://tylerdavis.info//categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="http://tylerdavis.info//tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+  </ul>
+  <div id="index-banner" class="parallax-container">
+  <a data-activates="slide-out" class="btn-floating button-collapse" style="top: 5px; left: 5px;"><i class="mdi-navigation-menu"></i></a>
+    <div class="section no-pad-bot">
+      <div class="container">
+        
+        <h1 class="header center teal-text text-lighten-2">If You Care</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">A software development blog by Tyler Davis</h5>
+        </div>
+        <div class="row center">
+        
+          <a href="https://github.com/davityle"><img src="http://tylerdavis.info//images/github2-dreamstale35.png"></a>
+        
+        
+        
+        
+        
+          <a href="https://www.linkedin.com/in/davityle"><img src="http://tylerdavis.info//images/linkedin-dreamstale45.png"></a>
+        
+          <a href="http://tylerdavis.info//index.xml"><img src="http://tylerdavis.info//images/feed-dreamstale27.png"></a>
+        </div>
+      </div>
+    </div>
+    <div class="parallax">
+    
+      <img src="http://tylerdavis.info///images/fam-pic.jpg">
+    
+    </div>
+  </div>
+
+
+<div class="container">
+  <div class="section">
+
+
+<div class="row">
+
+  
+  <div class="col m4 s12">
+    <div class="card-panel">
+      <h4><a href="http://tylerdavis.info/post/stripes-in-android/">Creating a striped view in Android</a></h4>
+      <p>
+      
+        
+          <a href="http://tylerdavis.info//categories/android/">android</a>
+        
+       
+      </p>
+      <p><p>Have you ever said to yourself, &lsquo;Wow, this view needs some stripes, but there is no android:stripes=&ldquo;true&rdquo; attribute and I don&rsquo;t know how to draw stripes using the canvas&rsquo;? If so, this is the perfect place for you. Or, if you need to draw stripes and figured you&rsquo;d check the internet for an easy solution before you tried it yourself than you are also in the right place.</p>
+
+<p>For those of you who just want the code here it is.</p>
+
+<pre><code>public class StripedView extends View {
+
+    private static final float STRIPE_WIDTH_PERCT = .05f;
+    private static final float STRIPE_OFFSET_PERCT = .2f;
+    private Path stripespath = new Path();
+    private Paint blackPaint = new Paint();
+
+    public StripedView(Context context) {
+        super(context);
+    }
+
+    public StripedView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+    }
+
+    public StripedView(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+    }
+
+    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
+    public StripedView(Context context, AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+        super(context, attrs, defStyleAttr, defStyleRes);
+    }
+    //init()
+    {
+        blackPaint.setAntiAlias(true);
+    }
+
+    @Override
+    protected void onDraw(Canvas canvas) {
+        super.onDraw(canvas);
+        drawStripes(canvas, 0, getHeight(), 0, getWidth(), blackPaint);
+    }
+
+    private void drawStripes(Canvas canvas, float topy, float bottomy, float startx, float endx, Paint p){
+        if(bottomy - topy &lt; 1){
+            return;
+        }
+        stripespath.reset();
+        float width = (bottomy - topy) * STRIPE_WIDTH_PERCT;
+        float offset = (bottomy - topy) * STRIPE_OFFSET_PERCT;
+        for(float xPos = startx - offset; xPos &lt;= endx; xPos += offset + width){
+            stripespath.moveTo(xPos, topy);
+            stripespath.lineTo(xPos + width, topy);
+            stripespath.lineTo(xPos + offset + width, bottomy);
+            stripespath.lineTo(xPos + offset, bottomy);
+            stripespath.lineTo(xPos, topy);
+        }
+        canvas.drawPath(stripespath, p);
+    }
+}
+</code></pre>
+</p>
+      <p>
+      7 Feb 2015
+      
+        
+          <a href="http://tylerdavis.info//tags/dev/">#dev</a>
+        
+          <a href="http://tylerdavis.info//tags/android/">#android</a>
+        
+          <a href="http://tylerdavis.info//tags/ui/">#ui</a>
+        
+          <a href="http://tylerdavis.info//tags/animation/">#animation</a>
+        
+       
+      </p>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="row">
+  <div class="col s3 m1">
+  
+    <a class="btn-floating btn-large disabled"><i class="mdi-navigation-arrow-back"></i></a>
+  
+  </div>
+  <div class="col s6 m10 center">&nbsp</div>
+  <div class="col s3 m1">
+  
+    <a class="btn-floating btn-large disabled"><i class="mdi-navigation-arrow-forward"></i></a>
+  
+  </div>
+</div>
+
+
+  </div>
+</div>
+
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">
+      <div class="right">Design <a class="grey-text text-lighten-4" href="http://pdevty.github.io/blog/">pdevty</a></div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="http://tylerdavis.info//js/materialize.min.js"></script>
+  <script src="http://tylerdavis.info//js/init.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  </body>
+</html>

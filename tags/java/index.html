@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
+  <title>Java</title>
+  <link href="http://tylerdavis.info//css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="http://tylerdavis.info//css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
+  <style type="text/css">
+  
+    footer.page-footer{background-image: url(http://tylerdavis.info//images/default.png);}
+  
+  </style>
+</head>
+<body>
+  <ul id="slide-out" class="side-nav">
+    <li><a href="http://tylerdavis.info/"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="http://tylerdavis.info//categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+    <li><a href="http://tylerdavis.info//tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
+  </ul>
+  <div id="index-banner" class="parallax-container">
+  <a data-activates="slide-out" class="btn-floating button-collapse" style="top: 5px; left: 5px;"><i class="mdi-navigation-menu"></i></a>
+    <div class="section no-pad-bot">
+      <div class="container">
+        
+        <h1 class="header center teal-text text-lighten-2">If You Care</h1>
+        <div class="row center">
+          <h5 class="header col s12 light">A software development blog by Tyler Davis</h5>
+        </div>
+        <div class="row center">
+        
+          <a href="https://github.com/davityle"><img src="http://tylerdavis.info//images/github2-dreamstale35.png"></a>
+        
+        
+        
+        
+        
+          <a href="https://www.linkedin.com/in/davityle"><img src="http://tylerdavis.info//images/linkedin-dreamstale45.png"></a>
+        
+          <a href="http://tylerdavis.info//index.xml"><img src="http://tylerdavis.info//images/feed-dreamstale27.png"></a>
+        </div>
+      </div>
+    </div>
+    <div class="parallax">
+    
+      <img src="http://tylerdavis.info///images/fam-pic.jpg">
+    
+    </div>
+  </div>
+
+
+<div class="container">
+  <div class="section">
+
+
+<div class="row">
+
+  
+  <div class="col m4 s12">
+    <div class="card-panel">
+      <h4><a href="http://tylerdavis.info/post/QuickSort-Randomizing%20does%20not%20remove%20worst%20case/">QuickSort-Randomizing does not remove worst case</a></h4>
+      <p>
+      
+        
+          <a href="http://tylerdavis.info//categories/algorithms/">algorithms</a>
+        
+       
+      </p>
+      <p><h2 id="problem:f1244a5550aaa86ef2466aa9d905d4f0">Problem</h2>
+
+<p>I&rsquo;ve read in a few places that Randomizing the pivot point removes the worst case of O(n<span style="position: relative; bottom: 1ex; font-size: 80%;">2</span>) from the quicksort algorithm. <a href="http://en.wikipedia.org/wiki/Quicksort#Analysis_of_randomized_quicksort">Wikipedia</a> is one of those places. Other places write the whole story but don&rsquo;t show any proof. The whole story is that randomizing the pivot point does not, necessarily, remove the worst case. It&rsquo;s easy to show that this is the case. This article assumes basic knowledge of the quicksort algorithm and big O notation.</p>
+
+<p>The worst case in quick sort happens when each pivot point always contains the next lowest, or always contains the next highest, number in the sequence.</p>
+
+<p>For example. <br> You have an unsorted array</p>
+
+<pre><code>array = {44,88,7,2,1,999,1040,23,123,89,2009}
+</code></pre>
+
+<p>and you want to traverse this array using random pivots. Lets just say that the random number generator produces theses numbers.</p>
+
+<pre><code>4,3,2,7,4,7,9,8,8,9
+</code></pre>
+
+<p>Those look random enough. In fact, I would be perfectly comfortable sorting my array with those random numbers just off of the first glance.</p>
+
+<p>Look at what actually happens when you sort the array using those pivots.</p>
+
+<pre><code>pivot: 4, array[4] == 1
+</code></pre>
+
+<p>the pivot index is 4, the value at index 4 is 1. Notice that 1 is the lowest number in the array. After the first iteration you end up with this array</p>
+
+<pre><code>{1,88,7,2,44,999,1040,23,123,89,2009}
+</code></pre>
+
+<p>I&rsquo;m just going to run through the rest of the iterations here. Try not to get lost.</p>
+
+<pre><code>pivot: 3	 value: 2
+array = {1,88,7,2,44,999,1040,23,123,89,2009}
+
+pivot: 2	 value: 7
+array = {1,2,7,88,44,999,1040,23,123,89,2009}
+
+pivot: 7	 value: 23
+array = {1,2,7,88,44,999,1040,23,123,89,2009}
+
+pivot: 4	 value: 44
+array = {1,2,7,23,44,999,1040,88,123,89,2009}
+
+pivot: 7	 value: 88
+{1,2,7,23,44,999,1040,88,123,89,2009}
+
+pivot: 9	 value: 89
+{1,2,7,23,44,88,1040,999,123,89,2009}
+
+pivot: 8	 value: 123
+{1,2,7,23,44,88,89,999,123,1040,2009}
+
+pivot: 8	 value: 999
+{1,2,7,23,44,88,89,123,999,1040,2009}
+
+pivot: 9	 value: 1040
+{1,2,7,23,44,88,89,123,999,1040,2009}
+</code></pre>
+</p>
+      <p>
+      3 Oct 2015
+      
+        
+          <a href="http://tylerdavis.info//tags/algorithms/">#algorithms</a>
+        
+          <a href="http://tylerdavis.info//tags/quicksort/">#quicksort</a>
+        
+          <a href="http://tylerdavis.info//tags/java/">#java</a>
+        
+          <a href="http://tylerdavis.info//tags/big-o/">#big-o</a>
+        
+       
+      </p>
+    </div>
+  </div>
+
+</div>
+
+
+<div class="row">
+  <div class="col s3 m1">
+  
+    <a class="btn-floating btn-large disabled"><i class="mdi-navigation-arrow-back"></i></a>
+  
+  </div>
+  <div class="col s6 m10 center">&nbsp</div>
+  <div class="col s3 m1">
+  
+    <a class="btn-floating btn-large disabled"><i class="mdi-navigation-arrow-forward"></i></a>
+  
+  </div>
+</div>
+
+
+  </div>
+</div>
+
+  <footer class="page-footer">
+    <div class="footer-copyright">
+      <div class="container">
+      <div class="right">Design <a class="grey-text text-lighten-4" href="http://pdevty.github.io/blog/">pdevty</a></div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="http://tylerdavis.info//js/materialize.min.js"></script>
+  <script src="http://tylerdavis.info//js/init.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+
+  </body>
+</html>
