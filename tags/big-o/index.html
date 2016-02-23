@@ -1,73 +1,207 @@
 <!DOCTYPE html>
-<html lang="en-us">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no"/>
-  <title>Big O</title>
-  <link href="http://tylerdavis.info//css/materialize.min.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="http://tylerdavis.info//css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/styles/default.min.css">
-  <style type="text/css">
-  
-    footer.page-footer{background-image: url(http://tylerdavis.info//images/default.png);}
-  
-  </style>
-</head>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js" prefix="og: http://ogp.me/ns#" xmlns:og="http://ogp.me/ns#"><!--<![endif]-->
+
+    <head>
+                <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="description" content="A software development blog by Tyler Davis">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0" />
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="author" content="">
+        <meta name="keywords" content="awesome, definitely">
+	
+        <meta property="og:site_name" content="If You Care">
+        <meta property="og:title" content="If You Care">
+        <meta property="og:url" content="http://davityle.github.io/tags/big-o/">
+        <meta property="og:description" content="A software development blog by Tyler Davis">
+    
+        <meta property="og:type" content="website" />
+    
+        <meta name="generator" content="Hugo 0.15" />
+        <title>Big O</title>
+        <link rel="canonical" href="http://davityle.github.io/" />
+        <link rel="alternate" type="application/rss+xml" title="RSS" href="http://davityle.github.io/tags/big-o/index.xml">
+        <link rel="stylesheet" type='text/css' href="http://davityle.github.io/css/main.css"/>
+        <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:300|Montserrat:700' rel='stylesheet' type='text/css'>
+        <link href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" rel="stylesheet">
+        <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+    </head>
+
 <body>
-  <ul id="slide-out" class="side-nav">
-    <li><a href="http://tylerdavis.info/"><i class="mdi-action-home left"></i>Home<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
-    <li><a href="http://tylerdavis.info//categories"><i class="mdi-action-perm-media left"></i>Categories<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
-    <li><a href="http://tylerdavis.info//tags"><i class="mdi-action-loyalty left"></i>Tags<i class="mdi-hardware-keyboard-arrow-right right"></i></a></li>
-  </ul>
-  <div id="index-banner" class="parallax-container">
-  <a data-activates="slide-out" class="btn-floating button-collapse" style="top: 5px; left: 5px;"><i class="mdi-navigation-menu"></i></a>
-    <div class="section no-pad-bot">
-      <div class="container">
-        
-        <h1 class="header center teal-text text-lighten-2">If You Care</h1>
-        <div class="row center">
-          <h5 class="header col s12 light">A software development blog by Tyler Davis</h5>
+<!--[if lt IE 7]><p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chrome/‎">install Google Chrome</a> to experience this site.</p><![endif]-->
+
+    <header id="site-header">
+        <div class="container">
+            <a href="http://davityle.github.io/" alt="If You Care"><h1 class="blog-title heading">If You Care</h1></a>
+            <p class="blog-description">A software development blog by Tyler Davis</p>
+            <div class="media">
+            
+              <a href="https://github.com/davityle"><img src="http://davityle.github.io//images/github2-dreamstale35.png"></a>
+            
+            
+            
+            
+            
+              <a href="https://www.linkedin.com/in/davityle"><img src="http://davityle.github.io//images/linkedin-dreamstale45.png"></a>
+            
+              <a href="http://davityle.github.io//index.xml"><img src="http://davityle.github.io//images/feed-dreamstale27.png"></a>
+            </div>
         </div>
-        <div class="row center">
-        
-          <a href="https://github.com/davityle"><img src="http://tylerdavis.info//images/github2-dreamstale35.png"></a>
-        
-        
-        
-        
-        
-          <a href="https://www.linkedin.com/in/davityle"><img src="http://tylerdavis.info//images/linkedin-dreamstale45.png"></a>
-        
-          <a href="http://tylerdavis.info//index.xml"><img src="http://tylerdavis.info//images/feed-dreamstale27.png"></a>
-        </div>
-      </div>
-    </div>
-    <div class="parallax">
+    </header>
+
+<main class="content" role="main">
+	<div class="container">
+	
+		<article class="li post">
+    <header class="post-header">
+        <h3 class="post-title"><a href="http://davityle.github.io/post/computer-science-basics/">Basic Data Structures and Algorithms</a></h3>
+        <p class="post-time"><time datetime="2016-02-23T05:27:09-06:00">February 23, 2016</time></p>
+    </header>
     
-      <img src="http://tylerdavis.info///images/fam-pic.jpg">
+    <section class="post-excerpt">
+        <p><p>This post contains the implementations, in Java 8, of a few data structures and algorithms commonly discussed within computer science.</p>
+
+<p>The full source code for this post can be found <a href="https://github.com/davityle/cs-basics-java">here</a></p>
+
+<p>The tests for the data structures and algorithms can be found <a href="https://github.com/davityle/cs-basics-java/tree/master/test/com/github/davityle/csbasics">here</a></p>
+
+<h4 id="data-structures:518b2f5003323319962c76bffd2d10ed">Data Structures</h4>
+
+<h5 id="hash-map:518b2f5003323319962c76bffd2d10ed">Hash Map</h5>
+
+<p>A hash map is an array backed data structure that stores key-value pairs. It finds the index of the key-value pair using the hash code of the key modulus the length of the hash array. If two different keys have the same index a collision algorithm is used to correctly store the values. Many hash map implementations use buckets for hash collisions. This hash map does not. Each unique key has it&rsquo;s own index.</p>
+
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">package</span> <span style="color: #f8f8f2">com</span><span style="color: #f92672">.</span><span style="color: #a6e22e">github</span><span style="color: #f92672">.</span><span style="color: #a6e22e">davityle</span><span style="color: #f92672">.</span><span style="color: #a6e22e">csbasics</span><span style="color: #f92672">.</span><span style="color: #a6e22e">data</span><span style="color: #f92672">.</span><span style="color: #a6e22e">map</span><span style="color: #f92672">;</span>
+
+<span style="color: #f92672">import</span> <span style="color: #f8f8f2">com.github.davityle.csbasics.util.Maybe</span><span style="color: #f92672">;</span>
+
+<span style="color: #a6e22e">@SuppressWarnings</span><span style="color: #f92672">(</span><span style="color: #e6db74">&quot;unchecked&quot;</span><span style="color: #f92672">)</span>
+<span style="color: #66d9ef">public</span> <span style="color: #66d9ef">abstract</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">HashMap</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">T</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">R</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">{</span>
+
+    <span style="color: #66d9ef">private</span> <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">final</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">MIN_CAPACITY</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">2</span><span style="color: #f92672">;</span>
+    <span style="color: #66d9ef">protected</span> <span style="color: #f8f8f2">Entry</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">T</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">R</span><span style="color: #f92672">&gt;[]</span> <span style="color: #f8f8f2">table</span><span style="color: #f92672">;</span>
+    <span style="color: #66d9ef">private</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">internalSize</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">size</span><span style="color: #f92672">;</span>
+    <span style="color: #66d9ef">private</span> <span style="color: #66d9ef">float</span> <span style="color: #f8f8f2">fillRatio</span><span style="color: #f92672">;</span>
+
+    <span style="color: #66d9ef">public</span> <span style="color: #a6e22e">HashMap</span><span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+        <span style="color: #66d9ef">this</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">MIN_CAPACITY</span><span style="color: #f92672">);</span>
+    <span style="color: #f92672">}</span>
+
+    <span style="color: #66d9ef">public</span> <span style="color: #a6e22e">HashMap</span><span style="color: #f92672">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">initialCapacity</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+        <span style="color: #66d9ef">this</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">initialCapacity</span><span style="color: #f92672">,</span> <span style="color: #f92672">.</span><span style="color: #ae81ff">75</span><span style="color: #f8f8f2">f</span><span style="color: #f92672">);</span>
+    <span style="color: #f92672">}</span>
+
+    <span style="color: #66d9ef">public</span> <span style="color: #a6e22e">HashMap</span><span style="color: #f92672">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">initialCapacity</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">float</span> <span style="color: #f8f8f2">fillRatio</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+        <span style="color: #66d9ef">this</span><span style="color: #f92672">.</span><span style="color: #a6e22e">table</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">Entry</span><span style="color: #f92672">[</span><span style="color: #f8f8f2">Math</span><span style="color: #f92672">.</span><span style="color: #a6e22e">max</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">MIN_CAPACITY</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">initialCapacity</span><span style="color: #f92672">)];</span>
+        <span style="color: #66d9ef">this</span><span style="color: #f92672">.</span><span style="color: #a6e22e">fillRatio</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">fillRatio</span><span style="color: #f92672">;</span>
+    <span style="color: #f92672">}</span>
+
+    <span style="color: #66d9ef">public</span> <span style="color: #f8f8f2">Maybe</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">R</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">put</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">T</span> <span style="color: #f8f8f2">key</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">R</span> <span style="color: #f8f8f2">value</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+        <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">index</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">getIndex</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">key</span><span style="color: #f92672">);</span>
+        <span style="color: #f8f8f2">Entry</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">T</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">R</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">current</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">table</span><span style="color: #f92672">[</span><span style="color: #f8f8f2">index</span><span style="color: #f92672">];</span>
+        <span style="color: #f8f8f2">table</span><span style="color: #f92672">[</span><span style="color: #f8f8f2">index</span><span style="color: #f92672">]</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">Entry</span><span style="color: #f92672">&lt;&gt;(</span><span style="color: #f8f8f2">key</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">value</span><span style="color: #f92672">);</span>
+
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">value</span> <span style="color: #f92672">==</span> <span style="color: #66d9ef">null</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f8f8f2">current</span> <span style="color: #f92672">!=</span> <span style="color: #66d9ef">null</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f8f8f2">current</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getValue</span><span style="color: #f92672">()</span> <span style="color: #f92672">!=</span> <span style="color: #66d9ef">null</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+            <span style="color: #f8f8f2">size</span><span style="color: #f92672">--;</span>
+        <span style="color: #f92672">}</span> <span style="color: #66d9ef">else</span> <span style="color: #66d9ef">if</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">value</span> <span style="color: #f92672">!=</span> <span style="color: #66d9ef">null</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">current</span> <span style="color: #f92672">==</span> <span style="color: #66d9ef">null</span> <span style="color: #f92672">||</span> <span style="color: #f8f8f2">current</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getValue</span><span style="color: #f92672">()</span> <span style="color: #f92672">==</span> <span style="color: #66d9ef">null</span><span style="color: #f92672">))</span> <span style="color: #f92672">{</span>
+            <span style="color: #f8f8f2">size</span><span style="color: #f92672">++;</span>
+        <span style="color: #f92672">}</span>
+
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">current</span> <span style="color: #f92672">==</span> <span style="color: #66d9ef">null</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f92672">++</span><span style="color: #f8f8f2">internalSize</span> <span style="color: #f92672">&gt;=</span> <span style="color: #f92672">((</span><span style="color: #f8f8f2">table</span><span style="color: #f92672">.</span><span style="color: #a6e22e">length</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">fillRatio</span><span style="color: #f92672">)</span> <span style="color: #f92672">-</span> <span style="color: #ae81ff">1</span><span style="color: #f92672">))</span> <span style="color: #f92672">{</span>
+            <span style="color: #f8f8f2">resizeTable</span><span style="color: #f92672">();</span>
+        <span style="color: #f92672">}</span>
+
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">current</span> <span style="color: #f92672">!=</span> <span style="color: #66d9ef">null</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+            <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">Maybe</span><span style="color: #f92672">.</span><span style="color: #a6e22e">ofNullable</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">current</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getValue</span><span style="color: #f92672">());</span>
+        <span style="color: #f92672">}</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">Maybe</span><span style="color: #f92672">.</span><span style="color: #a6e22e">empty</span><span style="color: #f92672">();</span>
+    <span style="color: #f92672">}</span>
+
+    <span style="color: #66d9ef">public</span> <span style="color: #f8f8f2">Maybe</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">R</span><span style="color: #f92672">&gt;</span> <span style="color: #a6e22e">get</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">T</span> <span style="color: #f8f8f2">key</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+        <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">index</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">getIndex</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">key</span><span style="color: #f92672">);</span>
+        <span style="color: #f8f8f2">Entry</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">T</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">R</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">entry</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">table</span><span style="color: #f92672">[</span><span style="color: #f8f8f2">index</span><span style="color: #f92672">];</span>
+        <span style="color: #66d9ef">if</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">entry</span> <span style="color: #f92672">!=</span> <span style="color: #66d9ef">null</span><span style="color: #f92672">)</span>
+            <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">Maybe</span><span style="color: #f92672">.</span><span style="color: #a6e22e">ofNullable</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">entry</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getValue</span><span style="color: #f92672">());</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">Maybe</span><span style="color: #f92672">.</span><span style="color: #a6e22e">empty</span><span style="color: #f92672">();</span>
+    <span style="color: #f92672">}</span>
+
+    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">boolean</span> <span style="color: #a6e22e">has</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">T</span> <span style="color: #f8f8f2">key</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #a6e22e">get</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">key</span><span style="color: #f92672">).</span><span style="color: #a6e22e">isPresent</span><span style="color: #f92672">();</span>
+    <span style="color: #f92672">}</span>
+
+    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">int</span> <span style="color: #a6e22e">getSize</span><span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">size</span><span style="color: #f92672">;</span>
+    <span style="color: #f92672">}</span>
+
+    <span style="color: #66d9ef">protected</span> <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">resizeTable</span><span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+        <span style="color: #f8f8f2">internalSize</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">size</span> <span style="color: #f92672">=</span> <span style="color: #ae81ff">0</span><span style="color: #f92672">;</span>
+        <span style="color: #f8f8f2">Entry</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">T</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">R</span><span style="color: #f92672">&gt;[]</span> <span style="color: #f8f8f2">tmp</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">table</span><span style="color: #f92672">;</span>
+        <span style="color: #f8f8f2">table</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">Entry</span><span style="color: #f92672">[(</span><span style="color: #66d9ef">int</span><span style="color: #f92672">)</span> <span style="color: #f92672">((</span><span style="color: #f8f8f2">table</span><span style="color: #f92672">.</span><span style="color: #a6e22e">length</span> <span style="color: #f92672">/</span> <span style="color: #f8f8f2">fillRatio</span><span style="color: #f92672">)</span> <span style="color: #f92672">*</span> <span style="color: #ae81ff">2</span><span style="color: #f92672">)];</span>
+        <span style="color: #66d9ef">for</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">Entry</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">T</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">R</span><span style="color: #f92672">&gt;</span> <span style="color: #f8f8f2">entry</span> <span style="color: #f92672">:</span> <span style="color: #f8f8f2">tmp</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+            <span style="color: #66d9ef">if</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">entry</span> <span style="color: #f92672">!=</span> <span style="color: #66d9ef">null</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+                <span style="color: #f8f8f2">put</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">entry</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getKey</span><span style="color: #f92672">(),</span> <span style="color: #f8f8f2">entry</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getValue</span><span style="color: #f92672">());</span>
+            <span style="color: #f92672">}</span>
+        <span style="color: #f92672">}</span>
+    <span style="color: #f92672">}</span>
+
+    <span style="color: #66d9ef">protected</span> <span style="color: #66d9ef">int</span> <span style="color: #a6e22e">modLength</span><span style="color: #f92672">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">hash</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #f92672">(((</span><span style="color: #f8f8f2">hash</span> <span style="color: #f92672">%</span> <span style="color: #f8f8f2">table</span><span style="color: #f92672">.</span><span style="color: #a6e22e">length</span><span style="color: #f92672">)</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">table</span><span style="color: #f92672">.</span><span style="color: #a6e22e">length</span><span style="color: #f92672">)</span> <span style="color: #f92672">%</span> <span style="color: #f8f8f2">table</span><span style="color: #f92672">.</span><span style="color: #a6e22e">length</span><span style="color: #f92672">);</span>
+    <span style="color: #f92672">}</span>
+
+    <span style="color: #66d9ef">protected</span> <span style="color: #66d9ef">boolean</span> <span style="color: #a6e22e">collision</span><span style="color: #f92672">(</span><span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">index</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">hash</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">T</span> <span style="color: #f8f8f2">key</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">table</span><span style="color: #f92672">[</span><span style="color: #f8f8f2">index</span><span style="color: #f92672">]</span> <span style="color: #f92672">!=</span> <span style="color: #66d9ef">null</span> <span style="color: #f92672">&amp;&amp;</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">table</span><span style="color: #f92672">[</span><span style="color: #f8f8f2">index</span><span style="color: #f92672">].</span><span style="color: #a6e22e">getKey</span><span style="color: #f92672">().</span><span style="color: #a6e22e">hashCode</span><span style="color: #f92672">()</span> <span style="color: #f92672">!=</span> <span style="color: #f8f8f2">hash</span> <span style="color: #f92672">||</span> <span style="color: #f92672">!</span><span style="color: #f8f8f2">table</span><span style="color: #f92672">[</span><span style="color: #f8f8f2">index</span><span style="color: #f92672">].</span><span style="color: #a6e22e">getKey</span><span style="color: #f92672">().</span><span style="color: #a6e22e">equals</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">key</span><span style="color: #f92672">));</span>
+    <span style="color: #f92672">}</span>
+
+    <span style="color: #66d9ef">protected</span> <span style="color: #66d9ef">abstract</span> <span style="color: #66d9ef">int</span> <span style="color: #a6e22e">getIndex</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">T</span> <span style="color: #f8f8f2">key</span><span style="color: #f92672">);</span>
+
+    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">final</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">Entry</span><span style="color: #f92672">&lt;</span><span style="color: #f8f8f2">T</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">R</span><span style="color: #f92672">&gt;</span> <span style="color: #f92672">{</span>
+        <span style="color: #66d9ef">private</span> <span style="color: #66d9ef">final</span> <span style="color: #f8f8f2">T</span> <span style="color: #f8f8f2">key</span><span style="color: #f92672">;</span>
+        <span style="color: #66d9ef">private</span> <span style="color: #66d9ef">final</span> <span style="color: #f8f8f2">R</span> <span style="color: #f8f8f2">value</span><span style="color: #f92672">;</span>
+
+        <span style="color: #66d9ef">public</span> <span style="color: #a6e22e">Entry</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">T</span> <span style="color: #f8f8f2">key</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">R</span> <span style="color: #f8f8f2">value</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
+            <span style="color: #66d9ef">this</span><span style="color: #f92672">.</span><span style="color: #a6e22e">key</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">key</span><span style="color: #f92672">;</span>
+            <span style="color: #66d9ef">this</span><span style="color: #f92672">.</span><span style="color: #a6e22e">value</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">value</span><span style="color: #f92672">;</span>
+        <span style="color: #f92672">}</span>
+
+        <span style="color: #66d9ef">public</span> <span style="color: #f8f8f2">T</span> <span style="color: #a6e22e">getKey</span><span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+            <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">key</span><span style="color: #f92672">;</span>
+        <span style="color: #f92672">}</span>
+
+        <span style="color: #66d9ef">public</span> <span style="color: #f8f8f2">R</span> <span style="color: #a6e22e">getValue</span><span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
+            <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">value</span><span style="color: #f92672">;</span>
+        <span style="color: #f92672">}</span>
+    <span style="color: #f92672">}</span>
+
+<span style="color: #f92672">}</span>
+</pre></div>
+
+</p>
+    </section>
+
+    <footer class="post-footer">
+        <span>
+            
+            
+            	&nbsp;&nbsp;<i class="fa fa-tag"></i>
+            	java, algorithms, data, structures, big-o
+            
+        </span>
+    </footer>
+</article>
+	
+		<article class="li post">
+    <header class="post-header">
+        <h3 class="post-title"><a href="http://davityle.github.io/post/quicksort-randomize-worst-case/">QuickSort - Worst Case with Random Pivot</a></h3>
+        <p class="post-time"><time datetime="2015-10-03T10:01:16-07:00">October 3, 2015</time></p>
+    </header>
     
-    </div>
-  </div>
-
-
-<div class="container">
-  <div class="section">
-
-
-<div class="row">
-
-  
-  <div class="col m4 s12">
-    <div class="card-panel">
-      <h4><a href="http://tylerdavis.info/post/QuickSort-Randomizing%20does%20not%20remove%20worst%20case/">QuickSort-Randomizing does not remove worst case</a></h4>
-      <p>
-      
-        
-          <a href="http://tylerdavis.info//categories/algorithms/">algorithms</a>
-        
-       
-      </p>
-      <p><h2 id="problem:f1244a5550aaa86ef2466aa9d905d4f0">Problem</h2>
+    <section class="post-excerpt">
+        <p><h4 id="problem:ee5dda3496cde6aa1d2c029c1a3a637b">Problem</h4>
 
 <p>I&rsquo;ve read in a few places that Randomizing the pivot point removes the worst case of O(n<span style="position: relative; bottom: 1ex; font-size: 80%;">2</span>) from the quicksort algorithm. <a href="http://en.wikipedia.org/wiki/Quicksort#Analysis_of_randomized_quicksort">Wikipedia</a> is one of those places. Other places write the whole story but don&rsquo;t show any proof. The whole story is that randomizing the pivot point does not, necessarily, remove the worst case. It&rsquo;s easy to show that this is the case. This article assumes basic knowledge of the quicksort algorithm and big O notation.</p>
 
@@ -75,107 +209,54 @@
 
 <p>For example. <br> You have an unsorted array</p>
 
-<pre><code>array = {44,88,7,2,1,999,1040,23,123,89,2009}
-</code></pre>
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #a6e22e">array</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">44</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">88</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">7</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">999</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">1040</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">23</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">123</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">89</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">2009</span><span style="color: #f8f8f2">}</span>
+</pre></div>
 
-<p>and you want to traverse this array using random pivots. Lets just say that the random number generator produces theses numbers.</p>
+and you want to traverse this array using random pivots. Lets just say that the random number generator produces theses numbers.
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">7</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">7</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">9</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">8</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">8</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">9</span>
+</pre></div>
 
-<pre><code>4,3,2,7,4,7,9,8,8,9
-</code></pre>
-
-<p>Those look random enough. In fact, I would be perfectly comfortable sorting my array with those random numbers just off of the first glance.</p>
+Those look random enough. In fact, I would be perfectly comfortable sorting my array with those random numbers just off of the first glance.</p>
 
 <p>Look at what actually happens when you sort the array using those pivots.</p>
 
-<pre><code>pivot: 4, array[4] == 1
-</code></pre>
+<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #a6e22e">pivot</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">array</span><span style="color: #f8f8f2">[</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">1</span>
+</pre></div>
 
-<p>the pivot index is 4, the value at index 4 is 1. Notice that 1 is the lowest number in the array. After the first iteration you end up with this array</p>
-
-<pre><code>{1,88,7,2,44,999,1040,23,123,89,2009}
-</code></pre>
-
-<p>I&rsquo;m just going to run through the rest of the iterations here. Try not to get lost.</p>
-
-<pre><code>pivot: 3	 value: 2
-array = {1,88,7,2,44,999,1040,23,123,89,2009}
-
-pivot: 2	 value: 7
-array = {1,2,7,88,44,999,1040,23,123,89,2009}
-
-pivot: 7	 value: 23
-array = {1,2,7,88,44,999,1040,23,123,89,2009}
-
-pivot: 4	 value: 44
-array = {1,2,7,23,44,999,1040,88,123,89,2009}
-
-pivot: 7	 value: 88
-{1,2,7,23,44,999,1040,88,123,89,2009}
-
-pivot: 9	 value: 89
-{1,2,7,23,44,88,1040,999,123,89,2009}
-
-pivot: 8	 value: 123
-{1,2,7,23,44,88,89,999,123,1040,2009}
-
-pivot: 8	 value: 999
-{1,2,7,23,44,88,89,123,999,1040,2009}
-
-pivot: 9	 value: 1040
-{1,2,7,23,44,88,89,123,999,1040,2009}
-</code></pre>
+the pivot index is 4, the value at index 4 is 1. Notice that 1 is the lowest number in the array. After the first iteration you end up with this array
+<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">88</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">7</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">44</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">999</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">1040</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">23</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">123</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">89</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">2009</span><span style="color: #f8f8f2">}</span>
+</pre></div>
 </p>
-      <p>
-      3 Oct 2015
-      
-        
-          <a href="http://tylerdavis.info//tags/algorithms/">#algorithms</a>
-        
-          <a href="http://tylerdavis.info//tags/quicksort/">#quicksort</a>
-        
-          <a href="http://tylerdavis.info//tags/java/">#java</a>
-        
-          <a href="http://tylerdavis.info//tags/big-o/">#big-o</a>
-        
-       
-      </p>
-    </div>
-  </div>
+</p>
+    </section>
 
-</div>
+    <footer class="post-footer">
+        <span>
+            
+            
+            	&nbsp;&nbsp;<i class="fa fa-tag"></i>
+            	algorithms, quicksort, java, big-o
+            
+        </span>
+    </footer>
+</article>
+	
+	
+	</div>
+</main>
+    <footer id="site-footer">
+        <div class="container">
+            <a href="http://davityle.github.io/index.xml" title="Get the RSS feed"><span class="tooltip"><i class="fa fa-rss"></i></span></a>
+            <section>&copy; <a href="http://davityle.github.io/"></a> 2015 | All rights reserved</section>
+            <section>Theme by <a href="http://www.jrdnbwmn.com">Jordan Bowman</a>. Generated with <a href="http://gohugo.io/">Hugo</a>.</section>
+        </div>
+    </footer>
 
-
-<div class="row">
-  <div class="col s3 m1">
-  
-    <a class="btn-floating btn-large disabled"><i class="mdi-navigation-arrow-back"></i></a>
-  
-  </div>
-  <div class="col s6 m10 center">&nbsp</div>
-  <div class="col s3 m1">
-  
-    <a class="btn-floating btn-large disabled"><i class="mdi-navigation-arrow-forward"></i></a>
-  
-  </div>
-</div>
+    <script type="text/javascript" src="http://davityle.github.io/js/fittext.js"></script>
+    <script type="text/javascript">
+      $(".heading").fitText();
+    </script>
 
 
-  </div>
-</div>
-
-  <footer class="page-footer">
-    <div class="footer-copyright">
-      <div class="container">
-      <div class="right">Design <a class="grey-text text-lighten-4" href="http://pdevty.github.io/blog/">pdevty</a></div>
-      </div>
-    </div>
-  </footer>
-  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="http://tylerdavis.info//js/materialize.min.js"></script>
-  <script src="http://tylerdavis.info//js/init.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-  
-
-  </body>
+</body>
 </html>
