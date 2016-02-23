@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ngandroid on If You Care</title>
-    <link>http://davityle.github.io/tags/ngandroid/</link>
+    <link>https://davityle.github.io/tags/ngandroid/</link>
     <description>Recent content in Ngandroid on If You Care</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 09 Sep 2015 21:15:59 -0600</lastBuildDate>
-    <atom:link href="http://davityle.github.io/tags/ngandroid/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://davityle.github.io/tags/ngandroid/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Login Screen with NgAndroid</title>
-      <link>http://davityle.github.io/post/login-ngandroid/</link>
+      <link>https://davityle.github.io/post/login-ngandroid/</link>
       <pubDate>Wed, 09 Sep 2015 21:15:59 -0600</pubDate>
       
-      <guid>http://davityle.github.io/post/login-ngandroid/</guid>
+      <guid>https://davityle.github.io/post/login-ngandroid/</guid>
       <description>
 
 &lt;h4 id=&#34;edit:dd43b496b4e8887ed65740d406136809&#34;&gt;Edit*&lt;/h4&gt;
@@ -143,7 +143,7 @@ I really don&amp;rsquo;t like writing user interface glue code. Enough said abou
 
 &lt;h6 id=&#34;product:dd43b496b4e8887ed65740d406136809&#34;&gt;Product&lt;/h6&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://davityle.github.io/images/working_login.gif&#34; alt=&#34;Working login&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://davityle.github.io/images/working_login.gif&#34; alt=&#34;Working login&#34; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;explanation:dd43b496b4e8887ed65740d406136809&#34;&gt;Explanation&lt;/h4&gt;
 
@@ -153,7 +153,7 @@ I really don&amp;rsquo;t like writing user interface glue code. Enough said abou
 
 &lt;p&gt;Create a new Blank Activity called LoginActivity and open activity_login.xml&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://davityle.github.io/images/new_activity.png&#34; alt=&#34;Android Studio create activity view&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://davityle.github.io/images/new_activity.png&#34; alt=&#34;Android Studio create activity view&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Change the root view of the layout to &lt;code&gt;RelativeLayout&lt;/code&gt; and change the padding to &lt;code&gt;android:padding=&amp;quot;60dp&amp;quot;&lt;/code&gt;.&lt;/p&gt;
 
@@ -184,7 +184,7 @@ I really don&amp;rsquo;t like writing user interface glue code. Enough said abou
 
 &lt;p&gt;If you run your app you should have something that looks like this (on Android Lollipop).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://davityle.github.io/images/not_disabled.png&#34; alt=&#34;App screenshot&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://davityle.github.io/images/not_disabled.png&#34; alt=&#34;App screenshot&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Now lets add in NgAndroid. If you open up your project build.gradle file you will see something like this.&lt;/p&gt;
 
@@ -355,7 +355,7 @@ like this.&lt;/p&gt;
 
 &lt;p&gt;Now run your app.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://davityle.github.io/images/not_disabled.png&#34; alt=&#34;App screenshot&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://davityle.github.io/images/not_disabled.png&#34; alt=&#34;App screenshot&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;But wait, why isn&amp;rsquo;t the submit button disabled until after you start typing?
 If you check your logs you&amp;rsquo;ll see &lt;code&gt;Unable to get initial value for view &#39;submit&#39; because of null pointer&lt;/code&gt;
@@ -363,7 +363,7 @@ That is just saying that when NgAndroid tried finding whether or not the submit 
 Initializing &lt;code&gt;username&lt;/code&gt; and &lt;code&gt;password&lt;/code&gt; will fix that. &lt;code&gt;private String username = &amp;quot;&amp;quot;, password = &amp;quot;&amp;quot;;&lt;/code&gt;.
 If you run it again it&amp;rsquo;ll be disabled like expected.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://davityle.github.io/images/disabled.png&#34; alt=&#34;App screenshot&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://davityle.github.io/images/disabled.png&#34; alt=&#34;App screenshot&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;If you type in 6 or more characters in both the username and the password fields than you will see that the submit button is enabled.&lt;/p&gt;
 
@@ -420,7 +420,7 @@ your network call is active.&lt;/p&gt;
 
 &lt;p&gt;It&amp;rsquo;s that easy.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://davityle.github.io/images/working_login.gif&#34; alt=&#34;Working login&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://davityle.github.io/images/working_login.gif&#34; alt=&#34;Working login&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     

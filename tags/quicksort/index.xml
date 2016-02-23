@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Quicksort on If You Care</title>
-    <link>http://davityle.github.io/tags/quicksort/</link>
+    <link>https://davityle.github.io/tags/quicksort/</link>
     <description>Recent content in Quicksort on If You Care</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 03 Oct 2015 10:01:16 -0700</lastBuildDate>
-    <atom:link href="http://davityle.github.io/tags/quicksort/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://davityle.github.io/tags/quicksort/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>QuickSort - Worst Case with Random Pivot</title>
-      <link>http://davityle.github.io/post/quicksort-randomize-worst-case/</link>
+      <link>https://davityle.github.io/post/quicksort-randomize-worst-case/</link>
       <pubDate>Sat, 03 Oct 2015 10:01:16 -0700</pubDate>
       
-      <guid>http://davityle.github.io/post/quicksort-randomize-worst-case/</guid>
+      <guid>https://davityle.github.io/post/quicksort-randomize-worst-case/</guid>
       <description>
 
 &lt;h4 id=&#34;problem:ee5dda3496cde6aa1d2c029c1a3a637b&#34;&gt;Problem&lt;/h4&gt;
@@ -234,7 +234,7 @@ I threw together this simple profiler to check out the results of a worst case s
 &lt;/p&gt;
 
 &lt;p&gt;Holy cow. Lets look at that in a graph. (They are sorting the exact same array!)
-&lt;img src=&#34;http://davityle.github.io/images/20150202030320.png&#34; alt=&#34;Graph showing exponential curve&#34; /&gt;&lt;/p&gt;
+&lt;img src=&#34;https://davityle.github.io/images/20150202030320.png&#34; alt=&#34;Graph showing exponential curve&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;The sorter using the same seed as the shuffler definitely looks exponential while the sorter using a different seed is hardly seen at all.&lt;/p&gt;
 

@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Development on If You Care</title>
-    <link>http://davityle.github.io/categories/development/</link>
+    <link>https://davityle.github.io/categories/development/</link>
     <description>Recent content in Development on If You Care</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 23 Feb 2016 05:27:09 -0600</lastBuildDate>
-    <atom:link href="http://davityle.github.io/categories/development/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://davityle.github.io/categories/development/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Basic Data Structures and Algorithms</title>
-      <link>http://davityle.github.io/post/computer-science-basics/</link>
+      <link>https://davityle.github.io/post/computer-science-basics/</link>
       <pubDate>Tue, 23 Feb 2016 05:27:09 -0600</pubDate>
       
-      <guid>http://davityle.github.io/post/computer-science-basics/</guid>
+      <guid>https://davityle.github.io/post/computer-science-basics/</guid>
       <description>
 
 &lt;h4 id=&#34;description:518b2f5003323319962c76bffd2d10ed&#34;&gt;Description&lt;/h4&gt;
@@ -25,25 +25,25 @@
 
 &lt;p&gt;The tests for the data structures and algorithms can be found &lt;a href=&#34;https://github.com/davityle/cs-basics-java/tree/master/test/com/github/davityle/csbasics&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#hash-map:518b2f5003323319962c76bffd2d10ed&#34;&gt;Hash Map&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://davityle.github.io/post/computer-science-basics/#hash-map:518b2f5003323319962c76bffd2d10ed&#34;&gt;Hash Map&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#graph:518b2f5003323319962c76bffd2d10ed&#34;&gt;Graph&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://davityle.github.io/post/computer-science-basics/#graph:518b2f5003323319962c76bffd2d10ed&#34;&gt;Graph&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#array-list:518b2f5003323319962c76bffd2d10ed&#34;&gt;Array List&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://davityle.github.io/post/computer-science-basics/#array-list:518b2f5003323319962c76bffd2d10ed&#34;&gt;Array List&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#linked-list:518b2f5003323319962c76bffd2d10ed&#34;&gt;Linked List&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://davityle.github.io/post/computer-science-basics/#linked-list:518b2f5003323319962c76bffd2d10ed&#34;&gt;Linked List&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#tree:518b2f5003323319962c76bffd2d10ed&#34;&gt;Tree&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://davityle.github.io/post/computer-science-basics/#tree:518b2f5003323319962c76bffd2d10ed&#34;&gt;Tree&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#trie:518b2f5003323319962c76bffd2d10ed&#34;&gt;Trie&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://davityle.github.io/post/computer-science-basics/#trie:518b2f5003323319962c76bffd2d10ed&#34;&gt;Trie&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#quick-sort:518b2f5003323319962c76bffd2d10ed&#34;&gt;Quick Sort&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://davityle.github.io/post/computer-science-basics/#quick-sort:518b2f5003323319962c76bffd2d10ed&#34;&gt;Quick Sort&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#merge-sort:518b2f5003323319962c76bffd2d10ed&#34;&gt;Marge Sort&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://davityle.github.io/post/computer-science-basics/#merge-sort:518b2f5003323319962c76bffd2d10ed&#34;&gt;Merge Sort&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#a:518b2f5003323319962c76bffd2d10ed&#34;&gt;A*&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://davityle.github.io/post/computer-science-basics/#a:518b2f5003323319962c76bffd2d10ed&#34;&gt;A*&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#convex-hull:518b2f5003323319962c76bffd2d10ed&#34;&gt;Convex Hull&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://davityle.github.io/post/computer-science-basics/#convex-hull:518b2f5003323319962c76bffd2d10ed&#34;&gt;Convex Hull&lt;/a&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;data-structures:518b2f5003323319962c76bffd2d10ed&#34;&gt;Data Structures&lt;/h4&gt;
 
@@ -1148,7 +1148,7 @@ A trie that supports all characters can easily be implemented using the TreeNode
 
 &lt;p&gt;A visualization of the shortest path between two points found using A*.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://davityle.github.io/images/a_star.png&#34; alt=&#34;A* Visualization&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://davityle.github.io/images/a_star.png&#34; alt=&#34;A* Visualization&#34; /&gt;&lt;/p&gt;
 
 &lt;h5 id=&#34;convex-hull:518b2f5003323319962c76bffd2d10ed&#34;&gt;Convex Hull&lt;/h5&gt;
 
@@ -1233,7 +1233,7 @@ A trie that supports all characters can easily be implemented using the TreeNode
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://davityle.github.io/images/convex_hull.png&#34; alt=&#34;Convex Hull Visualization&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://davityle.github.io/images/convex_hull.png&#34; alt=&#34;Convex Hull Visualization&#34; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
@@ -1243,10 +1243,10 @@ A trie that supports all characters can easily be implemented using the TreeNode
     
     <item>
       <title>Login Screen with NgAndroid</title>
-      <link>http://davityle.github.io/post/login-ngandroid/</link>
+      <link>https://davityle.github.io/post/login-ngandroid/</link>
       <pubDate>Wed, 09 Sep 2015 21:15:59 -0600</pubDate>
       
-      <guid>http://davityle.github.io/post/login-ngandroid/</guid>
+      <guid>https://davityle.github.io/post/login-ngandroid/</guid>
       <description>
 
 &lt;h4 id=&#34;edit:dd43b496b4e8887ed65740d406136809&#34;&gt;Edit*&lt;/h4&gt;
@@ -1375,7 +1375,7 @@ I really don&amp;rsquo;t like writing user interface glue code. Enough said abou
 
 &lt;h6 id=&#34;product:dd43b496b4e8887ed65740d406136809&#34;&gt;Product&lt;/h6&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://davityle.github.io/images/working_login.gif&#34; alt=&#34;Working login&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://davityle.github.io/images/working_login.gif&#34; alt=&#34;Working login&#34; /&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;explanation:dd43b496b4e8887ed65740d406136809&#34;&gt;Explanation&lt;/h4&gt;
 
@@ -1385,7 +1385,7 @@ I really don&amp;rsquo;t like writing user interface glue code. Enough said abou
 
 &lt;p&gt;Create a new Blank Activity called LoginActivity and open activity_login.xml&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://davityle.github.io/images/new_activity.png&#34; alt=&#34;Android Studio create activity view&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://davityle.github.io/images/new_activity.png&#34; alt=&#34;Android Studio create activity view&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Change the root view of the layout to &lt;code&gt;RelativeLayout&lt;/code&gt; and change the padding to &lt;code&gt;android:padding=&amp;quot;60dp&amp;quot;&lt;/code&gt;.&lt;/p&gt;
 
@@ -1416,7 +1416,7 @@ I really don&amp;rsquo;t like writing user interface glue code. Enough said abou
 
 &lt;p&gt;If you run your app you should have something that looks like this (on Android Lollipop).&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://davityle.github.io/images/not_disabled.png&#34; alt=&#34;App screenshot&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://davityle.github.io/images/not_disabled.png&#34; alt=&#34;App screenshot&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Now lets add in NgAndroid. If you open up your project build.gradle file you will see something like this.&lt;/p&gt;
 
@@ -1587,7 +1587,7 @@ like this.&lt;/p&gt;
 
 &lt;p&gt;Now run your app.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://davityle.github.io/images/not_disabled.png&#34; alt=&#34;App screenshot&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://davityle.github.io/images/not_disabled.png&#34; alt=&#34;App screenshot&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;But wait, why isn&amp;rsquo;t the submit button disabled until after you start typing?
 If you check your logs you&amp;rsquo;ll see &lt;code&gt;Unable to get initial value for view &#39;submit&#39; because of null pointer&lt;/code&gt;
@@ -1595,7 +1595,7 @@ That is just saying that when NgAndroid tried finding whether or not the submit 
 Initializing &lt;code&gt;username&lt;/code&gt; and &lt;code&gt;password&lt;/code&gt; will fix that. &lt;code&gt;private String username = &amp;quot;&amp;quot;, password = &amp;quot;&amp;quot;;&lt;/code&gt;.
 If you run it again it&amp;rsquo;ll be disabled like expected.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://davityle.github.io/images/disabled.png&#34; alt=&#34;App screenshot&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://davityle.github.io/images/disabled.png&#34; alt=&#34;App screenshot&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;If you type in 6 or more characters in both the username and the password fields than you will see that the submit button is enabled.&lt;/p&gt;
 
@@ -1652,25 +1652,25 @@ your network call is active.&lt;/p&gt;
 
 &lt;p&gt;It&amp;rsquo;s that easy.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://davityle.github.io/images/working_login.gif&#34; alt=&#34;Working login&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://davityle.github.io/images/working_login.gif&#34; alt=&#34;Working login&#34; /&gt;&lt;/p&gt;
 </description>
     </item>
     
     <item>
       <title>NgAndroid Introduction</title>
-      <link>http://davityle.github.io/post/ngandroid-intro/</link>
+      <link>https://davityle.github.io/post/ngandroid-intro/</link>
       <pubDate>Wed, 18 Feb 2015 00:05:28 -0700</pubDate>
       
-      <guid>http://davityle.github.io/post/ngandroid-intro/</guid>
+      <guid>https://davityle.github.io/post/ngandroid-intro/</guid>
       <description>
 
 &lt;h4 id=&#34;edit:be1842cb0b9d1ce83a7c8d76094c4a38&#34;&gt;Edit*&lt;/h4&gt;
 
-&lt;p&gt;This tutorial is out of date. See &lt;a href=&#34;http://davityle.github.io/post/login-ngandroid/&#34;&gt;Login Screen with NgAndroid&lt;/a&gt; for a tutorial on the lastest version of NgAndroid.&lt;/p&gt;
+&lt;p&gt;This tutorial is out of date. See &lt;a href=&#34;https://davityle.github.io/post/login-ngandroid/&#34;&gt;Login Screen with NgAndroid&lt;/a&gt; for a tutorial on the lastest version of NgAndroid.&lt;/p&gt;
 
 &lt;hr /&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://davityle.github.io/images/ngandroid.png&#34; alt=&#34;NgAndroid&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://davityle.github.io/images/ngandroid.png&#34; alt=&#34;NgAndroid&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;br&gt;&lt;/p&gt;
 

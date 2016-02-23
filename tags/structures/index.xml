@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Structures on If You Care</title>
-    <link>http://davityle.github.io/tags/structures/</link>
+    <link>https://davityle.github.io/tags/structures/</link>
     <description>Recent content in Structures on If You Care</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 23 Feb 2016 05:27:09 -0600</lastBuildDate>
-    <atom:link href="http://davityle.github.io/tags/structures/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://davityle.github.io/tags/structures/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Basic Data Structures and Algorithms</title>
-      <link>http://davityle.github.io/post/computer-science-basics/</link>
+      <link>https://davityle.github.io/post/computer-science-basics/</link>
       <pubDate>Tue, 23 Feb 2016 05:27:09 -0600</pubDate>
       
-      <guid>http://davityle.github.io/post/computer-science-basics/</guid>
+      <guid>https://davityle.github.io/post/computer-science-basics/</guid>
       <description>
 
 &lt;h4 id=&#34;description:518b2f5003323319962c76bffd2d10ed&#34;&gt;Description&lt;/h4&gt;
@@ -25,25 +25,25 @@
 
 &lt;p&gt;The tests for the data structures and algorithms can be found &lt;a href=&#34;https://github.com/davityle/cs-basics-java/tree/master/test/com/github/davityle/csbasics&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#hash-map:518b2f5003323319962c76bffd2d10ed&#34;&gt;Hash Map&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://davityle.github.io/post/computer-science-basics/#hash-map:518b2f5003323319962c76bffd2d10ed&#34;&gt;Hash Map&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#graph:518b2f5003323319962c76bffd2d10ed&#34;&gt;Graph&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://davityle.github.io/post/computer-science-basics/#graph:518b2f5003323319962c76bffd2d10ed&#34;&gt;Graph&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#array-list:518b2f5003323319962c76bffd2d10ed&#34;&gt;Array List&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://davityle.github.io/post/computer-science-basics/#array-list:518b2f5003323319962c76bffd2d10ed&#34;&gt;Array List&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#linked-list:518b2f5003323319962c76bffd2d10ed&#34;&gt;Linked List&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://davityle.github.io/post/computer-science-basics/#linked-list:518b2f5003323319962c76bffd2d10ed&#34;&gt;Linked List&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#tree:518b2f5003323319962c76bffd2d10ed&#34;&gt;Tree&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://davityle.github.io/post/computer-science-basics/#tree:518b2f5003323319962c76bffd2d10ed&#34;&gt;Tree&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#trie:518b2f5003323319962c76bffd2d10ed&#34;&gt;Trie&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://davityle.github.io/post/computer-science-basics/#trie:518b2f5003323319962c76bffd2d10ed&#34;&gt;Trie&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#quick-sort:518b2f5003323319962c76bffd2d10ed&#34;&gt;Quick Sort&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://davityle.github.io/post/computer-science-basics/#quick-sort:518b2f5003323319962c76bffd2d10ed&#34;&gt;Quick Sort&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#merge-sort:518b2f5003323319962c76bffd2d10ed&#34;&gt;Marge Sort&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://davityle.github.io/post/computer-science-basics/#merge-sort:518b2f5003323319962c76bffd2d10ed&#34;&gt;Merge Sort&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#a:518b2f5003323319962c76bffd2d10ed&#34;&gt;A*&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://davityle.github.io/post/computer-science-basics/#a:518b2f5003323319962c76bffd2d10ed&#34;&gt;A*&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;a href=&#34;http://davityle.github.io/post/computer-science-basics/#convex-hull:518b2f5003323319962c76bffd2d10ed&#34;&gt;Convex Hull&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://davityle.github.io/post/computer-science-basics/#convex-hull:518b2f5003323319962c76bffd2d10ed&#34;&gt;Convex Hull&lt;/a&gt;&lt;/p&gt;
 
 &lt;h4 id=&#34;data-structures:518b2f5003323319962c76bffd2d10ed&#34;&gt;Data Structures&lt;/h4&gt;
 
@@ -1148,7 +1148,7 @@ A trie that supports all characters can easily be implemented using the TreeNode
 
 &lt;p&gt;A visualization of the shortest path between two points found using A*.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://davityle.github.io/images/a_star.png&#34; alt=&#34;A* Visualization&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://davityle.github.io/images/a_star.png&#34; alt=&#34;A* Visualization&#34; /&gt;&lt;/p&gt;
 
 &lt;h5 id=&#34;convex-hull:518b2f5003323319962c76bffd2d10ed&#34;&gt;Convex Hull&lt;/h5&gt;
 
@@ -1233,7 +1233,7 @@ A trie that supports all characters can easily be implemented using the TreeNode
 &lt;/pre&gt;&lt;/div&gt;
 &lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;http://davityle.github.io/images/convex_hull.png&#34; alt=&#34;Convex Hull Visualization&#34; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://davityle.github.io/images/convex_hull.png&#34; alt=&#34;Convex Hull Visualization&#34; /&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
 
