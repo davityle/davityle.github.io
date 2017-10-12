@@ -8,4 +8,67 @@
 .media a {
    display: table-cell;
    padding: 2px;
-}​
+}
+
+.spoiler {
+    -webkit-transition: opacity .25s ease-in;
+    -moz-transition: opacity .25s ease-in;
+    transition: opacity .25s ease-in;
+    opacity: 0;
+}
+
+.spoil-block:hover .spoiler {
+    opacity: 1;
+    -webkit-transition: opacity 1.5s ease-in;
+    -moz-transition: opacity 1.5s ease-in;
+    transition: opacity 1.5s ease-in;
+}
+
+.spoil-block {
+    width: 100%;
+    text-align:center;
+    position:relative;
+}
+
+.spoil-tag {
+    position: absolute;
+    margin: 0 auto;
+    top: 50px;
+    left:0;
+    right:0;
+    -webkit-transition: opacity .5s ease-in;
+    -moz-transition: opacity .5s ease-in;
+    transition: opacity .5s ease-in;
+}
+
+.spoil-block:hover .spoil-tag {
+    opacity: 0;
+}
+
+.read-more + .collapse-read-more {
+    display: none;
+}
+
+.read-more.expand {
+    display: none;
+}
+
+.read-more.expand + .collapse-read-more {
+    display: inherit;
+}
+
+.read-more + .collapse-read-more + .body {
+    max-height: 0;
+    overflow: hidden;
+
+    -webkit-transition: max-height .25s ease-out;
+    -moz-transition: max-height .25s ease-out;
+    transition: max-height .25s ease-out;
+
+}
+
+.offscreen {
+    position: absolute;
+    visibility: hidden;
+    display: block;
+}

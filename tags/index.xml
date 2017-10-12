@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on If You Care</title>
+    <link>https://davityle.github.io/tags/</link>
+    <description>Recent content in Tags on If You Care</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 23 Feb 2016 05:27:09 -0600</lastBuildDate>
+    
+	<atom:link href="https://davityle.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Algorithms</title>
+      <link>https://davityle.github.io/tags/algorithms/</link>
+      <pubDate>Tue, 23 Feb 2016 05:27:09 -0600</pubDate>
+      
+      <guid>https://davityle.github.io/tags/algorithms/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Android</title>
+      <link>https://davityle.github.io/tags/android/</link>
+      <pubDate>Wed, 09 Sep 2015 21:15:59 -0600</pubDate>
+      
+      <guid>https://davityle.github.io/tags/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Angular</title>
+      <link>https://davityle.github.io/tags/angular/</link>
+      <pubDate>Wed, 18 Feb 2015 00:05:28 -0700</pubDate>
+      
+      <guid>https://davityle.github.io/tags/angular/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Animation</title>
+      <link>https://davityle.github.io/tags/animation/</link>
+      <pubDate>Sat, 07 Feb 2015 11:30:53 -0700</pubDate>
+      
+      <guid>https://davityle.github.io/tags/animation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Big O</title>
+      <link>https://davityle.github.io/tags/big-o/</link>
+      <pubDate>Tue, 23 Feb 2016 05:27:09 -0600</pubDate>
+      
+      <guid>https://davityle.github.io/tags/big-o/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Data</title>
+      <link>https://davityle.github.io/tags/data/</link>
+      <pubDate>Tue, 23 Feb 2016 05:27:09 -0600</pubDate>
+      
+      <guid>https://davityle.github.io/tags/data/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Dev</title>
+      <link>https://davityle.github.io/tags/dev/</link>
+      <pubDate>Sat, 07 Feb 2015 11:30:53 -0700</pubDate>
+      
+      <guid>https://davityle.github.io/tags/dev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Development</title>
+      <link>https://davityle.github.io/tags/development/</link>
+      <pubDate>Thu, 12 Oct 2017 05:21:56 -0600</pubDate>
+      
+      <guid>https://davityle.github.io/tags/development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>https://davityle.github.io/tags/java/</link>
+      <pubDate>Tue, 23 Feb 2016 05:27:09 -0600</pubDate>
+      
+      <guid>https://davityle.github.io/tags/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ngandroid</title>
+      <link>https://davityle.github.io/tags/ngandroid/</link>
+      <pubDate>Wed, 09 Sep 2015 21:15:59 -0600</pubDate>
+      
+      <guid>https://davityle.github.io/tags/ngandroid/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Quicksort</title>
+      <link>https://davityle.github.io/tags/quicksort/</link>
+      <pubDate>Sat, 03 Oct 2015 10:01:16 -0700</pubDate>
+      
+      <guid>https://davityle.github.io/tags/quicksort/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Structures</title>
+      <link>https://davityle.github.io/tags/structures/</link>
+      <pubDate>Tue, 23 Feb 2016 05:27:09 -0600</pubDate>
+      
+      <guid>https://davityle.github.io/tags/structures/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tools</title>
+      <link>https://davityle.github.io/tags/tools/</link>
+      <pubDate>Thu, 12 Oct 2017 05:21:56 -0600</pubDate>
+      
+      <guid>https://davityle.github.io/tags/tools/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ui</title>
+      <link>https://davityle.github.io/tags/ui/</link>
+      <pubDate>Sat, 07 Feb 2015 11:30:53 -0700</pubDate>
+      
+      <guid>https://davityle.github.io/tags/ui/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Web</title>
+      <link>https://davityle.github.io/tags/web/</link>
+      <pubDate>Thu, 12 Oct 2017 05:21:56 -0600</pubDate>
+      
+      <guid>https://davityle.github.io/tags/web/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

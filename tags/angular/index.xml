@@ -7,7 +7,9 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 18 Feb 2015 00:05:28 -0700</lastBuildDate>
-    <atom:link href="https://davityle.github.io/tags/angular/index.xml" rel="self" type="application/rss+xml" />
+    
+	<atom:link href="https://davityle.github.io/tags/angular/index.xml" rel="self" type="application/rss+xml" />
+    
     
     <item>
       <title>NgAndroid Introduction</title>
@@ -15,9 +17,7 @@
       <pubDate>Wed, 18 Feb 2015 00:05:28 -0700</pubDate>
       
       <guid>https://davityle.github.io/post/ngandroid-intro/</guid>
-      <description>
-
-&lt;h4 id=&#34;edit:be1842cb0b9d1ce83a7c8d76094c4a38&#34;&gt;Edit*&lt;/h4&gt;
+      <description>&lt;h4 id=&#34;edit&#34;&gt;Edit*&lt;/h4&gt;
 
 &lt;p&gt;This tutorial is out of date. See &lt;a href=&#34;https://davityle.github.io/post/login-ngandroid/&#34;&gt;Login Screen with NgAndroid&lt;/a&gt; for a tutorial on the lastest version of NgAndroid.&lt;/p&gt;
 
@@ -34,185 +34,7 @@
 &lt;p&gt;If you don&amp;rsquo;t know anything about AngularJS then you probably don&amp;rsquo;t know why this is such an exciting anouncement. You can learn more at Angular&amp;rsquo;s
 &lt;a href=&#34;https://angularjs.org/&#34;&gt;website&lt;/a&gt; but a previous knowledge of AngularJS is not required to revel in the epicness that is about to be laid before your eyes.&lt;/p&gt;
 
-&lt;h4 id=&#34;two-way-data-binding:be1842cb0b9d1ce83a7c8d76094c4a38&#34;&gt;Two Way Data Binding&lt;/h4&gt;
-
-&lt;p&gt;When you create a view in XML that the user is going to interact with you usually end up with something that looks like this.
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #75715e&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;RelativeLayout&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;xmlns:android=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;&lt;/span&gt;
-    &lt;span style=&#34;color: #960050; background-color: #1e0010&#34;&gt;...&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;
-
-    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;TextView&lt;/span&gt;
-        &lt;span style=&#34;color: #a6e22e&#34;&gt;android:id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;@+id/tv_title&amp;quot;&lt;/span&gt;
-        &lt;span style=&#34;color: #960050; background-color: #1e0010&#34;&gt;...&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&amp;gt;&lt;/span&gt;
-
-    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;CheckBox&lt;/span&gt;
-        &lt;span style=&#34;color: #a6e22e&#34;&gt;android:id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;@+id/cb_active&amp;quot;&lt;/span&gt;
-        &lt;span style=&#34;color: #960050; background-color: #1e0010&#34;&gt;...&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&amp;gt;&lt;/span&gt;
-
-    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;EditText&lt;/span&gt;
-        &lt;span style=&#34;color: #a6e22e&#34;&gt;android:id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;@+id/et_text&amp;quot;&lt;/span&gt;
-        &lt;span style=&#34;color: #960050; background-color: #1e0010&#34;&gt;...&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;/&amp;gt;&lt;/span&gt;
-
-    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;ImageView&lt;/span&gt;
-        &lt;span style=&#34;color: #a6e22e&#34;&gt;android:id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;@+id/iv_ico&amp;quot;&lt;/span&gt;
-        &lt;span style=&#34;color: #960050; background-color: #1e0010&#34;&gt;...&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/RelativeLayout&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;class&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;Model&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;String&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;title&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;String&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;text&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;isActive&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;;&lt;/span&gt;
-
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;isActive&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;isActive&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
-
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;setActive&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;isActive&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color: #66d9ef&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;isActive&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;isActive&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
-
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;String&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;getText&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;text&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
-
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;setText&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;String&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;text&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color: #66d9ef&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;text&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;text&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
-
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;String&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;getTitle&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color: #66d9ef&#34;&gt;return&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;title&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
-
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;setTitle&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;String&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;title&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color: #66d9ef&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;title&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;title&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;;&lt;/span&gt;
-    &lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
-
-&lt;span style=&#34;color: #75715e&#34;&gt;// View&lt;/span&gt;
-
-&lt;span style=&#34;color: #66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;Model&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;model&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;;&lt;/span&gt;
-
-&lt;span style=&#34;color: #a6e22e&#34;&gt;@Override&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;protected&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;onCreate&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Bundle&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;savedInstanceState&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;super&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;onCreate&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;savedInstanceState&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;);&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;setContentView&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;R&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;layout&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;activity_demo&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;);&lt;/span&gt;
-
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;TextView&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;tv&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;TextView&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;findViewById&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;R&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;tv_title&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;);&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;tv&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;setText&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;model&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;getTitle&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;());&lt;/span&gt;
-
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;CheckBox&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;cb&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;CheckBox&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;findViewById&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;R&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;cb_active&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;);&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;cb&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;setChecked&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;model&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;isActive&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;());&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;cb&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;setOnCheckedChangeListener&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;CompoundButton&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;OnCheckedChangeListener&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color: #a6e22e&#34;&gt;@Override&lt;/span&gt;
-        &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;onCheckedChanged&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;CompoundButton&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;buttonView&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;isChecked&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color: #f8f8f2&#34;&gt;model&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;setIsActive&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;isChecked&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;);&lt;/span&gt;
-        &lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
-    &lt;span style=&#34;color: #f92672&#34;&gt;});&lt;/span&gt;
-
-
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;EditText&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;et&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;EditText&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;findViewById&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;R&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;et_text&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;);&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;et&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;addTextChangedListener&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;TextWatcher&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color: #a6e22e&#34;&gt;@Override&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;beforeTextChanged&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;CharSequence&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;s&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;start&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;count&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;after&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{}&lt;/span&gt;
-        &lt;span style=&#34;color: #a6e22e&#34;&gt;@Override&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;onTextChanged&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;CharSequence&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;s&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;start&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;before&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;int&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;count&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{}&lt;/span&gt;
-        &lt;span style=&#34;color: #a6e22e&#34;&gt;@Override&lt;/span&gt;
-        &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;afterTextChanged&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Editable&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;s&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color: #f8f8f2&#34;&gt;model&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;setText&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;s&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;toString&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;());&lt;/span&gt;
-        &lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
-    &lt;span style=&#34;color: #f92672&#34;&gt;});&lt;/span&gt;
-
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;findViewById&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;R&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;id&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;iv_ico&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;).&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;setOnClickListener&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;new&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;View&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;OnClickListener&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;()&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
-        &lt;span style=&#34;color: #a6e22e&#34;&gt;@Override&lt;/span&gt;
-        &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;onClick&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;View&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;v&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
-            &lt;span style=&#34;color: #75715e&#34;&gt;// do stuff here&lt;/span&gt;
-        &lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
-    &lt;span style=&#34;color: #f92672&#34;&gt;});&lt;/span&gt;
-
-&lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-&lt;/p&gt;
-
-&lt;p&gt;Most of that code is template code. You are doing the same mundane work every time you make a new view.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;Most templating systems bind data in only one direction: they merge template and model components together into a view. After the merge occurs, changes to the model or related sections of the view are NOT automatically reflected in the view. Worse, any changes that the user makes to the view are not reflected in the model. This means that the developer has to write code that constantly syncs the view with the model and the model with the view.&lt;/p&gt;
-
-&lt;p&gt;-AngularJs
-(&lt;a href=&#34;https://docs.angularjs.org/guide/databinding&#34;&gt;https://docs.angularjs.org/guide/databinding&lt;/a&gt;)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;What if you could bind your view to your model in a two way fashion. All of the changes to your model would automatically be propogated to your view and all the changes the user made in the view would automatically be refected in your model.&lt;/p&gt;
-
-&lt;blockquote&gt;
-&lt;p&gt;The model is the single-source-of-truth for the application state, greatly simplifying the programming model for the developer. You can think of the view as simply an instant projection of your model.&lt;/p&gt;
-
-&lt;p&gt;-AngularJs
-(&lt;a href=&#34;https://docs.angularjs.org/guide/databinding&#34;&gt;https://docs.angularjs.org/guide/databinding&lt;/a&gt;)&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;With ngAndroid now your view can look like this.
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #75715e&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;utf-8&amp;quot;?&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;RelativeLayout&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;xmlns:android=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;http://schemas.android.com/apk/res/android&amp;quot;&lt;/span&gt;
-    &lt;span style=&#34;color: #a6e22e&#34;&gt;xmlns:ngAndroid=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;http://schemas.android.com/apk/res-auto&amp;quot;&lt;/span&gt;
-    &lt;span style=&#34;color: #a6e22e&#34;&gt;xmlns:tools=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;http://schemas.android.com/tools&amp;quot;&lt;/span&gt;
-    &lt;span style=&#34;color: #a6e22e&#34;&gt;tools:ignore=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;MissingPrefix&amp;quot;&lt;/span&gt;
-    &lt;span style=&#34;color: #960050; background-color: #1e0010&#34;&gt;...&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;&amp;gt;&lt;/span&gt;
-
-    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;TextView&lt;/span&gt;
-        &lt;span style=&#34;color: #a6e22e&#34;&gt;android:id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;@+id/tv_title&amp;quot;&lt;/span&gt;
-        &lt;span style=&#34;color: #a6e22e&#34;&gt;ngAndroid:ngModel=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;model.title&amp;quot;&lt;/span&gt;
-        &lt;span style=&#34;color: #960050; background-color: #1e0010&#34;&gt;...&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&amp;gt;&lt;/span&gt;
-
-    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;CheckBox&lt;/span&gt;
-        &lt;span style=&#34;color: #a6e22e&#34;&gt;android:id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;@+id/cb_active&amp;quot;&lt;/span&gt;
-        &lt;span style=&#34;color: #a6e22e&#34;&gt;ngAndroid:ngModel=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;model.isActive&amp;quot;&lt;/span&gt;
-        &lt;span style=&#34;color: #960050; background-color: #1e0010&#34;&gt;...&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&amp;gt;&lt;/span&gt;
-
-    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;EditText&lt;/span&gt;
-        &lt;span style=&#34;color: #a6e22e&#34;&gt;android:id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;@+id/et_text&amp;quot;&lt;/span&gt;
-        &lt;span style=&#34;color: #a6e22e&#34;&gt;ngAndroid:ngModel=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;model.text&amp;quot;&lt;/span&gt;
-        &lt;span style=&#34;color: #960050; background-color: #1e0010&#34;&gt;...&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&amp;gt;&lt;/span&gt;
-
-    &lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;ImageView&lt;/span&gt;
-        &lt;span style=&#34;color: #a6e22e&#34;&gt;android:id=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;@+id/iv_ico&amp;quot;&lt;/span&gt;
-        &lt;span style=&#34;color: #a6e22e&#34;&gt;ngAndroid:ngClick=&lt;/span&gt;&lt;span style=&#34;color: #e6db74&#34;&gt;&amp;quot;onIvClick()&amp;quot;&lt;/span&gt;
-        &lt;span style=&#34;color: #960050; background-color: #1e0010&#34;&gt;...&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;/&amp;gt;&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;&amp;lt;/RelativeLayout&amp;gt;&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-&lt;div class=&#34;highlight&#34; style=&#34;background: #272822&#34;&gt;&lt;pre style=&#34;line-height: 125%&#34;&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;interface&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;Model&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;isActive&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;();&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;setIsActive&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;boolean&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;isActive&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;);&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;String&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;getText&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;();&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;setText&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;String&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;text&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;);&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;String&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;getTitle&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;();&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;public&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;setTitle&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;String&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;title&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;);&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
-
-&lt;span style=&#34;color: #66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;NgAndroid&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;ngAndroid&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;=&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;NgAndroid&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;getInstance&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;();&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;Model&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;model&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;;&lt;/span&gt;
-
-&lt;span style=&#34;color: #a6e22e&#34;&gt;@Override&lt;/span&gt;
-&lt;span style=&#34;color: #66d9ef&#34;&gt;protected&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;onCreate&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;Bundle&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;savedInstanceState&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;)&lt;/span&gt; &lt;span style=&#34;color: #f92672&#34;&gt;{&lt;/span&gt;
-    &lt;span style=&#34;color: #66d9ef&#34;&gt;super&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;onCreate&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #f8f8f2&#34;&gt;savedInstanceState&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;);&lt;/span&gt;
-    &lt;span style=&#34;color: #f8f8f2&#34;&gt;ngAndroid&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;setContentView&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(&lt;/span&gt;&lt;span style=&#34;color: #66d9ef&#34;&gt;this&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;,&lt;/span&gt; &lt;span style=&#34;color: #f8f8f2&#34;&gt;R&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;layout&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;.&lt;/span&gt;&lt;span style=&#34;color: #a6e22e&#34;&gt;activity_ng_android&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;);&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
-
-&lt;span style=&#34;color: #66d9ef&#34;&gt;private&lt;/span&gt; &lt;span style=&#34;color: #66d9ef&#34;&gt;void&lt;/span&gt; &lt;span style=&#34;color: #a6e22e&#34;&gt;onIvClick&lt;/span&gt;&lt;span style=&#34;color: #f92672&#34;&gt;(){&lt;/span&gt;
-    &lt;span style=&#34;color: #75715e&#34;&gt;// do something with the click&lt;/span&gt;
-&lt;span style=&#34;color: #f92672&#34;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/div&gt;
-
-With just that you have two way databinding. Your model will always reflect your application state. We also get identical funcionality to the previous code. Pretty sweet ey?&lt;/p&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.wintellect.com/devcenter/jlikness/10-reasons-web-developers-should-learn-angularjs&#34;&gt;Most&lt;/a&gt; &lt;a href=&#34;http://code.tutsplus.com/tutorials/5-awesome-angularjs-features--net-25651&#34;&gt;people&lt;/a&gt; &lt;a href=&#34;http://anandmanisankar.com/posts/angularjs-best-parts/&#34;&gt;agree&lt;/a&gt; that two-way data binding is an amazing, if not the best, feature of AngularJS. I tend to agree with them. I also believe that it is one of the greatest features of NgAndroid but it does not end there.&lt;/p&gt;
-
-&lt;p&gt;Stay tuned more more posts on this exciting new library and in the meantime check out the &lt;a href=&#34;https://github.com/davityle/ngAndroid&#34;&gt;NgAndroid github repo&lt;/a&gt;&lt;/p&gt;
-
-&lt;hr /&gt;
-
-&lt;p&gt;&amp;ldquo;&lt;a href=&#34;https://github.com/angular/angular.js/tree/master/images/logo&#34;&gt;AngularJS logo.svg&lt;/a&gt;&amp;rdquo; by &lt;a href=&#34;https://angularjs.org/&#34;&gt;AngularJS&lt;/a&gt; is licensed under &lt;a rel=&#34;nofollow&#34; class=&#34;external text&#34; href=&#34;http://creativecommons.org/licenses/by-sa/3.0/&#34;&gt;Creative Commons Attribution-ShareAlike 3.0 Unported License&lt;/a&gt;&lt;/p&gt;
-</description>
+&lt;p&gt;&lt;/p&gt;</description>
     </item>
     
   </channel>

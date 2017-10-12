@@ -22,7 +22,7 @@
     
         <meta property="og:type" content="website" />
     
-        <meta name="generator" content="Hugo 0.15" />
+        <meta name="generator" content="Hugo 0.29" />
         <title>Quicksort</title>
         <link rel="canonical" href="https://davityle.github.io/" />
         <link rel="alternate" type="application/rss+xml" title="RSS" href="https://davityle.github.io/tags/quicksort/index.xml">
@@ -64,7 +64,7 @@
     </header>
     
     <section class="post-excerpt">
-        <p><h4 id="problem:ee5dda3496cde6aa1d2c029c1a3a637b">Problem</h4>
+        <p><h4 id="problem">Problem</h4>
 
 <p>I&rsquo;ve read in a few places that Randomizing the pivot point removes the worst case of O(n<span style="position: relative; bottom: 1ex; font-size: 80%;">2</span>) from the quicksort algorithm. <a href="http://en.wikipedia.org/wiki/Quicksort#Analysis_of_randomized_quicksort">Wikipedia</a> is one of those places. Other places write the whole story but don&rsquo;t show any proof. The whole story is that randomizing the pivot point does not, necessarily, remove the worst case. It&rsquo;s easy to show that this is the case. This article assumes basic knowledge of the quicksort algorithm and big O notation.</p>
 
@@ -72,25 +72,14 @@
 
 <p>For example. <br> You have an unsorted array</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #a6e22e">array</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">44</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">88</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">7</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">999</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">1040</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">23</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">123</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">89</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">2009</span><span style="color: #f8f8f2">}</span>
-</pre></div>
-
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">array</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">{</span><span style="color:#ae81ff">44</span><span style="">,</span><span style="color:#ae81ff">88</span><span style="">,</span><span style="color:#ae81ff">7</span><span style="">,</span><span style="color:#ae81ff">2</span><span style="">,</span><span style="color:#ae81ff">1</span><span style="">,</span><span style="color:#ae81ff">999</span><span style="">,</span><span style="color:#ae81ff">1040</span><span style="">,</span><span style="color:#ae81ff">23</span><span style="">,</span><span style="color:#ae81ff">123</span><span style="">,</span><span style="color:#ae81ff">89</span><span style="">,</span><span style="color:#ae81ff">2009</span><span style="">}</span></code></pre>
+</div>
 and you want to traverse this array using random pivots. Lets just say that the random number generator produces theses numbers.
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">7</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">7</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">9</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">8</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">8</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">9</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#ae81ff">4</span><span style="">,</span><span style="color:#ae81ff">3</span><span style="">,</span><span style="color:#ae81ff">2</span><span style="">,</span><span style="color:#ae81ff">7</span><span style="">,</span><span style="color:#ae81ff">4</span><span style="">,</span><span style="color:#ae81ff">7</span><span style="">,</span><span style="color:#ae81ff">9</span><span style="">,</span><span style="color:#ae81ff">8</span><span style="">,</span><span style="color:#ae81ff">8</span><span style="">,</span><span style="color:#ae81ff">9</span></code></pre>
+</div>
 Those look random enough. In fact, I would be perfectly comfortable sorting my array with those random numbers just off of the first glance.</p>
 
-<p>Look at what actually happens when you sort the array using those pivots.</p>
-
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #a6e22e">pivot</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">array</span><span style="color: #f8f8f2">[</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">1</span>
-</pre></div>
-
-the pivot index is 4, the value at index 4 is 1. Notice that 1 is the lowest number in the array. After the first iteration you end up with this array
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">88</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">7</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">44</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">999</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">1040</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">23</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">123</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">89</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">2009</span><span style="color: #f8f8f2">}</span>
-</pre></div>
-</p>
-</p>
+<p>Look at what actually happens when you sort the array using those pivots.</p></p>
     </section>
 
     <footer class="post-footer">
@@ -120,6 +109,13 @@ the pivot index is 4, the value at index 4 is 1. Notice that 1 is the lowest num
       $(".heading").fitText();
     </script>
 
+
+    <script>
+        var _gaq=[['_setAccount','UA-59928738-2'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src='//www.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
 
 </body>
 </html>

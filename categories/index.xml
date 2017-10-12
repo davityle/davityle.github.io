@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on If You Care</title>
+    <link>https://davityle.github.io/categories/</link>
+    <description>Recent content in Categories on If You Care</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 03 Oct 2015 10:01:16 -0700</lastBuildDate>
+    
+	<atom:link href="https://davityle.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Algorithms</title>
+      <link>https://davityle.github.io/categories/algorithms/</link>
+      <pubDate>Sat, 03 Oct 2015 10:01:16 -0700</pubDate>
+      
+      <guid>https://davityle.github.io/categories/algorithms/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Android</title>
+      <link>https://davityle.github.io/categories/android/</link>
+      <pubDate>Wed, 09 Sep 2015 21:15:59 -0600</pubDate>
+      
+      <guid>https://davityle.github.io/categories/android/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cs</title>
+      <link>https://davityle.github.io/categories/cs/</link>
+      <pubDate>Tue, 23 Feb 2016 05:27:09 -0600</pubDate>
+      
+      <guid>https://davityle.github.io/categories/cs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Development</title>
+      <link>https://davityle.github.io/categories/development/</link>
+      <pubDate>Tue, 23 Feb 2016 05:27:09 -0600</pubDate>
+      
+      <guid>https://davityle.github.io/categories/development/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Java</title>
+      <link>https://davityle.github.io/categories/java/</link>
+      <pubDate>Tue, 23 Feb 2016 05:27:09 -0600</pubDate>
+      
+      <guid>https://davityle.github.io/categories/java/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tools</title>
+      <link>https://davityle.github.io/categories/tools/</link>
+      <pubDate>Thu, 12 Oct 2017 05:21:56 -0600</pubDate>
+      
+      <guid>https://davityle.github.io/categories/tools/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

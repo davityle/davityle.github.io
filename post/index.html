@@ -22,7 +22,7 @@
     
         <meta property="og:type" content="website" />
     
-        <meta name="generator" content="Hugo 0.15" />
+        <meta name="generator" content="Hugo 0.29" />
         <title>Posts</title>
         <link rel="canonical" href="https://davityle.github.io/" />
         <link rel="alternate" type="application/rss+xml" title="RSS" href="https://davityle.github.io/post/index.xml">
@@ -59,12 +59,33 @@
 	
 		<article class="li post">
     <header class="post-header">
+        <h3 class="post-title"><a href="https://davityle.github.io/post/why-im-not-switching-to-firefox/">Why Im Not Switching to Firefox</a></h3>
+        <p class="post-time"><time datetime="2017-10-12T05:21:56-06:00">October 12, 2017</time></p>
+    </header>
+    
+    <section class="post-excerpt">
+        <p>I&rsquo;ve been very excited with the progress that Firefox has been making in recent times and have been contemplating making the switch from Chrome for a while. The release of Firefox 57 nudged me over the edge and I excitedly downloaded Firefox Developer Edition like I an imaginative child on Christmas morning. I took some time to customize it to my liking and then proceeded to use it as my primary browser over the weekend.</p>
+    </section>
+
+    <footer class="post-footer">
+        <span>
+            
+            
+            	&nbsp;&nbsp;<i class="fa fa-tag"></i>
+            	development, web, tools
+            
+        </span>
+    </footer>
+</article>
+	
+		<article class="li post">
+    <header class="post-header">
         <h3 class="post-title"><a href="https://davityle.github.io/post/computer-science-basics/">Basic Data Structures and Algorithms</a></h3>
         <p class="post-time"><time datetime="2016-02-23T05:27:09-06:00">February 23, 2016</time></p>
     </header>
     
     <section class="post-excerpt">
-        <p><h4 id="description:518b2f5003323319962c76bffd2d10ed">Description</h4>
+        <p><h4 id="description">Description</h4>
 
 <p>This post contains the implementations, in Java 8, of a few data structures and algorithms commonly discussed within computer science.</p>
 
@@ -72,26 +93,26 @@
 
 <p>The tests for the data structures and algorithms can be found <a href="https://github.com/davityle/cs-basics-java/tree/master/test/com/github/davityle/csbasics">here</a></p>
 
-<p><a href="/post/computer-science-basics/#hash-map:518b2f5003323319962c76bffd2d10ed">Hash Map</a></p>
+<p><a href="/post/computer-science-basics/#hash-map">Hash Map</a></p>
 
-<p><a href="/post/computer-science-basics/#graph:518b2f5003323319962c76bffd2d10ed">Graph</a></p>
+<p><a href="/post/computer-science-basics/#graph">Graph</a></p>
 
-<p><a href="/post/computer-science-basics/#array-list:518b2f5003323319962c76bffd2d10ed">Array List</a></p>
+<p><a href="/post/computer-science-basics/#array-list">Array List</a></p>
 
-<p><a href="/post/computer-science-basics/#linked-list:518b2f5003323319962c76bffd2d10ed">Linked List</a></p>
+<p><a href="/post/computer-science-basics/#linked-list">Linked List</a></p>
 
-<p><a href="/post/computer-science-basics/#tree:518b2f5003323319962c76bffd2d10ed">Tree</a></p>
+<p><a href="/post/computer-science-basics/#tree">Tree</a></p>
 
-<p><a href="/post/computer-science-basics/#trie:518b2f5003323319962c76bffd2d10ed">Trie</a></p>
+<p><a href="/post/computer-science-basics/#trie">Trie</a></p>
 
-<p><a href="/post/computer-science-basics/#quick-sort:518b2f5003323319962c76bffd2d10ed">Quick Sort</a></p>
+<p><a href="/post/computer-science-basics/#quick-sort">Quick Sort</a></p>
 
-<p><a href="/post/computer-science-basics/#merge-sort:518b2f5003323319962c76bffd2d10ed">Merge Sort</a></p>
+<p><a href="/post/computer-science-basics/#merge-sort">Merge Sort</a></p>
 
-<p><a href="/post/computer-science-basics/#a:518b2f5003323319962c76bffd2d10ed">A*</a></p>
+<p><a href="/post/computer-science-basics/#a">A*</a></p>
 
-<p><a href="/post/computer-science-basics/#convex-hull:518b2f5003323319962c76bffd2d10ed">Convex Hull</a></p>
-</p>
+<p><a href="/post/computer-science-basics/#convex-hull">Convex Hull</a>
+</p></p>
     </section>
 
     <footer class="post-footer">
@@ -112,7 +133,7 @@
     </header>
     
     <section class="post-excerpt">
-        <p><h4 id="problem:ee5dda3496cde6aa1d2c029c1a3a637b">Problem</h4>
+        <p><h4 id="problem">Problem</h4>
 
 <p>I&rsquo;ve read in a few places that Randomizing the pivot point removes the worst case of O(n<span style="position: relative; bottom: 1ex; font-size: 80%;">2</span>) from the quicksort algorithm. <a href="http://en.wikipedia.org/wiki/Quicksort#Analysis_of_randomized_quicksort">Wikipedia</a> is one of those places. Other places write the whole story but don&rsquo;t show any proof. The whole story is that randomizing the pivot point does not, necessarily, remove the worst case. It&rsquo;s easy to show that this is the case. This article assumes basic knowledge of the quicksort algorithm and big O notation.</p>
 
@@ -120,25 +141,14 @@
 
 <p>For example. <br> You have an unsorted array</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #a6e22e">array</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">{</span><span style="color: #ae81ff">44</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">88</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">7</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">999</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">1040</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">23</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">123</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">89</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">2009</span><span style="color: #f8f8f2">}</span>
-</pre></div>
-
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">array</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">{</span><span style="color:#ae81ff">44</span><span style="">,</span><span style="color:#ae81ff">88</span><span style="">,</span><span style="color:#ae81ff">7</span><span style="">,</span><span style="color:#ae81ff">2</span><span style="">,</span><span style="color:#ae81ff">1</span><span style="">,</span><span style="color:#ae81ff">999</span><span style="">,</span><span style="color:#ae81ff">1040</span><span style="">,</span><span style="color:#ae81ff">23</span><span style="">,</span><span style="color:#ae81ff">123</span><span style="">,</span><span style="color:#ae81ff">89</span><span style="">,</span><span style="color:#ae81ff">2009</span><span style="">}</span></code></pre>
+</div>
 and you want to traverse this array using random pivots. Lets just say that the random number generator produces theses numbers.
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">3</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">7</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">7</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">9</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">8</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">8</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">9</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#ae81ff">4</span><span style="">,</span><span style="color:#ae81ff">3</span><span style="">,</span><span style="color:#ae81ff">2</span><span style="">,</span><span style="color:#ae81ff">7</span><span style="">,</span><span style="color:#ae81ff">4</span><span style="">,</span><span style="color:#ae81ff">7</span><span style="">,</span><span style="color:#ae81ff">9</span><span style="">,</span><span style="color:#ae81ff">8</span><span style="">,</span><span style="color:#ae81ff">8</span><span style="">,</span><span style="color:#ae81ff">9</span></code></pre>
+</div>
 Those look random enough. In fact, I would be perfectly comfortable sorting my array with those random numbers just off of the first glance.</p>
 
-<p>Look at what actually happens when you sort the array using those pivots.</p>
-
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #a6e22e">pivot</span><span style="color: #f92672">:</span> <span style="color: #ae81ff">4</span><span style="color: #f8f8f2">,</span> <span style="color: #a6e22e">array</span><span style="color: #f8f8f2">[</span><span style="color: #ae81ff">4</span><span style="color: #f8f8f2">]</span> <span style="color: #f92672">==</span> <span style="color: #ae81ff">1</span>
-</pre></div>
-
-the pivot index is 4, the value at index 4 is 1. Notice that 1 is the lowest number in the array. After the first iteration you end up with this array
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">{</span><span style="color: #ae81ff">1</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">88</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">7</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">44</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">999</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">1040</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">23</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">123</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">89</span><span style="color: #f8f8f2">,</span><span style="color: #ae81ff">2009</span><span style="color: #f8f8f2">}</span>
-</pre></div>
-</p>
-</p>
+<p>Look at what actually happens when you sort the array using those pivots.</p></p>
     </section>
 
     <footer class="post-footer">
@@ -159,7 +169,7 @@ the pivot index is 4, the value at index 4 is 1. Notice that 1 is the lowest num
     </header>
     
     <section class="post-excerpt">
-        <p><h4 id="edit:dd43b496b4e8887ed65740d406136809">Edit*</h4>
+        <p><h4 id="edit">Edit*</h4>
 
 <p>With the release of the official <a href="http://developer.android.com/tools/data-binding/guide.html">Android data binding library</a> NgAndroid has been deprecated.</p>
 
@@ -169,12 +179,12 @@ the pivot index is 4, the value at index 4 is 1. Notice that 1 is the lowest num
 <br>
 I really don&rsquo;t like writing user interface glue code. Enough said about that.</p>
 
-<h4 id="tl-dr:dd43b496b4e8887ed65740d406136809">TL;DR</h4>
+<h4 id="tl-dr">TL;DR</h4>
 
 <p><a href="https://github.com/davityle/ngAndroid">NgAndroid</a> is an <strong>effecient compile time annotation processor</strong> that generates <strong>two data binding</strong> and layout controllers for Android <strong>MVC</strong>. <a href="https://github.com/davityle/ngAndroid">NgAndroid</a> is currently unstable.</p>
 
-<p>The code for a login screen can be found below or <a href="https://github.com/davityle/NgAndroid-Login-Demo">here</a>.</p>
-</p>
+<p>The code for a login screen can be found below or <a href="https://github.com/davityle/NgAndroid-Login-Demo">here</a>.
+</p></p>
     </section>
 
     <footer class="post-footer">
@@ -195,7 +205,7 @@ I really don&rsquo;t like writing user interface glue code. Enough said about th
     </header>
     
     <section class="post-excerpt">
-        <p><h4 id="edit:be1842cb0b9d1ce83a7c8d76094c4a38">Edit*</h4>
+        <p><h4 id="edit">Edit*</h4>
 
 <p>This tutorial is out of date. See <a href="/post/login-ngandroid/">Login Screen with NgAndroid</a> for a tutorial on the lastest version of NgAndroid.</p>
 
@@ -211,7 +221,8 @@ I really don&rsquo;t like writing user interface glue code. Enough said about th
 
 <p>If you don&rsquo;t know anything about AngularJS then you probably don&rsquo;t know why this is such an exciting anouncement. You can learn more at Angular&rsquo;s
 <a href="https://angularjs.org/">website</a> but a previous knowledge of AngularJS is not required to revel in the epicness that is about to be laid before your eyes.</p>
-</p>
+
+<p></p></p>
     </section>
 
     <footer class="post-footer">
@@ -236,60 +247,60 @@ I really don&rsquo;t like writing user interface glue code. Enough said about th
 
 <p>For those of you who just want the code here it is.</p>
 
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">public</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">StripedView</span> <span style="color: #66d9ef">extends</span> <span style="color: #f8f8f2">View</span> <span style="color: #f92672">{</span>
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span><span style=""> </span><span style="color:#66d9ef">class</span><span style=""> </span><span style="color:#a6e22e">StripedView</span><span style=""> </span><span style="color:#66d9ef">extends</span><span style=""> </span><span style="">View</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">private</span><span style=""> </span><span style="color:#66d9ef">static</span><span style=""> </span><span style="color:#66d9ef">final</span><span style=""> </span><span style="color:#66d9ef">float</span><span style=""> </span><span style="">STRIPE_WIDTH_PERCT</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#f92672">.</span><span style="color:#a6e22e">05f</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">private</span><span style=""> </span><span style="color:#66d9ef">static</span><span style=""> </span><span style="color:#66d9ef">final</span><span style=""> </span><span style="color:#66d9ef">float</span><span style=""> </span><span style="">STRIPE_OFFSET_PERCT</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#f92672">.</span><span style="color:#a6e22e">2f</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">private</span><span style=""> </span><span style="">Path</span><span style=""> </span><span style="">stripespath</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#66d9ef">new</span><span style=""> </span><span style="">Path</span><span style="color:#f92672">();</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">private</span><span style=""> </span><span style="">Paint</span><span style=""> </span><span style="">blackPaint</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#66d9ef">new</span><span style=""> </span><span style="">Paint</span><span style="color:#f92672">();</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">public</span><span style=""> </span><span style="color:#a6e22e">StripedView</span><span style=""></span><span style="color:#f92672">(</span><span style="">Context</span><span style=""> </span><span style="">context</span><span style="color:#f92672">)</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">super</span><span style="color:#f92672">(</span><span style="">context</span><span style="color:#f92672">);</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">public</span><span style=""> </span><span style="color:#a6e22e">StripedView</span><span style=""></span><span style="color:#f92672">(</span><span style="">Context</span><span style=""> </span><span style="">context</span><span style="color:#f92672">,</span><span style=""> </span><span style="">AttributeSet</span><span style=""> </span><span style="">attrs</span><span style="color:#f92672">)</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">super</span><span style="color:#f92672">(</span><span style="">context</span><span style="color:#f92672">,</span><span style=""> </span><span style="">attrs</span><span style="color:#f92672">);</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">public</span><span style=""> </span><span style="color:#a6e22e">StripedView</span><span style=""></span><span style="color:#f92672">(</span><span style="">Context</span><span style=""> </span><span style="">context</span><span style="color:#f92672">,</span><span style=""> </span><span style="">AttributeSet</span><span style=""> </span><span style="">attrs</span><span style="color:#f92672">,</span><span style=""> </span><span style="color:#66d9ef">int</span><span style=""> </span><span style="">defStyleAttr</span><span style="color:#f92672">)</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">super</span><span style="color:#f92672">(</span><span style="">context</span><span style="color:#f92672">,</span><span style=""> </span><span style="">attrs</span><span style="color:#f92672">,</span><span style=""> </span><span style="">defStyleAttr</span><span style="color:#f92672">);</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">@TargetApi</span><span style="color:#f92672">(</span><span style="">Build</span><span style="color:#f92672">.</span><span style="color:#a6e22e">VERSION_CODES</span><span style="color:#f92672">.</span><span style="color:#a6e22e">LOLLIPOP</span><span style="color:#f92672">)</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">public</span><span style=""> </span><span style="color:#a6e22e">StripedView</span><span style=""></span><span style="color:#f92672">(</span><span style="">Context</span><span style=""> </span><span style="">context</span><span style="color:#f92672">,</span><span style=""> </span><span style="">AttributeSet</span><span style=""> </span><span style="">attrs</span><span style="color:#f92672">,</span><span style=""> </span><span style="color:#66d9ef">int</span><span style=""> </span><span style="">defStyleAttr</span><span style="color:#f92672">,</span><span style=""> </span><span style="color:#66d9ef">int</span><span style=""> </span><span style="">defStyleRes</span><span style="color:#f92672">)</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">super</span><span style="color:#f92672">(</span><span style="">context</span><span style="color:#f92672">,</span><span style=""> </span><span style="">attrs</span><span style="color:#f92672">,</span><span style=""> </span><span style="">defStyleAttr</span><span style="color:#f92672">,</span><span style=""> </span><span style="">defStyleRes</span><span style="color:#f92672">);</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style="">    </span><span style="color:#75715e">//init()
+</span><span style="color:#75715e"></span><span style="">    </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="">blackPaint</span><span style="color:#f92672">.</span><span style="color:#a6e22e">setAntiAlias</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">@Override</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">protected</span><span style=""> </span><span style="color:#66d9ef">void</span><span style=""> </span><span style="color:#a6e22e">onDraw</span><span style=""></span><span style="color:#f92672">(</span><span style="">Canvas</span><span style=""> </span><span style="">canvas</span><span style="color:#f92672">)</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">onDraw</span><span style="color:#f92672">(</span><span style="">canvas</span><span style="color:#f92672">);</span><span style="">
+</span><span style="">        </span><span style="">drawStripes</span><span style="color:#f92672">(</span><span style="">canvas</span><span style="color:#f92672">,</span><span style=""> </span><span style="">0</span><span style="color:#f92672">,</span><span style=""> </span><span style="">getHeight</span><span style="color:#f92672">(),</span><span style=""> </span><span style="">0</span><span style="color:#f92672">,</span><span style=""> </span><span style="">getWidth</span><span style="color:#f92672">(),</span><span style=""> </span><span style="">blackPaint</span><span style="color:#f92672">);</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">private</span><span style=""> </span><span style="color:#66d9ef">void</span><span style=""> </span><span style="color:#a6e22e">drawStripes</span><span style=""></span><span style="color:#f92672">(</span><span style="">Canvas</span><span style=""> </span><span style="">canvas</span><span style="color:#f92672">,</span><span style=""> </span><span style="color:#66d9ef">float</span><span style=""> </span><span style="">topy</span><span style="color:#f92672">,</span><span style=""> </span><span style="color:#66d9ef">float</span><span style=""> </span><span style="">bottomy</span><span style="color:#f92672">,</span><span style=""> </span><span style="color:#66d9ef">float</span><span style=""> </span><span style="">startx</span><span style="color:#f92672">,</span><span style=""> </span><span style="color:#66d9ef">float</span><span style=""> </span><span style="">endx</span><span style="color:#f92672">,</span><span style=""> </span><span style="">Paint</span><span style=""> </span><span style="">p</span><span style="color:#f92672">){</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">if</span><span style="color:#f92672">(</span><span style="">bottomy</span><span style=""> </span><span style="color:#f92672">-</span><span style=""> </span><span style="">topy</span><span style=""> </span><span style="color:#f92672">&lt;</span><span style=""> </span><span style="">1</span><span style="color:#f92672">){</span><span style="">
+</span><span style="">            </span><span style="color:#66d9ef">return</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">        </span><span style="color:#f92672">}</span><span style="">
+</span><span style="">        </span><span style="">stripespath</span><span style="color:#f92672">.</span><span style="color:#a6e22e">reset</span><span style="color:#f92672">();</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">float</span><span style=""> </span><span style="">width</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#f92672">(</span><span style="">bottomy</span><span style=""> </span><span style="color:#f92672">-</span><span style=""> </span><span style="">topy</span><span style="color:#f92672">)</span><span style=""> </span><span style="color:#f92672">*</span><span style=""> </span><span style="">STRIPE_WIDTH_PERCT</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">float</span><span style=""> </span><span style="">offset</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#f92672">(</span><span style="">bottomy</span><span style=""> </span><span style="color:#f92672">-</span><span style=""> </span><span style="">topy</span><span style="color:#f92672">)</span><span style=""> </span><span style="color:#f92672">*</span><span style=""> </span><span style="">STRIPE_OFFSET_PERCT</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">float</span><span style=""> </span><span style="">xPos</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">startx</span><span style=""> </span><span style="color:#f92672">-</span><span style=""> </span><span style="">offset</span><span style="color:#f92672">;</span><span style=""> </span><span style="">xPos</span><span style=""> </span><span style="color:#f92672">&lt;=</span><span style=""> </span><span style="">endx</span><span style="color:#f92672">;</span><span style=""> </span><span style="">xPos</span><span style=""> </span><span style="color:#f92672">+=</span><span style=""> </span><span style="">offset</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="">width</span><span style="color:#f92672">){</span><span style="">
+</span><span style="">            </span><span style="">stripespath</span><span style="color:#f92672">.</span><span style="color:#a6e22e">moveTo</span><span style="color:#f92672">(</span><span style="">xPos</span><span style="color:#f92672">,</span><span style=""> </span><span style="">topy</span><span style="color:#f92672">);</span><span style="">
+</span><span style="">            </span><span style="">stripespath</span><span style="color:#f92672">.</span><span style="color:#a6e22e">lineTo</span><span style="color:#f92672">(</span><span style="">xPos</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="">width</span><span style="color:#f92672">,</span><span style=""> </span><span style="">topy</span><span style="color:#f92672">);</span><span style="">
+</span><span style="">            </span><span style="">stripespath</span><span style="color:#f92672">.</span><span style="color:#a6e22e">lineTo</span><span style="color:#f92672">(</span><span style="">xPos</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="">offset</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="">width</span><span style="color:#f92672">,</span><span style=""> </span><span style="">bottomy</span><span style="color:#f92672">);</span><span style="">
+</span><span style="">            </span><span style="">stripespath</span><span style="color:#f92672">.</span><span style="color:#a6e22e">lineTo</span><span style="color:#f92672">(</span><span style="">xPos</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="">offset</span><span style="color:#f92672">,</span><span style=""> </span><span style="">bottomy</span><span style="color:#f92672">);</span><span style="">
+</span><span style="">            </span><span style="">stripespath</span><span style="color:#f92672">.</span><span style="color:#a6e22e">lineTo</span><span style="color:#f92672">(</span><span style="">xPos</span><span style="color:#f92672">,</span><span style=""> </span><span style="">topy</span><span style="color:#f92672">);</span><span style="">
+</span><span style="">        </span><span style="color:#f92672">}</span><span style="">
+</span><span style="">        </span><span style="">canvas</span><span style="color:#f92672">.</span><span style="color:#a6e22e">drawPath</span><span style="color:#f92672">(</span><span style="">stripespath</span><span style="color:#f92672">,</span><span style=""> </span><span style="">p</span><span style="color:#f92672">);</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style=""></span><span style="color:#f92672">}</span></code></pre>
+</div>
 
-    <span style="color: #66d9ef">private</span> <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">final</span> <span style="color: #66d9ef">float</span> <span style="color: #f8f8f2">STRIPE_WIDTH_PERCT</span> <span style="color: #f92672">=</span> <span style="color: #f92672">.</span><span style="color: #ae81ff">05</span><span style="color: #f8f8f2">f</span><span style="color: #f92672">;</span>
-    <span style="color: #66d9ef">private</span> <span style="color: #66d9ef">static</span> <span style="color: #66d9ef">final</span> <span style="color: #66d9ef">float</span> <span style="color: #f8f8f2">STRIPE_OFFSET_PERCT</span> <span style="color: #f92672">=</span> <span style="color: #f92672">.</span><span style="color: #ae81ff">2</span><span style="color: #f8f8f2">f</span><span style="color: #f92672">;</span>
-    <span style="color: #66d9ef">private</span> <span style="color: #f8f8f2">Path</span> <span style="color: #f8f8f2">stripespath</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">Path</span><span style="color: #f92672">();</span>
-    <span style="color: #66d9ef">private</span> <span style="color: #f8f8f2">Paint</span> <span style="color: #f8f8f2">blackPaint</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">Paint</span><span style="color: #f92672">();</span>
-
-    <span style="color: #66d9ef">public</span> <span style="color: #a6e22e">StripedView</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">Context</span> <span style="color: #f8f8f2">context</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
-        <span style="color: #66d9ef">super</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">context</span><span style="color: #f92672">);</span>
-    <span style="color: #f92672">}</span>
-
-    <span style="color: #66d9ef">public</span> <span style="color: #a6e22e">StripedView</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">Context</span> <span style="color: #f8f8f2">context</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">AttributeSet</span> <span style="color: #f8f8f2">attrs</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
-        <span style="color: #66d9ef">super</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">context</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">attrs</span><span style="color: #f92672">);</span>
-    <span style="color: #f92672">}</span>
-
-    <span style="color: #66d9ef">public</span> <span style="color: #a6e22e">StripedView</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">Context</span> <span style="color: #f8f8f2">context</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">AttributeSet</span> <span style="color: #f8f8f2">attrs</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">defStyleAttr</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
-        <span style="color: #66d9ef">super</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">context</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">attrs</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">defStyleAttr</span><span style="color: #f92672">);</span>
-    <span style="color: #f92672">}</span>
-
-    <span style="color: #a6e22e">@TargetApi</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">Build</span><span style="color: #f92672">.</span><span style="color: #a6e22e">VERSION_CODES</span><span style="color: #f92672">.</span><span style="color: #a6e22e">LOLLIPOP</span><span style="color: #f92672">)</span>
-    <span style="color: #66d9ef">public</span> <span style="color: #a6e22e">StripedView</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">Context</span> <span style="color: #f8f8f2">context</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">AttributeSet</span> <span style="color: #f8f8f2">attrs</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">defStyleAttr</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">int</span> <span style="color: #f8f8f2">defStyleRes</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
-        <span style="color: #66d9ef">super</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">context</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">attrs</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">defStyleAttr</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">defStyleRes</span><span style="color: #f92672">);</span>
-    <span style="color: #f92672">}</span>
-    <span style="color: #75715e">//init()</span>
-    <span style="color: #f92672">{</span>
-        <span style="color: #f8f8f2">blackPaint</span><span style="color: #f92672">.</span><span style="color: #a6e22e">setAntiAlias</span><span style="color: #f92672">(</span><span style="color: #66d9ef">true</span><span style="color: #f92672">);</span>
-    <span style="color: #f92672">}</span>
-
-    <span style="color: #a6e22e">@Override</span>
-    <span style="color: #66d9ef">protected</span> <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">onDraw</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">Canvas</span> <span style="color: #f8f8f2">canvas</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
-        <span style="color: #66d9ef">super</span><span style="color: #f92672">.</span><span style="color: #a6e22e">onDraw</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">canvas</span><span style="color: #f92672">);</span>
-        <span style="color: #f8f8f2">drawStripes</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">canvas</span><span style="color: #f92672">,</span> <span style="color: #ae81ff">0</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">getHeight</span><span style="color: #f92672">(),</span> <span style="color: #ae81ff">0</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">getWidth</span><span style="color: #f92672">(),</span> <span style="color: #f8f8f2">blackPaint</span><span style="color: #f92672">);</span>
-    <span style="color: #f92672">}</span>
-
-    <span style="color: #66d9ef">private</span> <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">drawStripes</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">Canvas</span> <span style="color: #f8f8f2">canvas</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">float</span> <span style="color: #f8f8f2">topy</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">float</span> <span style="color: #f8f8f2">bottomy</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">float</span> <span style="color: #f8f8f2">startx</span><span style="color: #f92672">,</span> <span style="color: #66d9ef">float</span> <span style="color: #f8f8f2">endx</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">Paint</span> <span style="color: #f8f8f2">p</span><span style="color: #f92672">){</span>
-        <span style="color: #66d9ef">if</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">bottomy</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">topy</span> <span style="color: #f92672">&lt;</span> <span style="color: #ae81ff">1</span><span style="color: #f92672">){</span>
-            <span style="color: #66d9ef">return</span><span style="color: #f92672">;</span>
-        <span style="color: #f92672">}</span>
-        <span style="color: #f8f8f2">stripespath</span><span style="color: #f92672">.</span><span style="color: #a6e22e">reset</span><span style="color: #f92672">();</span>
-        <span style="color: #66d9ef">float</span> <span style="color: #f8f8f2">width</span> <span style="color: #f92672">=</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">bottomy</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">topy</span><span style="color: #f92672">)</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">STRIPE_WIDTH_PERCT</span><span style="color: #f92672">;</span>
-        <span style="color: #66d9ef">float</span> <span style="color: #f8f8f2">offset</span> <span style="color: #f92672">=</span> <span style="color: #f92672">(</span><span style="color: #f8f8f2">bottomy</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">topy</span><span style="color: #f92672">)</span> <span style="color: #f92672">*</span> <span style="color: #f8f8f2">STRIPE_OFFSET_PERCT</span><span style="color: #f92672">;</span>
-        <span style="color: #66d9ef">for</span><span style="color: #f92672">(</span><span style="color: #66d9ef">float</span> <span style="color: #f8f8f2">xPos</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">startx</span> <span style="color: #f92672">-</span> <span style="color: #f8f8f2">offset</span><span style="color: #f92672">;</span> <span style="color: #f8f8f2">xPos</span> <span style="color: #f92672">&lt;=</span> <span style="color: #f8f8f2">endx</span><span style="color: #f92672">;</span> <span style="color: #f8f8f2">xPos</span> <span style="color: #f92672">+=</span> <span style="color: #f8f8f2">offset</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">width</span><span style="color: #f92672">){</span>
-            <span style="color: #f8f8f2">stripespath</span><span style="color: #f92672">.</span><span style="color: #a6e22e">moveTo</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">xPos</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">topy</span><span style="color: #f92672">);</span>
-            <span style="color: #f8f8f2">stripespath</span><span style="color: #f92672">.</span><span style="color: #a6e22e">lineTo</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">xPos</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">width</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">topy</span><span style="color: #f92672">);</span>
-            <span style="color: #f8f8f2">stripespath</span><span style="color: #f92672">.</span><span style="color: #a6e22e">lineTo</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">xPos</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">offset</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">width</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">bottomy</span><span style="color: #f92672">);</span>
-            <span style="color: #f8f8f2">stripespath</span><span style="color: #f92672">.</span><span style="color: #a6e22e">lineTo</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">xPos</span> <span style="color: #f92672">+</span> <span style="color: #f8f8f2">offset</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">bottomy</span><span style="color: #f92672">);</span>
-            <span style="color: #f8f8f2">stripespath</span><span style="color: #f92672">.</span><span style="color: #a6e22e">lineTo</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">xPos</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">topy</span><span style="color: #f92672">);</span>
-        <span style="color: #f92672">}</span>
-        <span style="color: #f8f8f2">canvas</span><span style="color: #f92672">.</span><span style="color: #a6e22e">drawPath</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">stripespath</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">p</span><span style="color: #f92672">);</span>
-    <span style="color: #f92672">}</span>
-<span style="color: #f92672">}</span>
-</pre></div>
-
-</p>
+Which will result in something that looks like this.</p></p>
     </section>
 
     <footer class="post-footer">
@@ -319,6 +330,13 @@ I really don&rsquo;t like writing user interface glue code. Enough said about th
       $(".heading").fitText();
     </script>
 
+
+    <script>
+        var _gaq=[['_setAccount','UA-59928738-2'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src='//www.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
 
 </body>
 </html>

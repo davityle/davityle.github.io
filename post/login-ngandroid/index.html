@@ -24,7 +24,7 @@
         <meta property="og:article:author" content="" />
         <meta property="og:article:published_time" content="2015-09-09T21:15:59-06:00" />
     
-        <meta name="generator" content="Hugo 0.15" />
+        <meta name="generator" content="Hugo 0.29" />
         <title>Login Screen with NgAndroid</title>
         <link rel="canonical" href="https://davityle.github.io/" />
         <link rel="alternate" type="application/rss+xml" title="RSS" href="">
@@ -64,9 +64,7 @@
     </header>
 
     <section class="post-content">
-        
-
-<h4 id="edit:dd43b496b4e8887ed65740d406136809">Edit*</h4>
+        <h4 id="edit">Edit*</h4>
 
 <p>With the release of the official <a href="http://developer.android.com/tools/data-binding/guide.html">Android data binding library</a> NgAndroid has been deprecated.</p>
 
@@ -76,125 +74,122 @@
 <br>
 I really don&rsquo;t like writing user interface glue code. Enough said about that.</p>
 
-<h4 id="tl-dr:dd43b496b4e8887ed65740d406136809">TL;DR</h4>
+<h4 id="tl-dr">TL;DR</h4>
 
 <p><a href="https://github.com/davityle/ngAndroid">NgAndroid</a> is an <strong>effecient compile time annotation processor</strong> that generates <strong>two data binding</strong> and layout controllers for Android <strong>MVC</strong>. <a href="https://github.com/davityle/ngAndroid">NgAndroid</a> is currently unstable.</p>
 
-<p>The code for a login screen can be found below or <a href="https://github.com/davityle/NgAndroid-Login-Demo">here</a>.</p>
-
-<h6 id="controller-scope:dd43b496b4e8887ed65740d406136809">Controller Scope</h6>
-
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #a6e22e">@NgScope</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">name</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;Login&quot;</span><span style="color: #f92672">)</span>
-<span style="color: #66d9ef">public</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">LoginScope</span> <span style="color: #f92672">{</span>
-    <span style="color: #a6e22e">@NgModel</span>
-    <span style="color: #f8f8f2">User</span> <span style="color: #f8f8f2">user</span><span style="color: #f92672">;</span>
-    <span style="color: #a6e22e">@NgModel</span>
-    <span style="color: #f8f8f2">NetworkCall</span> <span style="color: #f8f8f2">call</span><span style="color: #f92672">;</span>
-
-    <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">onSubmit</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">Context</span> <span style="color: #f8f8f2">context</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
-        <span style="color: #f8f8f2">call</span><span style="color: #f92672">.</span><span style="color: #a6e22e">setActive</span><span style="color: #f92672">(</span><span style="color: #66d9ef">true</span><span style="color: #f92672">);</span>
-        <span style="color: #f8f8f2">Toast</span><span style="color: #f92672">.</span><span style="color: #a6e22e">makeText</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">context</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">user</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getUsername</span><span style="color: #f92672">()</span> <span style="color: #f92672">+</span> <span style="color: #e6db74">&quot; : &quot;</span> <span style="color: #f92672">+</span><span style="color: #f8f8f2">user</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getPassword</span><span style="color: #f92672">(),</span> <span style="color: #f8f8f2">Toast</span><span style="color: #f92672">.</span><span style="color: #a6e22e">LENGTH_SHORT</span> <span style="color: #f92672">).</span><span style="color: #a6e22e">show</span><span style="color: #f92672">();</span>
-    <span style="color: #f92672">}</span>
-<span style="color: #f92672">}</span>
-</pre></div>
-
-
-<h6 id="user-model:dd43b496b4e8887ed65740d406136809">User Model</h6>
-
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">public</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">User</span> <span style="color: #f92672">{</span>
-    <span style="color: #66d9ef">private</span> <span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">username</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;&quot;</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">password</span> <span style="color: #f92672">=</span> <span style="color: #e6db74">&quot;&quot;</span><span style="color: #f92672">;</span>
-
-    <span style="color: #66d9ef">public</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">getUsername</span><span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
-        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">username</span><span style="color: #f92672">;</span>
-    <span style="color: #f92672">}</span>
-
-    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">setUsername</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">username</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
-        <span style="color: #66d9ef">this</span><span style="color: #f92672">.</span><span style="color: #a6e22e">username</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">username</span><span style="color: #f92672">;</span>
-    <span style="color: #f92672">}</span>
-
-    <span style="color: #66d9ef">public</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">getPassword</span><span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
-        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">password</span><span style="color: #f92672">;</span>
-    <span style="color: #f92672">}</span>
-
-    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">setPassword</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">password</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
-        <span style="color: #66d9ef">this</span><span style="color: #f92672">.</span><span style="color: #a6e22e">password</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">password</span><span style="color: #f92672">;</span>
-    <span style="color: #f92672">}</span>
-<span style="color: #f92672">}</span>
-</pre></div>
-
-
-<h6 id="layout:dd43b496b4e8887ed65740d406136809">Layout</h6>
-
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">&lt;RelativeLayout</span> <span style="color: #a6e22e">xmlns:android=</span><span style="color: #e6db74">&quot;http://schemas.android.com/apk/res/android&quot;</span>
-    <span style="color: #a6e22e">xmlns:tools=</span><span style="color: #e6db74">&quot;http://schemas.android.com/tools&quot;</span>
-    <span style="color: #a6e22e">xmlns:x=</span><span style="color: #e6db74">&quot;http://schemas.android.com/apk/res-auto&quot;</span>
-    <span style="color: #a6e22e">android:layout_width=</span><span style="color: #e6db74">&quot;match_parent&quot;</span>
-    <span style="color: #a6e22e">android:layout_height=</span><span style="color: #e6db74">&quot;match_parent&quot;</span>
-    <span style="color: #a6e22e">android:padding=</span><span style="color: #e6db74">&quot;60dp&quot;</span>
-    <span style="color: #a6e22e">tools:context=</span><span style="color: #e6db74">&quot;.LoginActivity&quot;</span>
-    <span style="color: #a6e22e">tools:ignore=</span><span style="color: #e6db74">&quot;MissingPrefix&quot;</span>
-    <span style="color: #a6e22e">x:ngScope=</span><span style="color: #e6db74">&quot;Login&quot;</span><span style="color: #f92672">&gt;</span>
-
-    <span style="color: #f92672">&lt;EditText</span>
-        <span style="color: #a6e22e">android:id=</span><span style="color: #e6db74">&quot;@+id/username&quot;</span>
-        <span style="color: #a6e22e">android:layout_width=</span><span style="color: #e6db74">&quot;match_parent&quot;</span>
-        <span style="color: #a6e22e">android:layout_height=</span><span style="color: #e6db74">&quot;wrap_content&quot;</span>
-        <span style="color: #a6e22e">android:inputType=</span><span style="color: #e6db74">&quot;text&quot;</span>
-        <span style="color: #a6e22e">android:layout_above=</span><span style="color: #e6db74">&quot;@+id/password&quot;</span>
-        <span style="color: #a6e22e">x:ngModel=</span><span style="color: #e6db74">&quot;user.username&quot;</span><span style="color: #f92672">/&gt;</span>
-
-    <span style="color: #f92672">&lt;EditText</span>
-        <span style="color: #a6e22e">android:id=</span><span style="color: #e6db74">&quot;@+id/password&quot;</span>
-        <span style="color: #a6e22e">android:layout_width=</span><span style="color: #e6db74">&quot;match_parent&quot;</span>
-        <span style="color: #a6e22e">android:layout_height=</span><span style="color: #e6db74">&quot;wrap_content&quot;</span>
-        <span style="color: #a6e22e">android:inputType=</span><span style="color: #e6db74">&quot;textPassword&quot;</span>
-        <span style="color: #a6e22e">android:layout_above=</span><span style="color: #e6db74">&quot;@+id/submit&quot;</span>
-        <span style="color: #a6e22e">x:ngModel=</span><span style="color: #e6db74">&quot;user.password&quot;</span><span style="color: #f92672">/&gt;</span>
-
-    <span style="color: #f92672">&lt;Button</span>
-        <span style="color: #a6e22e">android:id=</span><span style="color: #e6db74">&quot;@+id/submit&quot;</span>
-        <span style="color: #a6e22e">android:layout_width=</span><span style="color: #e6db74">&quot;match_parent&quot;</span>
-        <span style="color: #a6e22e">android:layout_height=</span><span style="color: #e6db74">&quot;wrap_content&quot;</span>
-        <span style="color: #a6e22e">android:layout_centerInParent=</span><span style="color: #e6db74">&quot;true&quot;</span>
-        <span style="color: #a6e22e">android:text=</span><span style="color: #e6db74">&quot;@string/submit&quot;</span>
-        <span style="color: #a6e22e">x:ngDisabled=</span><span style="color: #e6db74">&quot;user.username.length() &lt; 6 || user.password.length() &lt; 6&quot;</span>
-        <span style="color: #a6e22e">x:ngClick=</span><span style="color: #e6db74">&quot;onSubmit($view.context)&quot;</span>
-        <span style="color: #a6e22e">x:ngInvisible=</span><span style="color: #e6db74">&quot;call.active&quot;</span><span style="color: #f92672">/&gt;</span>
-
-
-    <span style="color: #f92672">&lt;ProgressBar</span>
-        <span style="color: #a6e22e">android:id=</span><span style="color: #e6db74">&quot;@+id/progress&quot;</span>
-        <span style="color: #a6e22e">android:layout_width=</span><span style="color: #e6db74">&quot;match_parent&quot;</span>
-        <span style="color: #a6e22e">android:layout_height=</span><span style="color: #e6db74">&quot;wrap_content&quot;</span>
-        <span style="color: #a6e22e">android:layout_centerInParent=</span><span style="color: #e6db74">&quot;true&quot;</span>
-        <span style="color: #a6e22e">x:ngInvisible=</span><span style="color: #e6db74">&quot;!call.active&quot;</span><span style="color: #f92672">/&gt;</span>
-
-<span style="color: #f92672">&lt;/RelativeLayout&gt;</span>
-</pre></div>
-
-
-<h6 id="activity:dd43b496b4e8887ed65740d406136809">Activity</h6>
-
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">public</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">LoginActivity</span> <span style="color: #66d9ef">extends</span> <span style="color: #f8f8f2">AppCompatActivity</span> <span style="color: #f92672">{</span>
-
-    <span style="color: #a6e22e">@Override</span>
-    <span style="color: #66d9ef">protected</span> <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">onCreate</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">Bundle</span> <span style="color: #f8f8f2">savedInstanceState</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
-        <span style="color: #66d9ef">super</span><span style="color: #f92672">.</span><span style="color: #a6e22e">onCreate</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">savedInstanceState</span><span style="color: #f92672">);</span>
-        <span style="color: #f8f8f2">setContentView</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">R</span><span style="color: #f92672">.</span><span style="color: #a6e22e">layout</span><span style="color: #f92672">.</span><span style="color: #a6e22e">activity_login</span><span style="color: #f92672">);</span>
-        <span style="color: #f8f8f2">LoginScope</span> <span style="color: #f8f8f2">scope</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">LoginScope</span><span style="color: #f92672">();</span>
-        <span style="color: #f8f8f2">ActivityLoginController</span> <span style="color: #f8f8f2">controller</span> <span style="color: #f92672">=</span> <span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">ActivityLoginController</span><span style="color: #f92672">(</span><span style="color: #66d9ef">new</span> <span style="color: #f8f8f2">NgOptions</span><span style="color: #f92672">.</span><span style="color: #a6e22e">Builder</span><span style="color: #f92672">().</span><span style="color: #a6e22e">build</span><span style="color: #f92672">(),</span> <span style="color: #f8f8f2">scope</span><span style="color: #f92672">);</span>
-        <span style="color: #f8f8f2">controller</span><span style="color: #f92672">.</span><span style="color: #a6e22e">attach</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">findViewById</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">android</span><span style="color: #f92672">.</span><span style="color: #a6e22e">R</span><span style="color: #f92672">.</span><span style="color: #a6e22e">id</span><span style="color: #f92672">.</span><span style="color: #a6e22e">content</span><span style="color: #f92672">));</span>
-    <span style="color: #f92672">}</span>
-
-<span style="color: #f92672">}</span>
-</pre></div>
+<p>The code for a login screen can be found below or <a href="https://github.com/davityle/NgAndroid-Login-Demo">here</a>.
 </p>
 
-<h6 id="product:dd43b496b4e8887ed65740d406136809">Product</h6>
+<h6 id="controller-scope">Controller Scope</h6>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@NgScope</span><span style="color:#f92672">(</span><span style="">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Login&#34;</span><span style="color:#f92672">)</span><span style="">
+</span><span style=""></span><span style="color:#66d9ef">public</span><span style=""> </span><span style="color:#66d9ef">class</span><span style=""> </span><span style="color:#a6e22e">LoginScope</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">@NgModel</span><span style="">
+</span><span style="">    </span><span style="">User</span><span style=""> </span><span style="">user</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">@NgModel</span><span style="">
+</span><span style="">    </span><span style="">NetworkCall</span><span style=""> </span><span style="">call</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">void</span><span style=""> </span><span style="color:#a6e22e">onSubmit</span><span style=""></span><span style="color:#f92672">(</span><span style="">Context</span><span style=""> </span><span style="">context</span><span style="color:#f92672">)</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="">call</span><span style="color:#f92672">.</span><span style="color:#a6e22e">setActive</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span><span style="">
+</span><span style="">        </span><span style="">Toast</span><span style="color:#f92672">.</span><span style="color:#a6e22e">makeText</span><span style="color:#f92672">(</span><span style="">context</span><span style="color:#f92672">,</span><span style=""> </span><span style="">user</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getUsername</span><span style="color:#f92672">()</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="color:#e6db74">&#34; : &#34;</span><span style=""> </span><span style="color:#f92672">+</span><span style="">user</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getPassword</span><span style="color:#f92672">(),</span><span style=""> </span><span style="">Toast</span><span style="color:#f92672">.</span><span style="color:#a6e22e">LENGTH_SHORT</span><span style=""> </span><span style="color:#f92672">).</span><span style="color:#a6e22e">show</span><span style="color:#f92672">();</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style=""></span><span style="color:#f92672">}</span></code></pre>
+</div>
+
+<h6 id="user-model">User Model</h6>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span><span style=""> </span><span style="color:#66d9ef">class</span><span style=""> </span><span style="color:#a6e22e">User</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">private</span><span style=""> </span><span style="">String</span><span style=""> </span><span style="">username</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">,</span><span style=""> </span><span style="">password</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#e6db74">&#34;&#34;</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">public</span><span style=""> </span><span style="">String</span><span style=""> </span><span style="color:#a6e22e">getUsername</span><span style=""></span><span style="color:#f92672">()</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="">username</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">public</span><span style=""> </span><span style="color:#66d9ef">void</span><span style=""> </span><span style="color:#a6e22e">setUsername</span><span style=""></span><span style="color:#f92672">(</span><span style="">String</span><span style=""> </span><span style="">username</span><span style="color:#f92672">)</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">username</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">username</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">public</span><span style=""> </span><span style="">String</span><span style=""> </span><span style="color:#a6e22e">getPassword</span><span style=""></span><span style="color:#f92672">()</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="">password</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">public</span><span style=""> </span><span style="color:#66d9ef">void</span><span style=""> </span><span style="color:#a6e22e">setPassword</span><span style=""></span><span style="color:#f92672">(</span><span style="">String</span><span style=""> </span><span style="">password</span><span style="color:#f92672">)</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">password</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">password</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style=""></span><span style="color:#f92672">}</span></code></pre>
+</div>
+
+<h6 id="layout">Layout</h6>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;RelativeLayout</span><span style=""> </span><span style="color:#a6e22e">xmlns:android=</span><span style="color:#e6db74">&#34;http://schemas.android.com/apk/res/android&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">xmlns:tools=</span><span style="color:#e6db74">&#34;http://schemas.android.com/tools&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">xmlns:x=</span><span style="color:#e6db74">&#34;http://schemas.android.com/apk/res-auto&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_width=</span><span style="color:#e6db74">&#34;match_parent&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_height=</span><span style="color:#e6db74">&#34;match_parent&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:padding=</span><span style="color:#e6db74">&#34;60dp&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">tools:context=</span><span style="color:#e6db74">&#34;.LoginActivity&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">tools:ignore=</span><span style="color:#e6db74">&#34;MissingPrefix&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">x:ngScope=</span><span style="color:#e6db74">&#34;Login&#34;</span><span style="color:#f92672">&gt;</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">&lt;EditText</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/username&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">android:layout_width=</span><span style="color:#e6db74">&#34;match_parent&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">android:layout_height=</span><span style="color:#e6db74">&#34;wrap_content&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">android:inputType=</span><span style="color:#e6db74">&#34;text&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">android:layout_above=</span><span style="color:#e6db74">&#34;@+id/password&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">x:ngModel=</span><span style="color:#e6db74">&#34;user.username&#34;</span><span style="color:#f92672">/&gt;</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">&lt;EditText</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/password&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">android:layout_width=</span><span style="color:#e6db74">&#34;match_parent&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">android:layout_height=</span><span style="color:#e6db74">&#34;wrap_content&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">android:inputType=</span><span style="color:#e6db74">&#34;textPassword&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">android:layout_above=</span><span style="color:#e6db74">&#34;@+id/submit&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">x:ngModel=</span><span style="color:#e6db74">&#34;user.password&#34;</span><span style="color:#f92672">/&gt;</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">&lt;Button</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/submit&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">android:layout_width=</span><span style="color:#e6db74">&#34;match_parent&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">android:layout_height=</span><span style="color:#e6db74">&#34;wrap_content&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">android:layout_centerInParent=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">android:text=</span><span style="color:#e6db74">&#34;@string/submit&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">x:ngDisabled=</span><span style="color:#e6db74">&#34;user.username.length() &lt; 6 || user.password.length() &lt; 6&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">x:ngClick=</span><span style="color:#e6db74">&#34;onSubmit($view.context)&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">x:ngInvisible=</span><span style="color:#e6db74">&#34;call.active&#34;</span><span style="color:#f92672">/&gt;</span><span style="">
+</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">&lt;ProgressBar</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/progress&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">android:layout_width=</span><span style="color:#e6db74">&#34;match_parent&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">android:layout_height=</span><span style="color:#e6db74">&#34;wrap_content&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">android:layout_centerInParent=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="">
+</span><span style="">        </span><span style="color:#a6e22e">x:ngInvisible=</span><span style="color:#e6db74">&#34;!call.active&#34;</span><span style="color:#f92672">/&gt;</span><span style="">
+</span><span style="">
+</span><span style=""></span><span style="color:#f92672">&lt;/RelativeLayout&gt;</span></code></pre>
+</div>
+
+<h6 id="activity">Activity</h6>
+
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span><span style=""> </span><span style="color:#66d9ef">class</span><span style=""> </span><span style="color:#a6e22e">LoginActivity</span><span style=""> </span><span style="color:#66d9ef">extends</span><span style=""> </span><span style="">AppCompatActivity</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">@Override</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">protected</span><span style=""> </span><span style="color:#66d9ef">void</span><span style=""> </span><span style="color:#a6e22e">onCreate</span><span style=""></span><span style="color:#f92672">(</span><span style="">Bundle</span><span style=""> </span><span style="">savedInstanceState</span><span style="color:#f92672">)</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">onCreate</span><span style="color:#f92672">(</span><span style="">savedInstanceState</span><span style="color:#f92672">);</span><span style="">
+</span><span style="">        </span><span style="">setContentView</span><span style="color:#f92672">(</span><span style="">R</span><span style="color:#f92672">.</span><span style="color:#a6e22e">layout</span><span style="color:#f92672">.</span><span style="color:#a6e22e">activity_login</span><span style="color:#f92672">);</span><span style="">
+</span><span style="">        </span><span style="">LoginScope</span><span style=""> </span><span style="">scope</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#66d9ef">new</span><span style=""> </span><span style="">LoginScope</span><span style="color:#f92672">();</span><span style="">
+</span><span style="">        </span><span style="">ActivityLoginController</span><span style=""> </span><span style="">controller</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="color:#66d9ef">new</span><span style=""> </span><span style="">ActivityLoginController</span><span style="color:#f92672">(</span><span style="color:#66d9ef">new</span><span style=""> </span><span style="">NgOptions</span><span style="color:#f92672">.</span><span style="color:#a6e22e">Builder</span><span style="color:#f92672">().</span><span style="color:#a6e22e">build</span><span style="color:#f92672">(),</span><span style=""> </span><span style="">scope</span><span style="color:#f92672">);</span><span style="">
+</span><span style="">        </span><span style="">controller</span><span style="color:#f92672">.</span><span style="color:#a6e22e">attach</span><span style="color:#f92672">(</span><span style="">findViewById</span><span style="color:#f92672">(</span><span style="">android</span><span style="color:#f92672">.</span><span style="color:#a6e22e">R</span><span style="color:#f92672">.</span><span style="color:#a6e22e">id</span><span style="color:#f92672">.</span><span style="color:#a6e22e">content</span><span style="color:#f92672">));</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style="">
+</span><span style=""></span><span style="color:#f92672">}</span></code></pre>
+</div>
+
+<h6 id="product">Product</h6>
 
 <p><img src="/images/working_login.gif" alt="Working login" /></p>
 
-<h4 id="explanation:dd43b496b4e8887ed65740d406136809">Explanation</h4>
+<h4 id="explanation">Explanation</h4>
 
 <p>Here is how to create an Android login screen using <a href="https://github.com/davityle/ngAndroid">NgAndroid</a>.</p>
 
@@ -208,28 +203,27 @@ I really don&rsquo;t like writing user interface glue code. Enough said about th
 
 <p>Add a <code>Button</code> and two <code>EditText</code> views.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">&lt;EditText</span>
-    <span style="color: #a6e22e">android:id=</span><span style="color: #e6db74">&quot;@+id/username&quot;</span>
-    <span style="color: #a6e22e">android:layout_width=</span><span style="color: #e6db74">&quot;match_parent&quot;</span>
-    <span style="color: #a6e22e">android:layout_height=</span><span style="color: #e6db74">&quot;wrap_content&quot;</span>
-    <span style="color: #a6e22e">android:inputType=</span><span style="color: #e6db74">&quot;text&quot;</span>
-    <span style="color: #a6e22e">android:layout_above=</span><span style="color: #e6db74">&quot;@+id/password&quot;</span><span style="color: #f92672">/&gt;</span>
-
-<span style="color: #f92672">&lt;EditText</span>
-    <span style="color: #a6e22e">android:id=</span><span style="color: #e6db74">&quot;@+id/password&quot;</span>
-    <span style="color: #a6e22e">android:layout_width=</span><span style="color: #e6db74">&quot;match_parent&quot;</span>
-    <span style="color: #a6e22e">android:layout_height=</span><span style="color: #e6db74">&quot;wrap_content&quot;</span>
-    <span style="color: #a6e22e">android:inputType=</span><span style="color: #e6db74">&quot;textPassword&quot;</span>
-    <span style="color: #a6e22e">android:layout_above=</span><span style="color: #e6db74">&quot;@+id/submit&quot;</span><span style="color: #f92672">/&gt;</span>
-
-<span style="color: #f92672">&lt;Button</span>
-    <span style="color: #a6e22e">android:id=</span><span style="color: #e6db74">&quot;@+id/submit&quot;</span>
-    <span style="color: #a6e22e">android:layout_width=</span><span style="color: #e6db74">&quot;match_parent&quot;</span>
-    <span style="color: #a6e22e">android:layout_height=</span><span style="color: #e6db74">&quot;wrap_content&quot;</span>
-    <span style="color: #a6e22e">android:text=</span><span style="color: #e6db74">&quot;Submit&quot;</span>
-    <span style="color: #a6e22e">android:layout_centerInParent=</span><span style="color: #e6db74">&quot;true&quot;</span><span style="color: #f92672">/&gt;</span>
-</pre></div>
-</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;EditText</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/username&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_width=</span><span style="color:#e6db74">&#34;match_parent&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_height=</span><span style="color:#e6db74">&#34;wrap_content&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:inputType=</span><span style="color:#e6db74">&#34;text&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_above=</span><span style="color:#e6db74">&#34;@+id/password&#34;</span><span style="color:#f92672">/&gt;</span><span style="">
+</span><span style="">
+</span><span style=""></span><span style="color:#f92672">&lt;EditText</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/password&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_width=</span><span style="color:#e6db74">&#34;match_parent&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_height=</span><span style="color:#e6db74">&#34;wrap_content&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:inputType=</span><span style="color:#e6db74">&#34;textPassword&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_above=</span><span style="color:#e6db74">&#34;@+id/submit&#34;</span><span style="color:#f92672">/&gt;</span><span style="">
+</span><span style="">
+</span><span style=""></span><span style="color:#f92672">&lt;Button</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/submit&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_width=</span><span style="color:#e6db74">&#34;match_parent&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_height=</span><span style="color:#e6db74">&#34;wrap_content&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:text=</span><span style="color:#e6db74">&#34;Submit&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_centerInParent=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="color:#f92672">/&gt;</span></code></pre>
+</div>
 
 <p>If you run your app you should have something that looks like this (on Android Lollipop).</p>
 
@@ -237,109 +231,102 @@ I really don&rsquo;t like writing user interface glue code. Enough said about th
 
 <p>Now lets add in NgAndroid. If you open up your project build.gradle file you will see something like this.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">buildscript</span> <span style="color: #f92672">{</span>
-    <span style="color: #f8f8f2">repositories</span> <span style="color: #f92672">{</span>
-        <span style="color: #f8f8f2">jcenter</span><span style="color: #f92672">()</span>
-    <span style="color: #f92672">}</span>
-    <span style="color: #f8f8f2">dependencies</span> <span style="color: #f92672">{</span>
-        <span style="color: #f8f8f2">classpath</span> <span style="color: #e6db74">&#39;com.android.tools.build:gradle:1.3.0&#39;</span>
-        <span style="color: #75715e">// NOTE: Do not place your application dependencies here; they belong</span>
-        <span style="color: #75715e">// in the individual module build.gradle files</span>
-    <span style="color: #f92672">}</span>
-<span style="color: #f92672">}</span>
-
-<span style="color: #f8f8f2">allprojects</span> <span style="color: #f92672">{</span>
-    <span style="color: #f8f8f2">repositories</span> <span style="color: #f92672">{</span>
-        <span style="color: #f8f8f2">jcenter</span><span style="color: #f92672">()</span>
-    <span style="color: #f92672">}</span>
-<span style="color: #f92672">}</span>
-</pre></div>
-</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="">buildscript</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">    </span><span style="">repositories</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="">jcenter</span><span style="color:#f92672">()</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style="">    </span><span style="">dependencies</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="">classpath</span><span style=""> </span><span style="color:#e6db74">&#39;com.android.tools.build:gradle:1.3.0&#39;</span><span style="">
+</span><span style="">        </span><span style="color:#75715e">// NOTE: Do not place your application dependencies here; they belong
+</span><span style="color:#75715e"></span><span style="">        </span><span style="color:#75715e">// in the individual module build.gradle files
+</span><span style="color:#75715e"></span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style=""></span><span style="color:#f92672">}</span><span style="">
+</span><span style="">
+</span><span style=""></span><span style="">allprojects</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">    </span><span style="">repositories</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="">jcenter</span><span style="color:#f92672">()</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style=""></span><span style="color:#f92672">}</span></code></pre>
+</div>
 
 <p>In buildscript.dependencies add a new classpath <code>classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'</code> and in allprojects.repositories add
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">maven</span> <span style="color: #f92672">{</span>
-    <span style="color: #f8f8f2">url</span> <span style="color: #e6db74">&#39;http://oss.sonatype.org/content/repositories/snapshots&#39;</span>
-<span style="color: #f92672">}</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="">maven</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">    </span><span style="">url</span><span style=""> </span><span style="color:#e6db74">&#39;http://oss.sonatype.org/content/repositories/snapshots&#39;</span><span style="">
+</span><span style=""></span><span style="color:#f92672">}</span></code></pre>
+</div>
 So your build.gradle would then look like this.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">buildscript</span> <span style="color: #f92672">{</span>
-    <span style="color: #f8f8f2">repositories</span> <span style="color: #f92672">{</span>
-        <span style="color: #f8f8f2">jcenter</span><span style="color: #f92672">()</span>
-    <span style="color: #f92672">}</span>
-    <span style="color: #f8f8f2">dependencies</span> <span style="color: #f92672">{</span>
-        <span style="color: #f8f8f2">classpath</span> <span style="color: #e6db74">&#39;com.android.tools.build:gradle:1.3.0&#39;</span>
-        <span style="color: #f8f8f2">classpath</span> <span style="color: #e6db74">&#39;com.neenbedankt.gradle.plugins:android-apt:1.4&#39;</span>
-        <span style="color: #75715e">// NOTE: Do not place your application dependencies here; they belong</span>
-        <span style="color: #75715e">// in the individual module build.gradle files</span>
-    <span style="color: #f92672">}</span>
-<span style="color: #f92672">}</span>
-
-<span style="color: #f8f8f2">allprojects</span> <span style="color: #f92672">{</span>
-    <span style="color: #f8f8f2">repositories</span> <span style="color: #f92672">{</span>
-        <span style="color: #f8f8f2">jcenter</span><span style="color: #f92672">()</span>
-
-        <span style="color: #f8f8f2">maven</span> <span style="color: #f92672">{</span>
-            <span style="color: #f8f8f2">url</span> <span style="color: #e6db74">&#39;http://oss.sonatype.org/content/repositories/snapshots&#39;</span>
-        <span style="color: #f92672">}</span>
-    <span style="color: #f92672">}</span>
-<span style="color: #f92672">}</span>
-</pre></div>
-
+<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="">buildscript</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">    </span><span style="">repositories</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="">jcenter</span><span style="color:#f92672">()</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style="">    </span><span style="">dependencies</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="">classpath</span><span style=""> </span><span style="color:#e6db74">&#39;com.android.tools.build:gradle:1.3.0&#39;</span><span style="">
+</span><span style="">        </span><span style="">classpath</span><span style=""> </span><span style="color:#e6db74">&#39;com.neenbedankt.gradle.plugins:android-apt:1.4&#39;</span><span style="">
+</span><span style="">        </span><span style="color:#75715e">// NOTE: Do not place your application dependencies here; they belong
+</span><span style="color:#75715e"></span><span style="">        </span><span style="color:#75715e">// in the individual module build.gradle files
+</span><span style="color:#75715e"></span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style=""></span><span style="color:#f92672">}</span><span style="">
+</span><span style="">
+</span><span style=""></span><span style="">allprojects</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">    </span><span style="">repositories</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="">jcenter</span><span style="color:#f92672">()</span><span style="">
+</span><span style="">
+</span><span style="">        </span><span style="">maven</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">            </span><span style="">url</span><span style=""> </span><span style="color:#e6db74">&#39;http://oss.sonatype.org/content/repositories/snapshots&#39;</span><span style="">
+</span><span style="">        </span><span style="color:#f92672">}</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style=""></span><span style="color:#f92672">}</span></code></pre>
+</div>
 The maven.url is only necessary because you are going to be using a snapshot build of NgAndroid.</p>
 
 <p>Now open up your app&rsquo;s build.gradle and add <code>apply plugin: 'com.neenbedankt.android-apt'</code> below <code>apply plugin: 'com.android.application'</code> and add
-<div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f8f8f2">compile</span> <span style="color: #e6db74">&#39;com.github.davityle:ngandroid:1.0.10-SNAPSHOT&#39;</span>
-<span style="color: #f8f8f2">apt</span> <span style="color: #e6db74">&#39;com.github.davityle:ng-processor:1.0.10-SNAPSHOT&#39;</span>
-</pre></div>
-
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-groovy" data-lang="groovy"><span style="">compile</span><span style=""> </span><span style="color:#e6db74">&#39;com.github.davityle:ngandroid:1.0.10-SNAPSHOT&#39;</span><span style="">
+</span><span style=""></span><span style="">apt</span><span style=""> </span><span style="color:#e6db74">&#39;com.github.davityle:ng-processor:1.0.10-SNAPSHOT&#39;</span></code></pre>
+</div>
 to your dependencies.</p>
 
 <p>Now create a class called LoginScope. Your scope is important. It is the base reference for all of your bindings.
 To make LoginScope a scope that NgAndroid will recognize you need to add <code>@NgScope(name=&quot;Login&quot;)</code> to the class declaration.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #a6e22e">@NgScope</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">name</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;Login&quot;</span><span style="color: #f92672">)</span>
-<span style="color: #66d9ef">public</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">LoginScope</span> <span style="color: #f92672">{</span>
-
-<span style="color: #f92672">}</span>
-</pre></div>
-</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@NgScope</span><span style="color:#f92672">(</span><span style="">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Login&#34;</span><span style="color:#f92672">)</span><span style="">
+</span><span style=""></span><span style="color:#66d9ef">public</span><span style=""> </span><span style="color:#66d9ef">class</span><span style=""> </span><span style="color:#a6e22e">LoginScope</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">
+</span><span style=""></span><span style="color:#f92672">}</span></code></pre>
+</div>
 
 <p>Now create a User model class for your data.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">public</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">User</span> <span style="color: #f92672">{</span>
-
-    <span style="color: #66d9ef">private</span> <span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">username</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">password</span><span style="color: #f92672">;</span>
-
-    <span style="color: #66d9ef">public</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">getUsername</span><span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
-        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">username</span><span style="color: #f92672">;</span>
-    <span style="color: #f92672">}</span>
-
-    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">setUsername</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">username</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
-        <span style="color: #66d9ef">this</span><span style="color: #f92672">.</span><span style="color: #a6e22e">username</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">username</span><span style="color: #f92672">;</span>
-    <span style="color: #f92672">}</span>
-
-    <span style="color: #66d9ef">public</span> <span style="color: #f8f8f2">String</span> <span style="color: #a6e22e">getPassword</span><span style="color: #f92672">()</span> <span style="color: #f92672">{</span>
-        <span style="color: #66d9ef">return</span> <span style="color: #f8f8f2">password</span><span style="color: #f92672">;</span>
-    <span style="color: #f92672">}</span>
-
-    <span style="color: #66d9ef">public</span> <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">setPassword</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">String</span> <span style="color: #f8f8f2">password</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
-        <span style="color: #66d9ef">this</span><span style="color: #f92672">.</span><span style="color: #a6e22e">password</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">password</span><span style="color: #f92672">;</span>
-    <span style="color: #f92672">}</span>
-<span style="color: #f92672">}</span>
-</pre></div>
-</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span><span style=""> </span><span style="color:#66d9ef">class</span><span style=""> </span><span style="color:#a6e22e">User</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">private</span><span style=""> </span><span style="">String</span><span style=""> </span><span style="">username</span><span style="color:#f92672">,</span><span style=""> </span><span style="">password</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">public</span><span style=""> </span><span style="">String</span><span style=""> </span><span style="color:#a6e22e">getUsername</span><span style=""></span><span style="color:#f92672">()</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="">username</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">public</span><span style=""> </span><span style="color:#66d9ef">void</span><span style=""> </span><span style="color:#a6e22e">setUsername</span><span style=""></span><span style="color:#f92672">(</span><span style="">String</span><span style=""> </span><span style="">username</span><span style="color:#f92672">)</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">username</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">username</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">public</span><span style=""> </span><span style="">String</span><span style=""> </span><span style="color:#a6e22e">getPassword</span><span style=""></span><span style="color:#f92672">()</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">return</span><span style=""> </span><span style="">password</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">public</span><span style=""> </span><span style="color:#66d9ef">void</span><span style=""> </span><span style="color:#a6e22e">setPassword</span><span style=""></span><span style="color:#f92672">(</span><span style="">String</span><span style=""> </span><span style="">password</span><span style="color:#f92672">)</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">password</span><span style=""> </span><span style="color:#f92672">=</span><span style=""> </span><span style="">password</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style=""></span><span style="color:#f92672">}</span></code></pre>
+</div>
 
 <p>Add a user field to <code>LoginScope</code> annotated with <code>@NgModel</code>.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #a6e22e">@NgScope</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">name</span><span style="color: #f92672">=</span><span style="color: #e6db74">&quot;Login&quot;</span><span style="color: #f92672">)</span>
-<span style="color: #66d9ef">public</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">LoginScope</span> <span style="color: #f92672">{</span>
-    <span style="color: #a6e22e">@NgModel</span>
-    <span style="color: #f8f8f2">User</span> <span style="color: #f8f8f2">user</span><span style="color: #f92672">;</span>
-<span style="color: #f92672">}</span>
-</pre></div>
-</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#a6e22e">@NgScope</span><span style="color:#f92672">(</span><span style="">name</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Login&#34;</span><span style="color:#f92672">)</span><span style="">
+</span><span style=""></span><span style="color:#66d9ef">public</span><span style=""> </span><span style="color:#66d9ef">class</span><span style=""> </span><span style="color:#a6e22e">LoginScope</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">@NgModel</span><span style="">
+</span><span style="">    </span><span style="">User</span><span style=""> </span><span style="">user</span><span style="color:#f92672">;</span><span style="">
+</span><span style=""></span><span style="color:#f92672">}</span></code></pre>
+</div>
 
 <p>By annotating a class with the <code>@NgModel</code> annotation you are telling NgAndroid to create a subclass of that class that will handle all of the view bindings.
 It also means that NgAndroid will inject that field. There is no need to instantiate it.</p>
@@ -348,21 +335,20 @@ It also means that NgAndroid will inject that field. There is no need to instant
 below <code>xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;</code> in your <code>RelativeLayout</code>.
 Then declare the scope of the xml file by adding <code>x:ngScope=&quot;Login&quot;</code> as well. You should have something that looks like this.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">&lt;RelativeLayout</span> <span style="color: #a6e22e">xmlns:android=</span><span style="color: #e6db74">&quot;http://schemas.android.com/apk/res/android&quot;</span>
-    <span style="color: #a6e22e">xmlns:tools=</span><span style="color: #e6db74">&quot;http://schemas.android.com/tools&quot;</span>
-    <span style="color: #a6e22e">xmlns:x=</span><span style="color: #e6db74">&quot;http://schemas.android.com/apk/res-auto&quot;</span>
-    <span style="color: #a6e22e">android:layout_width=</span><span style="color: #e6db74">&quot;match_parent&quot;</span>
-    <span style="color: #a6e22e">android:layout_height=</span><span style="color: #e6db74">&quot;match_parent&quot;</span>
-    <span style="color: #a6e22e">android:padding=</span><span style="color: #e6db74">&quot;60dp&quot;</span>
-    <span style="color: #a6e22e">x:ngScope=</span><span style="color: #e6db74">&quot;Login&quot;</span>
-    <span style="color: #a6e22e">tools:ignore=</span><span style="color: #e6db74">&quot;MissingPrefix&quot;</span> <span style="color: #f92672">&gt;</span>
-
-    ...
-
-
-<span style="color: #f92672">&lt;/RelativeLayout&gt;</span>
-</pre></div>
-</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;RelativeLayout</span><span style=""> </span><span style="color:#a6e22e">xmlns:android=</span><span style="color:#e6db74">&#34;http://schemas.android.com/apk/res/android&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">xmlns:tools=</span><span style="color:#e6db74">&#34;http://schemas.android.com/tools&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">xmlns:x=</span><span style="color:#e6db74">&#34;http://schemas.android.com/apk/res-auto&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_width=</span><span style="color:#e6db74">&#34;match_parent&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_height=</span><span style="color:#e6db74">&#34;match_parent&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:padding=</span><span style="color:#e6db74">&#34;60dp&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">x:ngScope=</span><span style="color:#e6db74">&#34;Login&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">tools:ignore=</span><span style="color:#e6db74">&#34;MissingPrefix&#34;</span><span style=""> </span><span style="color:#f92672">&gt;</span><span style="">
+</span><span style="">
+</span><span style="">    ...
+</span><span style="">
+</span><span style="">
+</span><span style=""></span><span style="color:#f92672">&lt;/RelativeLayout&gt;</span></code></pre>
+</div>
 
 <p>I also like to add <code>tools:ignore=&quot;MissingPrefix&quot;</code> to the root layout.
 Otherwise Android Studio will complain about adding non android prefix attributes to standard views.</p>
@@ -374,31 +360,30 @@ Also, make your submit button only be enabled if the lengths of the username and
 <code>x:ngDisabled=&quot;user.username.length() &amp;lt; 6 || user.password.length() &amp;lt; 6&quot;</code> to your submit button. All together it should look
 like this.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">&lt;EditText</span>
-    <span style="color: #a6e22e">android:id=</span><span style="color: #e6db74">&quot;@+id/username&quot;</span>
-    <span style="color: #a6e22e">android:layout_width=</span><span style="color: #e6db74">&quot;match_parent&quot;</span>
-    <span style="color: #a6e22e">android:layout_height=</span><span style="color: #e6db74">&quot;wrap_content&quot;</span>
-    <span style="color: #a6e22e">android:layout_above=</span><span style="color: #e6db74">&quot;@+id/password&quot;</span>
-    <span style="color: #a6e22e">android:inputType=</span><span style="color: #e6db74">&quot;text&quot;</span>
-    <span style="color: #a6e22e">x:ngModel=</span><span style="color: #e6db74">&quot;user.username&quot;</span> <span style="color: #f92672">/&gt;</span>
-
-<span style="color: #f92672">&lt;EditText</span>
-    <span style="color: #a6e22e">android:id=</span><span style="color: #e6db74">&quot;@+id/password&quot;</span>
-    <span style="color: #a6e22e">android:layout_width=</span><span style="color: #e6db74">&quot;match_parent&quot;</span>
-    <span style="color: #a6e22e">android:layout_height=</span><span style="color: #e6db74">&quot;wrap_content&quot;</span>
-    <span style="color: #a6e22e">android:inputType=</span><span style="color: #e6db74">&quot;textPassword&quot;</span>
-    <span style="color: #a6e22e">android:layout_above=</span><span style="color: #e6db74">&quot;@+id/submit&quot;</span>
-    <span style="color: #a6e22e">x:ngModel=</span><span style="color: #e6db74">&quot;user.password&quot;</span><span style="color: #f92672">/&gt;</span>
-
-<span style="color: #f92672">&lt;Button</span>
-    <span style="color: #a6e22e">android:id=</span><span style="color: #e6db74">&quot;@+id/submit&quot;</span>
-    <span style="color: #a6e22e">android:layout_width=</span><span style="color: #e6db74">&quot;match_parent&quot;</span>
-    <span style="color: #a6e22e">android:layout_height=</span><span style="color: #e6db74">&quot;wrap_content&quot;</span>
-    <span style="color: #a6e22e">android:text=</span><span style="color: #e6db74">&quot;Submit&quot;</span>
-    <span style="color: #a6e22e">android:layout_centerInParent=</span><span style="color: #e6db74">&quot;true&quot;</span>
-    <span style="color: #a6e22e">x:ngDisabled=</span><span style="color: #e6db74">&quot;user.username.length() &lt; 6 || user.password.length() &lt; 6&quot;</span><span style="color: #f92672">/&gt;</span>
-</pre></div>
-</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;EditText</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/username&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_width=</span><span style="color:#e6db74">&#34;match_parent&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_height=</span><span style="color:#e6db74">&#34;wrap_content&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_above=</span><span style="color:#e6db74">&#34;@+id/password&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:inputType=</span><span style="color:#e6db74">&#34;text&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">x:ngModel=</span><span style="color:#e6db74">&#34;user.username&#34;</span><span style=""> </span><span style="color:#f92672">/&gt;</span><span style="">
+</span><span style="">
+</span><span style=""></span><span style="color:#f92672">&lt;EditText</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/password&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_width=</span><span style="color:#e6db74">&#34;match_parent&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_height=</span><span style="color:#e6db74">&#34;wrap_content&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:inputType=</span><span style="color:#e6db74">&#34;textPassword&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_above=</span><span style="color:#e6db74">&#34;@+id/submit&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">x:ngModel=</span><span style="color:#e6db74">&#34;user.password&#34;</span><span style="color:#f92672">/&gt;</span><span style="">
+</span><span style="">
+</span><span style=""></span><span style="color:#f92672">&lt;Button</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/submit&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_width=</span><span style="color:#e6db74">&#34;match_parent&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_height=</span><span style="color:#e6db74">&#34;wrap_content&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:text=</span><span style="color:#e6db74">&#34;Submit&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_centerInParent=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">x:ngDisabled=</span><span style="color:#e6db74">&#34;user.username.length() &lt; 6 || user.password.length() &lt; 6&#34;</span><span style="color:#f92672">/&gt;</span></code></pre>
+</div>
 
 <p>The <code>&amp;lt;</code> is the symbol for <code>&lt;</code> in an xml attribute. <code>&amp;gt;</code> is the symbol for <code>&gt;</code>.</p>
 
@@ -418,20 +403,18 @@ If you run it again it&rsquo;ll be disabled like expected.</p>
 
 <p>In order to do something when the submit button is clicked create a method in your scope.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">void</span> <span style="color: #a6e22e">onSubmit</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">Context</span> <span style="color: #f8f8f2">context</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
-    <span style="color: #f8f8f2">Toast</span><span style="color: #f92672">.</span><span style="color: #a6e22e">makeText</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">context</span><span style="color: #f92672">,</span> <span style="color: #f8f8f2">user</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getUsername</span><span style="color: #f92672">()</span> <span style="color: #f92672">+</span> <span style="color: #e6db74">&quot; : &quot;</span> <span style="color: #f92672">+</span><span style="color: #f8f8f2">user</span><span style="color: #f92672">.</span><span style="color: #a6e22e">getPassword</span><span style="color: #f92672">(),</span> <span style="color: #f8f8f2">Toast</span><span style="color: #f92672">.</span><span style="color: #a6e22e">LENGTH_SHORT</span> <span style="color: #f92672">).</span><span style="color: #a6e22e">show</span><span style="color: #f92672">();</span>
-<span style="color: #f92672">}</span>
-</pre></div>
-</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">void</span><span style=""> </span><span style="color:#a6e22e">onSubmit</span><span style=""></span><span style="color:#f92672">(</span><span style="">Context</span><span style=""> </span><span style="">context</span><span style="color:#f92672">)</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">    </span><span style="">Toast</span><span style="color:#f92672">.</span><span style="color:#a6e22e">makeText</span><span style="color:#f92672">(</span><span style="">context</span><span style="color:#f92672">,</span><span style=""> </span><span style="">user</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getUsername</span><span style="color:#f92672">()</span><span style=""> </span><span style="color:#f92672">+</span><span style=""> </span><span style="color:#e6db74">&#34; : &#34;</span><span style=""> </span><span style="color:#f92672">+</span><span style="">user</span><span style="color:#f92672">.</span><span style="color:#a6e22e">getPassword</span><span style="color:#f92672">(),</span><span style=""> </span><span style="">Toast</span><span style="color:#f92672">.</span><span style="color:#a6e22e">LENGTH_SHORT</span><span style=""> </span><span style="color:#f92672">).</span><span style="color:#a6e22e">show</span><span style="color:#f92672">();</span><span style="">
+</span><span style=""></span><span style="color:#f92672">}</span></code></pre>
+</div>
 
 <p>Then create an event binding in your layout file.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">&lt;Button</span>
-    <span style="color: #a6e22e">android:id=</span><span style="color: #e6db74">&quot;@+id/submit&quot;</span>
-    <span style="color: #960050; background-color: #1e0010">...</span>
-    <span style="color: #a6e22e">x:ngClick=</span><span style="color: #e6db74">&quot;onSubmit($view.context)&quot;</span><span style="color: #f92672">/&gt;</span>
-</pre></div>
-</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;Button</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/submit&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#960050;background-color:#1e0010">...</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">x:ngClick=</span><span style="color:#e6db74">&#34;onSubmit($view.context)&#34;</span><span style="color:#f92672">/&gt;</span></code></pre>
+</div>
 
 <p>You&rsquo;ll notice the <code>$view</code> syntax. <code>$</code> is a symbol that allows you to reference predefined NgAndroid variables.
 $view is a reference to the view that will be bound to the click event. You can use <code>.context</code> as a shortcut to
@@ -441,36 +424,33 @@ $view is a reference to the view that will be bound to the click event. You can 
 Add the <code>ProgressBar</code> to your layout with an <code>ngInvisible</code> attribute to make it only visible while
 your network call is active.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #f92672">&lt;ProgressBar</span>
-    <span style="color: #a6e22e">android:id=</span><span style="color: #e6db74">&quot;@+id/progress&quot;</span>
-    <span style="color: #a6e22e">android:layout_width=</span><span style="color: #e6db74">&quot;match_parent&quot;</span>
-    <span style="color: #a6e22e">android:layout_height=</span><span style="color: #e6db74">&quot;wrap_content&quot;</span>
-    <span style="color: #a6e22e">android:layout_centerInParent=</span><span style="color: #e6db74">&quot;true&quot;</span>
-    <span style="color: #a6e22e">x:ngInvisible=</span><span style="color: #e6db74">&quot;!call.active&quot;</span><span style="color: #f92672">/&gt;</span>
-</pre></div>
-</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#f92672">&lt;ProgressBar</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:id=</span><span style="color:#e6db74">&#34;@+id/progress&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_width=</span><span style="color:#e6db74">&#34;match_parent&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_height=</span><span style="color:#e6db74">&#34;wrap_content&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">android:layout_centerInParent=</span><span style="color:#e6db74">&#34;true&#34;</span><span style="">
+</span><span style="">    </span><span style="color:#a6e22e">x:ngInvisible=</span><span style="color:#e6db74">&#34;!call.active&#34;</span><span style="color:#f92672">/&gt;</span></code></pre>
+</div>
 
 <p>Add <code>x:ngInvisible=&quot;call.active&quot;</code> to your submit button to hide it when your call is active.</p>
 
 <p>Finally add your <code>NetworkCall</code> model to your <code>LoginScope</code> and set it as active.</p>
 
-<p><div class="highlight" style="background: #272822"><pre style="line-height: 125%"><span style="color: #66d9ef">public</span> <span style="color: #66d9ef">class</span> <span style="color: #a6e22e">LoginScope</span> <span style="color: #f92672">{</span>
-    <span style="color: #75715e">//...</span>
-    <span style="color: #a6e22e">@NgModel</span>
-    <span style="color: #f8f8f2">NetworkCall</span> <span style="color: #f8f8f2">call</span><span style="color: #f92672">;</span>
-
-    <span style="color: #66d9ef">void</span> <span style="color: #a6e22e">onSubmit</span><span style="color: #f92672">(</span><span style="color: #f8f8f2">Context</span> <span style="color: #f8f8f2">context</span><span style="color: #f92672">)</span> <span style="color: #f92672">{</span>
-        <span style="color: #f8f8f2">call</span><span style="color: #f92672">.</span><span style="color: #a6e22e">setActive</span><span style="color: #f92672">(</span><span style="color: #66d9ef">true</span><span style="color: #f92672">);</span>
-        <span style="color: #75715e">//...</span>
-    <span style="color: #f92672">}</span>
-<span style="color: #f92672">}</span>
-</pre></div>
-</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span><span style=""> </span><span style="color:#66d9ef">class</span><span style=""> </span><span style="color:#a6e22e">LoginScope</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">    </span><span style="color:#75715e">//...
+</span><span style="color:#75715e"></span><span style="">    </span><span style="color:#a6e22e">@NgModel</span><span style="">
+</span><span style="">    </span><span style="">NetworkCall</span><span style=""> </span><span style="">call</span><span style="color:#f92672">;</span><span style="">
+</span><span style="">
+</span><span style="">    </span><span style="color:#66d9ef">void</span><span style=""> </span><span style="color:#a6e22e">onSubmit</span><span style=""></span><span style="color:#f92672">(</span><span style="">Context</span><span style=""> </span><span style="">context</span><span style="color:#f92672">)</span><span style=""> </span><span style="color:#f92672">{</span><span style="">
+</span><span style="">        </span><span style="">call</span><span style="color:#f92672">.</span><span style="color:#a6e22e">setActive</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span><span style="">
+</span><span style="">        </span><span style="color:#75715e">//...
+</span><span style="color:#75715e"></span><span style="">    </span><span style="color:#f92672">}</span><span style="">
+</span><span style=""></span><span style="color:#f92672">}</span></code></pre>
+</div>
 
 <p>It&rsquo;s that easy.</p>
 
 <p><img src="/images/working_login.gif" alt="Working login" /></p>
-
     </section>
 
     <hr>
@@ -524,6 +504,13 @@ your network call is active.</p>
       $(".heading").fitText();
     </script>
 
+
+    <script>
+        var _gaq=[['_setAccount','UA-59928738-2'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src='//www.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+    </script>
 
 
 </body>
