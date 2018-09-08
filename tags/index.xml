@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on If You Care</title>
+    <title>Tags on Einu sinni á Koala - Tyler Davis</title>
     <link>https://davityle.github.io/tags/</link>
-    <description>Recent content in Tags on If You Care</description>
+    <description>Recent content in Tags on Einu sinni á Koala - Tyler Davis</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 23 Feb 2016 05:27:09 -0600</lastBuildDate>
@@ -75,15 +75,6 @@
     </item>
     
     <item>
-      <title>Development</title>
-      <link>https://davityle.github.io/tags/development/</link>
-      <pubDate>Thu, 12 Oct 2017 05:21:56 -0600</pubDate>
-      
-      <guid>https://davityle.github.io/tags/development/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Java</title>
       <link>https://davityle.github.io/tags/java/</link>
       <pubDate>Tue, 23 Feb 2016 05:27:09 -0600</pubDate>
@@ -120,29 +111,11 @@
     </item>
     
     <item>
-      <title>Tools</title>
-      <link>https://davityle.github.io/tags/tools/</link>
-      <pubDate>Thu, 12 Oct 2017 05:21:56 -0600</pubDate>
-      
-      <guid>https://davityle.github.io/tags/tools/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>Ui</title>
       <link>https://davityle.github.io/tags/ui/</link>
       <pubDate>Sat, 07 Feb 2015 11:30:53 -0700</pubDate>
       
       <guid>https://davityle.github.io/tags/ui/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Web</title>
-      <link>https://davityle.github.io/tags/web/</link>
-      <pubDate>Thu, 12 Oct 2017 05:21:56 -0600</pubDate>
-      
-      <guid>https://davityle.github.io/tags/web/</guid>
       <description></description>
     </item>
     
