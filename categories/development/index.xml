@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Development on Einu sinni á Koala - Tyler Davis</title>
+    <title>Development on Einu sinni á Koala</title>
     <link>https://davityle.github.io/categories/development/</link>
-    <description>Recent content in Development on Einu sinni á Koala - Tyler Davis</description>
+    <description>Recent content in Development on Einu sinni á Koala</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 23 Feb 2016 05:27:09 -0600</lastBuildDate>
@@ -17,9 +17,7 @@
       <pubDate>Tue, 23 Feb 2016 05:27:09 -0600</pubDate>
       
       <guid>https://davityle.github.io/post/computer-science-basics/</guid>
-      <description>&lt;h4 id=&#34;description&#34;&gt;Description&lt;/h4&gt;
-
-&lt;p&gt;This post contains the implementations, in Java 8, of a few data structures and algorithms commonly discussed within computer science.&lt;/p&gt;
+      <description>&lt;p&gt;This post contains the implementations, in Java 8, of a few data structures and algorithms commonly discussed within computer science.&lt;/p&gt;
 
 &lt;p&gt;The full source code for this post can be found &lt;a href=&#34;https://github.com/davityle/cs-basics-java&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 

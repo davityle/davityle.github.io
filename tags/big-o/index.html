@@ -15,8 +15,8 @@
         <meta name="author" content="">
         <meta name="keywords" content="awesome, definitely">
 	
-        <meta property="og:site_name" content="Einu sinni á Koala - Tyler Davis">
-        <meta property="og:title" content="Einu sinni á Koala - Tyler Davis">
+        <meta property="og:site_name" content="Einu sinni á Koala">
+        <meta property="og:title" content="Einu sinni á Koala">
         <meta property="og:url" content="https://davityle.github.io/tags/big-o/">
         <meta property="og:description" content="A software development blog by Tyler Davis">
     
@@ -37,7 +37,7 @@
 
     <header id="site-header">
         <div class="container">
-            <a href="https://davityle.github.io/" alt="Einu sinni á Koala - Tyler Davis"><h1 class="blog-title heading">Einu sinni á Koala - Tyler Davis</h1></a>
+            <a href="https://davityle.github.io/" alt="Einu sinni á Koala"><h1 class="blog-title heading">Einu sinni á Koala</h1></a>
             <p class="blog-description">A software development blog by Tyler Davis</p>
             <div class="media">
             
@@ -64,9 +64,7 @@
     </header>
     
     <section class="post-excerpt">
-        <p><h4 id="description">Description</h4>
-
-<p>This post contains the implementations, in Java 8, of a few data structures and algorithms commonly discussed within computer science.</p>
+        <p><p>This post contains the implementations, in Java 8, of a few data structures and algorithms commonly discussed within computer science.</p>
 
 <p>The full source code for this post can be found <a href="https://github.com/davityle/cs-basics-java">here</a></p>
 
@@ -107,27 +105,22 @@
 	
 		<article class="li post">
     <header class="post-header">
-        <h3 class="post-title"><a href="https://davityle.github.io/post/quicksort-randomize-worst-case/">QuickSort - Worst Case with Random Pivot</a></h3>
+        <h3 class="post-title"><a href="https://davityle.github.io/post/quicksort-randomize-worst-case/">Exploring the Worst Case Complexity of Quicksort</a></h3>
         <p class="post-time"><time datetime="2015-10-03T10:01:16-07:00">October 3, 2015</time></p>
     </header>
     
     <section class="post-excerpt">
-        <p><h4 id="problem">Problem</h4>
+        <p><p>The quicksort algorithm has the best case complexity of O(n log n) when each pivot in the sort divides the list into two equal uniform pieces [1]. The worst case occurs when the pivot always divides the list into one list of size 1 and one list of size N - 1. Such as when sorting an already sorted array and the pivot is always chosen as the last element in the list. The complexity of quicksort in this case is an unfortunate O(n<span style="position: relative; bottom: 1ex; font-size: 80%;">2</span>). For this reason, it is recommended to use a random pivot point. This gives an average case of O(n log n) [2]. However, this does not remove the worst case scenario.</p>
 
-<p>I&rsquo;ve read in a few places that Randomizing the pivot point removes the worst case of O(n<span style="position: relative; bottom: 1ex; font-size: 80%;">2</span>) from the quicksort algorithm. <a href="http://en.wikipedia.org/wiki/Quicksort#Analysis_of_randomized_quicksort">Wikipedia</a> is one of those places. Other places write the whole story but don&rsquo;t show any proof. The whole story is that randomizing the pivot point does not, necessarily, remove the worst case. It&rsquo;s easy to show that this is the case. This article assumes basic knowledge of the quicksort algorithm and big O notation.</p>
+<p>For example, consider this array:</p>
 
-<p>The worst case in quick sort happens when each pivot point always contains the next lowest, or always contains the next highest, number in the sequence.</p>
-
-<p>For example. <br> You have an unsorted array</p>
-
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> {<span style="color:#ae81ff">44</span>,<span style="color:#ae81ff">88</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">999</span>,<span style="color:#ae81ff">1040</span>,<span style="color:#ae81ff">23</span>,<span style="color:#ae81ff">123</span>,<span style="color:#ae81ff">89</span>,<span style="color:#ae81ff">2009</span>}
+<p><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">array <span style="color:#333">=</span> {<span style="color:#66f;font-weight:bold">44</span>,<span style="color:#66f;font-weight:bold">88</span>,<span style="color:#66f;font-weight:bold">7</span>,<span style="color:#66f;font-weight:bold">2</span>,<span style="color:#66f;font-weight:bold">1</span>,<span style="color:#66f;font-weight:bold">999</span>,<span style="color:#66f;font-weight:bold">1040</span>,<span style="color:#66f;font-weight:bold">23</span>,<span style="color:#66f;font-weight:bold">123</span>,<span style="color:#66f;font-weight:bold">89</span>,<span style="color:#66f;font-weight:bold">2009</span>}
 </code></pre></div>
-and you want to traverse this array using random pivots. Lets just say that the random number generator produces theses numbers.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">9</span>
-</code></pre></div>
-Those look random enough. In fact, I would be perfectly comfortable sorting my array with those random numbers just off of the first glance.</p>
+with these given &ldquo;random&rdquo; pivots:
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66f;font-weight:bold">4</span>,<span style="color:#66f;font-weight:bold">3</span>,<span style="color:#66f;font-weight:bold">2</span>,<span style="color:#66f;font-weight:bold">7</span>,<span style="color:#66f;font-weight:bold">4</span>,<span style="color:#66f;font-weight:bold">7</span>,<span style="color:#66f;font-weight:bold">9</span>,<span style="color:#66f;font-weight:bold">8</span>,<span style="color:#66f;font-weight:bold">8</span>,<span style="color:#66f;font-weight:bold">9</span>
+</code></pre></div></p>
 
-<p>Look at what actually happens when you sort the array using those pivots.</p></p>
+<p>You get this result:</p></p>
     </section>
 
     <footer class="post-footer">

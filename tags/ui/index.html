@@ -15,8 +15,8 @@
         <meta name="author" content="">
         <meta name="keywords" content="awesome, definitely">
 	
-        <meta property="og:site_name" content="Einu sinni á Koala - Tyler Davis">
-        <meta property="og:title" content="Einu sinni á Koala - Tyler Davis">
+        <meta property="og:site_name" content="Einu sinni á Koala">
+        <meta property="og:title" content="Einu sinni á Koala">
         <meta property="og:url" content="https://davityle.github.io/tags/ui/">
         <meta property="og:description" content="A software development blog by Tyler Davis">
     
@@ -37,7 +37,7 @@
 
     <header id="site-header">
         <div class="container">
-            <a href="https://davityle.github.io/" alt="Einu sinni á Koala - Tyler Davis"><h1 class="blog-title heading">Einu sinni á Koala - Tyler Davis</h1></a>
+            <a href="https://davityle.github.io/" alt="Einu sinni á Koala"><h1 class="blog-title heading">Einu sinni á Koala</h1></a>
             <p class="blog-description">A software development blog by Tyler Davis</p>
             <div class="media">
             
@@ -68,57 +68,57 @@
 
 <p>For those of you who just want the code here it is.</p>
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">StripedView</span> <span style="color:#66d9ef">extends</span> View <span style="color:#f92672">{</span>
+<p><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#289;font-weight:bold">public</span> <span style="color:#289;font-weight:bold">class</span> <span style="color:#e9e;font-weight:bold">StripedView</span> <span style="color:#289;font-weight:bold">extends</span> View <span style="color:#333">{</span>
 
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">float</span> STRIPE_WIDTH_PERCT <span style="color:#f92672">=</span> <span style="color:#f92672">.</span><span style="color:#a6e22e">05f</span><span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">float</span> STRIPE_OFFSET_PERCT <span style="color:#f92672">=</span> <span style="color:#f92672">.</span><span style="color:#a6e22e">2f</span><span style="color:#f92672">;</span>
-    <span style="color:#66d9ef">private</span> Path stripespath <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Path<span style="color:#f92672">();</span>
-    <span style="color:#66d9ef">private</span> Paint blackPaint <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> Paint<span style="color:#f92672">();</span>
+    <span style="color:#289;font-weight:bold">private</span> <span style="color:#289;font-weight:bold">static</span> <span style="color:#289;font-weight:bold">final</span> <span style="color:#66f;font-weight:bold">float</span> STRIPE_WIDTH_PERCT <span style="color:#333">=</span> <span style="color:#333">.</span><span style="color:#007">05f</span><span style="color:#333">;</span>
+    <span style="color:#289;font-weight:bold">private</span> <span style="color:#289;font-weight:bold">static</span> <span style="color:#289;font-weight:bold">final</span> <span style="color:#66f;font-weight:bold">float</span> STRIPE_OFFSET_PERCT <span style="color:#333">=</span> <span style="color:#333">.</span><span style="color:#007">2f</span><span style="color:#333">;</span>
+    <span style="color:#289;font-weight:bold">private</span> Path stripespath <span style="color:#333">=</span> <span style="color:#289;font-weight:bold">new</span> Path<span style="color:#333">();</span>
+    <span style="color:#289;font-weight:bold">private</span> Paint blackPaint <span style="color:#333">=</span> <span style="color:#289;font-weight:bold">new</span> Paint<span style="color:#333">();</span>
 
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">StripedView</span><span style="color:#f92672">(</span>Context context<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span>context<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
+    <span style="color:#289;font-weight:bold">public</span> <span style="color:#5ed;font-weight:bold">StripedView</span><span style="color:#333">(</span>Context context<span style="color:#333">)</span> <span style="color:#333">{</span>
+        <span style="color:#289;font-weight:bold">super</span><span style="color:#333">(</span>context<span style="color:#333">);</span>
+    <span style="color:#333">}</span>
 
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">StripedView</span><span style="color:#f92672">(</span>Context context<span style="color:#f92672">,</span> AttributeSet attrs<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span>context<span style="color:#f92672">,</span> attrs<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
+    <span style="color:#289;font-weight:bold">public</span> <span style="color:#5ed;font-weight:bold">StripedView</span><span style="color:#333">(</span>Context context<span style="color:#333">,</span> AttributeSet attrs<span style="color:#333">)</span> <span style="color:#333">{</span>
+        <span style="color:#289;font-weight:bold">super</span><span style="color:#333">(</span>context<span style="color:#333">,</span> attrs<span style="color:#333">);</span>
+    <span style="color:#333">}</span>
 
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">StripedView</span><span style="color:#f92672">(</span>Context context<span style="color:#f92672">,</span> AttributeSet attrs<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> defStyleAttr<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span>context<span style="color:#f92672">,</span> attrs<span style="color:#f92672">,</span> defStyleAttr<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
+    <span style="color:#289;font-weight:bold">public</span> <span style="color:#5ed;font-weight:bold">StripedView</span><span style="color:#333">(</span>Context context<span style="color:#333">,</span> AttributeSet attrs<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">int</span> defStyleAttr<span style="color:#333">)</span> <span style="color:#333">{</span>
+        <span style="color:#289;font-weight:bold">super</span><span style="color:#333">(</span>context<span style="color:#333">,</span> attrs<span style="color:#333">,</span> defStyleAttr<span style="color:#333">);</span>
+    <span style="color:#333">}</span>
 
-    <span style="color:#a6e22e">@TargetApi</span><span style="color:#f92672">(</span>Build<span style="color:#f92672">.</span><span style="color:#a6e22e">VERSION_CODES</span><span style="color:#f92672">.</span><span style="color:#a6e22e">LOLLIPOP</span><span style="color:#f92672">)</span>
-    <span style="color:#66d9ef">public</span> <span style="color:#a6e22e">StripedView</span><span style="color:#f92672">(</span>Context context<span style="color:#f92672">,</span> AttributeSet attrs<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> defStyleAttr<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> defStyleRes<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">super</span><span style="color:#f92672">(</span>context<span style="color:#f92672">,</span> attrs<span style="color:#f92672">,</span> defStyleAttr<span style="color:#f92672">,</span> defStyleRes<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-    <span style="color:#75715e">//init()
-</span><span style="color:#75715e"></span>    <span style="color:#f92672">{</span>
-        blackPaint<span style="color:#f92672">.</span><span style="color:#a6e22e">setAntiAlias</span><span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
+    <span style="color:#555;font-weight:bold">@TargetApi</span><span style="color:#333">(</span>Build<span style="color:#333">.</span><span style="color:#007">VERSION_CODES</span><span style="color:#333">.</span><span style="color:#007">LOLLIPOP</span><span style="color:#333">)</span>
+    <span style="color:#289;font-weight:bold">public</span> <span style="color:#5ed;font-weight:bold">StripedView</span><span style="color:#333">(</span>Context context<span style="color:#333">,</span> AttributeSet attrs<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">int</span> defStyleAttr<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">int</span> defStyleRes<span style="color:#333">)</span> <span style="color:#333">{</span>
+        <span style="color:#289;font-weight:bold">super</span><span style="color:#333">(</span>context<span style="color:#333">,</span> attrs<span style="color:#333">,</span> defStyleAttr<span style="color:#333">,</span> defStyleRes<span style="color:#333">);</span>
+    <span style="color:#333">}</span>
+    <span style="color:#666;font-style:italic">//init()
+</span><span style="color:#666;font-style:italic"></span>    <span style="color:#333">{</span>
+        blackPaint<span style="color:#333">.</span><span style="color:#007">setAntiAlias</span><span style="color:#333">(</span><span style="color:#289;font-weight:bold">true</span><span style="color:#333">);</span>
+    <span style="color:#333">}</span>
 
-    <span style="color:#a6e22e">@Override</span>
-    <span style="color:#66d9ef">protected</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">onDraw</span><span style="color:#f92672">(</span>Canvas canvas<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-        <span style="color:#66d9ef">super</span><span style="color:#f92672">.</span><span style="color:#a6e22e">onDraw</span><span style="color:#f92672">(</span>canvas<span style="color:#f92672">);</span>
-        drawStripes<span style="color:#f92672">(</span>canvas<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> getHeight<span style="color:#f92672">(),</span> 0<span style="color:#f92672">,</span> getWidth<span style="color:#f92672">(),</span> blackPaint<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
+    <span style="color:#555;font-weight:bold">@Override</span>
+    <span style="color:#289;font-weight:bold">protected</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">onDraw</span><span style="color:#333">(</span>Canvas canvas<span style="color:#333">)</span> <span style="color:#333">{</span>
+        <span style="color:#289;font-weight:bold">super</span><span style="color:#333">.</span><span style="color:#007">onDraw</span><span style="color:#333">(</span>canvas<span style="color:#333">);</span>
+        drawStripes<span style="color:#333">(</span>canvas<span style="color:#333">,</span> 0<span style="color:#333">,</span> getHeight<span style="color:#333">(),</span> 0<span style="color:#333">,</span> getWidth<span style="color:#333">(),</span> blackPaint<span style="color:#333">);</span>
+    <span style="color:#333">}</span>
 
-    <span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">drawStripes</span><span style="color:#f92672">(</span>Canvas canvas<span style="color:#f92672">,</span> <span style="color:#66d9ef">float</span> topy<span style="color:#f92672">,</span> <span style="color:#66d9ef">float</span> bottomy<span style="color:#f92672">,</span> <span style="color:#66d9ef">float</span> startx<span style="color:#f92672">,</span> <span style="color:#66d9ef">float</span> endx<span style="color:#f92672">,</span> Paint p<span style="color:#f92672">){</span>
-        <span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>bottomy <span style="color:#f92672">-</span> topy <span style="color:#f92672">&lt;</span> 1<span style="color:#f92672">){</span>
-            <span style="color:#66d9ef">return</span><span style="color:#f92672">;</span>
-        <span style="color:#f92672">}</span>
-        stripespath<span style="color:#f92672">.</span><span style="color:#a6e22e">reset</span><span style="color:#f92672">();</span>
-        <span style="color:#66d9ef">float</span> width <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>bottomy <span style="color:#f92672">-</span> topy<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> STRIPE_WIDTH_PERCT<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">float</span> offset <span style="color:#f92672">=</span> <span style="color:#f92672">(</span>bottomy <span style="color:#f92672">-</span> topy<span style="color:#f92672">)</span> <span style="color:#f92672">*</span> STRIPE_OFFSET_PERCT<span style="color:#f92672">;</span>
-        <span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">float</span> xPos <span style="color:#f92672">=</span> startx <span style="color:#f92672">-</span> offset<span style="color:#f92672">;</span> xPos <span style="color:#f92672">&lt;=</span> endx<span style="color:#f92672">;</span> xPos <span style="color:#f92672">+=</span> offset <span style="color:#f92672">+</span> width<span style="color:#f92672">){</span>
-            stripespath<span style="color:#f92672">.</span><span style="color:#a6e22e">moveTo</span><span style="color:#f92672">(</span>xPos<span style="color:#f92672">,</span> topy<span style="color:#f92672">);</span>
-            stripespath<span style="color:#f92672">.</span><span style="color:#a6e22e">lineTo</span><span style="color:#f92672">(</span>xPos <span style="color:#f92672">+</span> width<span style="color:#f92672">,</span> topy<span style="color:#f92672">);</span>
-            stripespath<span style="color:#f92672">.</span><span style="color:#a6e22e">lineTo</span><span style="color:#f92672">(</span>xPos <span style="color:#f92672">+</span> offset <span style="color:#f92672">+</span> width<span style="color:#f92672">,</span> bottomy<span style="color:#f92672">);</span>
-            stripespath<span style="color:#f92672">.</span><span style="color:#a6e22e">lineTo</span><span style="color:#f92672">(</span>xPos <span style="color:#f92672">+</span> offset<span style="color:#f92672">,</span> bottomy<span style="color:#f92672">);</span>
-            stripespath<span style="color:#f92672">.</span><span style="color:#a6e22e">lineTo</span><span style="color:#f92672">(</span>xPos<span style="color:#f92672">,</span> topy<span style="color:#f92672">);</span>
-        <span style="color:#f92672">}</span>
-        canvas<span style="color:#f92672">.</span><span style="color:#a6e22e">drawPath</span><span style="color:#f92672">(</span>stripespath<span style="color:#f92672">,</span> p<span style="color:#f92672">);</span>
-    <span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span></code></pre></div>
+    <span style="color:#289;font-weight:bold">private</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">drawStripes</span><span style="color:#333">(</span>Canvas canvas<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">float</span> topy<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">float</span> bottomy<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">float</span> startx<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">float</span> endx<span style="color:#333">,</span> Paint p<span style="color:#333">){</span>
+        <span style="color:#289;font-weight:bold">if</span><span style="color:#333">(</span>bottomy <span style="color:#333">-</span> topy <span style="color:#333">&lt;</span> 1<span style="color:#333">){</span>
+            <span style="color:#289;font-weight:bold">return</span><span style="color:#333">;</span>
+        <span style="color:#333">}</span>
+        stripespath<span style="color:#333">.</span><span style="color:#007">reset</span><span style="color:#333">();</span>
+        <span style="color:#66f;font-weight:bold">float</span> width <span style="color:#333">=</span> <span style="color:#333">(</span>bottomy <span style="color:#333">-</span> topy<span style="color:#333">)</span> <span style="color:#333">*</span> STRIPE_WIDTH_PERCT<span style="color:#333">;</span>
+        <span style="color:#66f;font-weight:bold">float</span> offset <span style="color:#333">=</span> <span style="color:#333">(</span>bottomy <span style="color:#333">-</span> topy<span style="color:#333">)</span> <span style="color:#333">*</span> STRIPE_OFFSET_PERCT<span style="color:#333">;</span>
+        <span style="color:#289;font-weight:bold">for</span><span style="color:#333">(</span><span style="color:#66f;font-weight:bold">float</span> xPos <span style="color:#333">=</span> startx <span style="color:#333">-</span> offset<span style="color:#333">;</span> xPos <span style="color:#333">&lt;=</span> endx<span style="color:#333">;</span> xPos <span style="color:#333">+=</span> offset <span style="color:#333">+</span> width<span style="color:#333">){</span>
+            stripespath<span style="color:#333">.</span><span style="color:#007">moveTo</span><span style="color:#333">(</span>xPos<span style="color:#333">,</span> topy<span style="color:#333">);</span>
+            stripespath<span style="color:#333">.</span><span style="color:#007">lineTo</span><span style="color:#333">(</span>xPos <span style="color:#333">+</span> width<span style="color:#333">,</span> topy<span style="color:#333">);</span>
+            stripespath<span style="color:#333">.</span><span style="color:#007">lineTo</span><span style="color:#333">(</span>xPos <span style="color:#333">+</span> offset <span style="color:#333">+</span> width<span style="color:#333">,</span> bottomy<span style="color:#333">);</span>
+            stripespath<span style="color:#333">.</span><span style="color:#007">lineTo</span><span style="color:#333">(</span>xPos <span style="color:#333">+</span> offset<span style="color:#333">,</span> bottomy<span style="color:#333">);</span>
+            stripespath<span style="color:#333">.</span><span style="color:#007">lineTo</span><span style="color:#333">(</span>xPos<span style="color:#333">,</span> topy<span style="color:#333">);</span>
+        <span style="color:#333">}</span>
+        canvas<span style="color:#333">.</span><span style="color:#007">drawPath</span><span style="color:#333">(</span>stripespath<span style="color:#333">,</span> p<span style="color:#333">);</span>
+    <span style="color:#333">}</span>
+<span style="color:#333">}</span></code></pre></div>
 
 Which will result in something that looks like this.</p></p>
     </section>

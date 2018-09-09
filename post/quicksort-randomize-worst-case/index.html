@@ -15,8 +15,8 @@
         <meta name="author" content="">
         <meta name="keywords" content="awesome, definitely">
 	
-        <meta property="og:site_name" content="Einu sinni á Koala - Tyler Davis">
-        <meta property="og:title" content="Einu sinni á Koala - Tyler Davis">
+        <meta property="og:site_name" content="Einu sinni á Koala">
+        <meta property="og:title" content="Einu sinni á Koala">
         <meta property="og:url" content="https://davityle.github.io/post/quicksort-randomize-worst-case/">
         <meta property="og:description" content="A software development blog by Tyler Davis">
     
@@ -25,7 +25,7 @@
         <meta property="og:article:published_time" content="2015-10-03T10:01:16-07:00" />
     
         <meta name="generator" content="Hugo 0.47.1" />
-        <title>QuickSort - Worst Case with Random Pivot</title>
+        <title>Exploring the Worst Case Complexity of Quicksort</title>
         <link rel="canonical" href="https://davityle.github.io/" />
         <link rel="alternate" type="application/rss+xml" title="RSS" href="">
         <link rel="stylesheet" type='text/css' href="https://davityle.github.io/css/main.css"/>
@@ -39,7 +39,7 @@
 
     <header id="site-header">
         <div class="container">
-            <a href="https://davityle.github.io/" alt="Einu sinni á Koala - Tyler Davis"><h1 class="blog-title heading">Einu sinni á Koala - Tyler Davis</h1></a>
+            <a href="https://davityle.github.io/" alt="Einu sinni á Koala"><h1 class="blog-title heading">Einu sinni á Koala</h1></a>
             <p class="blog-description">A software development blog by Tyler Davis</p>
             <div class="media">
             
@@ -60,222 +60,217 @@
 	<div class="container">
 		<article class="post">
 	<header class="post-header">
-        <h3 class="p-post-title">QuickSort - Worst Case with Random Pivot</h3>
+        <h3 class="p-post-title">Exploring the Worst Case Complexity of Quicksort</h3>
     </header>
 
     <section class="post-content">
-        <h4 id="problem">Problem</h4>
+        <p>The quicksort algorithm has the best case complexity of O(n log n) when each pivot in the sort divides the list into two equal uniform pieces [1]. The worst case occurs when the pivot always divides the list into one list of size 1 and one list of size N - 1. Such as when sorting an already sorted array and the pivot is always chosen as the last element in the list. The complexity of quicksort in this case is an unfortunate O(n<span style="position: relative; bottom: 1ex; font-size: 80%;">2</span>). For this reason, it is recommended to use a random pivot point. This gives an average case of O(n log n) [2]. However, this does not remove the worst case scenario.</p>
 
-<p>I&rsquo;ve read in a few places that Randomizing the pivot point removes the worst case of O(n<span style="position: relative; bottom: 1ex; font-size: 80%;">2</span>) from the quicksort algorithm. <a href="http://en.wikipedia.org/wiki/Quicksort#Analysis_of_randomized_quicksort">Wikipedia</a> is one of those places. Other places write the whole story but don&rsquo;t show any proof. The whole story is that randomizing the pivot point does not, necessarily, remove the worst case. It&rsquo;s easy to show that this is the case. This article assumes basic knowledge of the quicksort algorithm and big O notation.</p>
+<p>For example, consider this array:</p>
 
-<p>The worst case in quick sort happens when each pivot point always contains the next lowest, or always contains the next highest, number in the sequence.</p>
-
-<p>For example. <br> You have an unsorted array</p>
-
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> {<span style="color:#ae81ff">44</span>,<span style="color:#ae81ff">88</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">999</span>,<span style="color:#ae81ff">1040</span>,<span style="color:#ae81ff">23</span>,<span style="color:#ae81ff">123</span>,<span style="color:#ae81ff">89</span>,<span style="color:#ae81ff">2009</span>}
+<p><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">array <span style="color:#333">=</span> {<span style="color:#66f;font-weight:bold">44</span>,<span style="color:#66f;font-weight:bold">88</span>,<span style="color:#66f;font-weight:bold">7</span>,<span style="color:#66f;font-weight:bold">2</span>,<span style="color:#66f;font-weight:bold">1</span>,<span style="color:#66f;font-weight:bold">999</span>,<span style="color:#66f;font-weight:bold">1040</span>,<span style="color:#66f;font-weight:bold">23</span>,<span style="color:#66f;font-weight:bold">123</span>,<span style="color:#66f;font-weight:bold">89</span>,<span style="color:#66f;font-weight:bold">2009</span>}
 </code></pre></div>
-and you want to traverse this array using random pivots. Lets just say that the random number generator produces theses numbers.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">9</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">8</span>,<span style="color:#ae81ff">9</span>
-</code></pre></div>
-Those look random enough. In fact, I would be perfectly comfortable sorting my array with those random numbers just off of the first glance.</p>
+with these given &ldquo;random&rdquo; pivots:
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#66f;font-weight:bold">4</span>,<span style="color:#66f;font-weight:bold">3</span>,<span style="color:#66f;font-weight:bold">2</span>,<span style="color:#66f;font-weight:bold">7</span>,<span style="color:#66f;font-weight:bold">4</span>,<span style="color:#66f;font-weight:bold">7</span>,<span style="color:#66f;font-weight:bold">9</span>,<span style="color:#66f;font-weight:bold">8</span>,<span style="color:#66f;font-weight:bold">8</span>,<span style="color:#66f;font-weight:bold">9</span>
+</code></pre></div></p>
 
-<p>Look at what actually happens when you sort the array using those pivots.</p>
+<p>You get this result:</p>
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">pivot</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span>, <span style="color:#a6e22e">array</span>[<span style="color:#ae81ff">4</span>] <span style="color:#f92672">==</span> <span style="color:#ae81ff">1</span>
+<p><div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">pivot<span style="color:#333">:</span> <span style="color:#66f;font-weight:bold">4</span>, array[<span style="color:#66f;font-weight:bold">4</span>] <span style="color:#333">==</span> <span style="color:#66f;font-weight:bold">1</span>
 </code></pre></div>
 the pivot index is 4, the value at index 4 is 1. Notice that 1 is the lowest number in the array. After the first iteration you end up with this array
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">88</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">44</span>,<span style="color:#ae81ff">999</span>,<span style="color:#ae81ff">1040</span>,<span style="color:#ae81ff">23</span>,<span style="color:#ae81ff">123</span>,<span style="color:#ae81ff">89</span>,<span style="color:#ae81ff">2009</span>}
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">{<span style="color:#66f;font-weight:bold">1</span>,<span style="color:#66f;font-weight:bold">88</span>,<span style="color:#66f;font-weight:bold">7</span>,<span style="color:#66f;font-weight:bold">2</span>,<span style="color:#66f;font-weight:bold">44</span>,<span style="color:#66f;font-weight:bold">999</span>,<span style="color:#66f;font-weight:bold">1040</span>,<span style="color:#66f;font-weight:bold">23</span>,<span style="color:#66f;font-weight:bold">123</span>,<span style="color:#66f;font-weight:bold">89</span>,<span style="color:#66f;font-weight:bold">2009</span>}
 </code></pre></div>
 
-I&rsquo;m just going to run through the rest of the iterations here. Try not to get lost.
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">pivot</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">3</span>	 <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>
-<span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">88</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">44</span>,<span style="color:#ae81ff">999</span>,<span style="color:#ae81ff">1040</span>,<span style="color:#ae81ff">23</span>,<span style="color:#ae81ff">123</span>,<span style="color:#ae81ff">89</span>,<span style="color:#ae81ff">2009</span>}
+Each successive pivot number is the next lowest number in the array.
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">pivot<span style="color:#333">:</span> <span style="color:#66f;font-weight:bold">3</span>	 value<span style="color:#333">:</span> <span style="color:#66f;font-weight:bold">2</span>
+array <span style="color:#333">=</span> {<span style="color:#66f;font-weight:bold">1</span>,<span style="color:#66f;font-weight:bold">88</span>,<span style="color:#66f;font-weight:bold">7</span>,<span style="color:#66f;font-weight:bold">2</span>,<span style="color:#66f;font-weight:bold">44</span>,<span style="color:#66f;font-weight:bold">999</span>,<span style="color:#66f;font-weight:bold">1040</span>,<span style="color:#66f;font-weight:bold">23</span>,<span style="color:#66f;font-weight:bold">123</span>,<span style="color:#66f;font-weight:bold">89</span>,<span style="color:#66f;font-weight:bold">2009</span>}
 
-<span style="color:#a6e22e">pivot</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">2</span>	 <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">7</span>
-<span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">88</span>,<span style="color:#ae81ff">44</span>,<span style="color:#ae81ff">999</span>,<span style="color:#ae81ff">1040</span>,<span style="color:#ae81ff">23</span>,<span style="color:#ae81ff">123</span>,<span style="color:#ae81ff">89</span>,<span style="color:#ae81ff">2009</span>}
+pivot<span style="color:#333">:</span> <span style="color:#66f;font-weight:bold">2</span>	 value<span style="color:#333">:</span> <span style="color:#66f;font-weight:bold">7</span>
+array <span style="color:#333">=</span> {<span style="color:#66f;font-weight:bold">1</span>,<span style="color:#66f;font-weight:bold">2</span>,<span style="color:#66f;font-weight:bold">7</span>,<span style="color:#66f;font-weight:bold">88</span>,<span style="color:#66f;font-weight:bold">44</span>,<span style="color:#66f;font-weight:bold">999</span>,<span style="color:#66f;font-weight:bold">1040</span>,<span style="color:#66f;font-weight:bold">23</span>,<span style="color:#66f;font-weight:bold">123</span>,<span style="color:#66f;font-weight:bold">89</span>,<span style="color:#66f;font-weight:bold">2009</span>}
 
-<span style="color:#a6e22e">pivot</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">7</span>	 <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">23</span>
-<span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">88</span>,<span style="color:#ae81ff">44</span>,<span style="color:#ae81ff">999</span>,<span style="color:#ae81ff">1040</span>,<span style="color:#ae81ff">23</span>,<span style="color:#ae81ff">123</span>,<span style="color:#ae81ff">89</span>,<span style="color:#ae81ff">2009</span>}
+pivot<span style="color:#333">:</span> <span style="color:#66f;font-weight:bold">7</span>	 value<span style="color:#333">:</span> <span style="color:#66f;font-weight:bold">23</span>
+array <span style="color:#333">=</span> {<span style="color:#66f;font-weight:bold">1</span>,<span style="color:#66f;font-weight:bold">2</span>,<span style="color:#66f;font-weight:bold">7</span>,<span style="color:#66f;font-weight:bold">88</span>,<span style="color:#66f;font-weight:bold">44</span>,<span style="color:#66f;font-weight:bold">999</span>,<span style="color:#66f;font-weight:bold">1040</span>,<span style="color:#66f;font-weight:bold">23</span>,<span style="color:#66f;font-weight:bold">123</span>,<span style="color:#66f;font-weight:bold">89</span>,<span style="color:#66f;font-weight:bold">2009</span>}
 
-<span style="color:#a6e22e">pivot</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">4</span>	 <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">44</span>
-<span style="color:#a6e22e">array</span> <span style="color:#f92672">=</span> {<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">23</span>,<span style="color:#ae81ff">44</span>,<span style="color:#ae81ff">999</span>,<span style="color:#ae81ff">1040</span>,<span style="color:#ae81ff">88</span>,<span style="color:#ae81ff">123</span>,<span style="color:#ae81ff">89</span>,<span style="color:#ae81ff">2009</span>}
+pivot<span style="color:#333">:</span> <span style="color:#66f;font-weight:bold">4</span>	 value<span style="color:#333">:</span> <span style="color:#66f;font-weight:bold">44</span>
+array <span style="color:#333">=</span> {<span style="color:#66f;font-weight:bold">1</span>,<span style="color:#66f;font-weight:bold">2</span>,<span style="color:#66f;font-weight:bold">7</span>,<span style="color:#66f;font-weight:bold">23</span>,<span style="color:#66f;font-weight:bold">44</span>,<span style="color:#66f;font-weight:bold">999</span>,<span style="color:#66f;font-weight:bold">1040</span>,<span style="color:#66f;font-weight:bold">88</span>,<span style="color:#66f;font-weight:bold">123</span>,<span style="color:#66f;font-weight:bold">89</span>,<span style="color:#66f;font-weight:bold">2009</span>}
 
-<span style="color:#a6e22e">pivot</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">7</span>	 <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">88</span>
-{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">23</span>,<span style="color:#ae81ff">44</span>,<span style="color:#ae81ff">999</span>,<span style="color:#ae81ff">1040</span>,<span style="color:#ae81ff">88</span>,<span style="color:#ae81ff">123</span>,<span style="color:#ae81ff">89</span>,<span style="color:#ae81ff">2009</span>}
+pivot<span style="color:#333">:</span> <span style="color:#66f;font-weight:bold">7</span>	 value<span style="color:#333">:</span> <span style="color:#66f;font-weight:bold">88</span>
+{<span style="color:#66f;font-weight:bold">1</span>,<span style="color:#66f;font-weight:bold">2</span>,<span style="color:#66f;font-weight:bold">7</span>,<span style="color:#66f;font-weight:bold">23</span>,<span style="color:#66f;font-weight:bold">44</span>,<span style="color:#66f;font-weight:bold">999</span>,<span style="color:#66f;font-weight:bold">1040</span>,<span style="color:#66f;font-weight:bold">88</span>,<span style="color:#66f;font-weight:bold">123</span>,<span style="color:#66f;font-weight:bold">89</span>,<span style="color:#66f;font-weight:bold">2009</span>}
 
-<span style="color:#a6e22e">pivot</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">9</span>	 <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">89</span>
-{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">23</span>,<span style="color:#ae81ff">44</span>,<span style="color:#ae81ff">88</span>,<span style="color:#ae81ff">1040</span>,<span style="color:#ae81ff">999</span>,<span style="color:#ae81ff">123</span>,<span style="color:#ae81ff">89</span>,<span style="color:#ae81ff">2009</span>}
+pivot<span style="color:#333">:</span> <span style="color:#66f;font-weight:bold">9</span>	 value<span style="color:#333">:</span> <span style="color:#66f;font-weight:bold">89</span>
+{<span style="color:#66f;font-weight:bold">1</span>,<span style="color:#66f;font-weight:bold">2</span>,<span style="color:#66f;font-weight:bold">7</span>,<span style="color:#66f;font-weight:bold">23</span>,<span style="color:#66f;font-weight:bold">44</span>,<span style="color:#66f;font-weight:bold">88</span>,<span style="color:#66f;font-weight:bold">1040</span>,<span style="color:#66f;font-weight:bold">999</span>,<span style="color:#66f;font-weight:bold">123</span>,<span style="color:#66f;font-weight:bold">89</span>,<span style="color:#66f;font-weight:bold">2009</span>}
 
-<span style="color:#a6e22e">pivot</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">8</span>	 <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">123</span>
-{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">23</span>,<span style="color:#ae81ff">44</span>,<span style="color:#ae81ff">88</span>,<span style="color:#ae81ff">89</span>,<span style="color:#ae81ff">999</span>,<span style="color:#ae81ff">123</span>,<span style="color:#ae81ff">1040</span>,<span style="color:#ae81ff">2009</span>}
+pivot<span style="color:#333">:</span> <span style="color:#66f;font-weight:bold">8</span>	 value<span style="color:#333">:</span> <span style="color:#66f;font-weight:bold">123</span>
+{<span style="color:#66f;font-weight:bold">1</span>,<span style="color:#66f;font-weight:bold">2</span>,<span style="color:#66f;font-weight:bold">7</span>,<span style="color:#66f;font-weight:bold">23</span>,<span style="color:#66f;font-weight:bold">44</span>,<span style="color:#66f;font-weight:bold">88</span>,<span style="color:#66f;font-weight:bold">89</span>,<span style="color:#66f;font-weight:bold">999</span>,<span style="color:#66f;font-weight:bold">123</span>,<span style="color:#66f;font-weight:bold">1040</span>,<span style="color:#66f;font-weight:bold">2009</span>}
 
-<span style="color:#a6e22e">pivot</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">8</span>	 <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">999</span>
-{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">23</span>,<span style="color:#ae81ff">44</span>,<span style="color:#ae81ff">88</span>,<span style="color:#ae81ff">89</span>,<span style="color:#ae81ff">123</span>,<span style="color:#ae81ff">999</span>,<span style="color:#ae81ff">1040</span>,<span style="color:#ae81ff">2009</span>}
+pivot<span style="color:#333">:</span> <span style="color:#66f;font-weight:bold">8</span>	 value<span style="color:#333">:</span> <span style="color:#66f;font-weight:bold">999</span>
+{<span style="color:#66f;font-weight:bold">1</span>,<span style="color:#66f;font-weight:bold">2</span>,<span style="color:#66f;font-weight:bold">7</span>,<span style="color:#66f;font-weight:bold">23</span>,<span style="color:#66f;font-weight:bold">44</span>,<span style="color:#66f;font-weight:bold">88</span>,<span style="color:#66f;font-weight:bold">89</span>,<span style="color:#66f;font-weight:bold">123</span>,<span style="color:#66f;font-weight:bold">999</span>,<span style="color:#66f;font-weight:bold">1040</span>,<span style="color:#66f;font-weight:bold">2009</span>}
 
-<span style="color:#a6e22e">pivot</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">9</span>	 <span style="color:#a6e22e">value</span><span style="color:#f92672">:</span> <span style="color:#ae81ff">1040</span>
-{<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">7</span>,<span style="color:#ae81ff">23</span>,<span style="color:#ae81ff">44</span>,<span style="color:#ae81ff">88</span>,<span style="color:#ae81ff">89</span>,<span style="color:#ae81ff">123</span>,<span style="color:#ae81ff">999</span>,<span style="color:#ae81ff">1040</span>,<span style="color:#ae81ff">2009</span>}
-</code></pre></div>
-Hurray! The list is sorted. What do you notice about the number of iterations it took though? What do you notice about the values of the numbers?</p>
+pivot<span style="color:#333">:</span> <span style="color:#66f;font-weight:bold">9</span>	 value<span style="color:#333">:</span> <span style="color:#66f;font-weight:bold">1040</span>
+{<span style="color:#66f;font-weight:bold">1</span>,<span style="color:#66f;font-weight:bold">2</span>,<span style="color:#66f;font-weight:bold">7</span>,<span style="color:#66f;font-weight:bold">23</span>,<span style="color:#66f;font-weight:bold">44</span>,<span style="color:#66f;font-weight:bold">88</span>,<span style="color:#66f;font-weight:bold">89</span>,<span style="color:#66f;font-weight:bold">123</span>,<span style="color:#66f;font-weight:bold">999</span>,<span style="color:#66f;font-weight:bold">1040</span>,<span style="color:#66f;font-weight:bold">2009</span>}
+</code></pre></div></p>
 
-<p>Notice that it took about n iterations , and each iteration handled every number that wasn&rsquo;t already sorted. This results in a n operations over n iterations, or O(n<span style="position: relative; bottom: 1ex; font-size: 80%;">2</span>), operation.</p>
-
-<p>Even though this array is sorted using a random pivot it still hit the worst possible case.</p>
+<p>The above sort took n iterations and each iteration handled every number that wasn&rsquo;t already sorted. This results in n operations over n iterations, a complexity of O(n<span style="position: relative; bottom: 1ex; font-size: 80%;">2</span>).</p>
 
 <h4 id="experiment">Experiment</h4>
 
-<p>What if you had a way to generate this worst case scenario? Luckily, I was able to reverse engineer the quicksort algorithm and produce a shuffle that always shuffles the array into the worst case scenario for quicksort (if they have the same random seed). The simple algorithm is defined below.</p>
+<p>For fun — yet no profit — I slapped together a quick proof of concept in Java that, given an array and a seed, shuffles the array such that when the array is sorted using quicksort and a random pivot with the same seed, quicksort hits the worst case scenario [3].</p>
 
-<p><div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">/**
-</span><span style="color:#75715e"> * This class creates the worst case scenario for a quick sort
-</span><span style="color:#75715e"> */</span>
-<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QuickShuffle</span> <span style="color:#f92672">{</span>
-	<span style="color:#75715e">/**
-</span><span style="color:#75715e">	* assumes a sorted array is passed in
-</span><span style="color:#75715e">	*/</span>
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">quickShuffle</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> a<span style="color:#f92672">,</span> Random rand<span style="color:#f92672">){</span>		
-		<span style="color:#66d9ef">int</span> length <span style="color:#f92672">=</span> a<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span>
-		<span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> indexes<span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>length<span style="color:#f92672">];</span>
-		<span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> index <span style="color:#f92672">&lt;</span> length<span style="color:#f92672">;</span> index<span style="color:#f92672">++){</span>
-			<span style="color:#66d9ef">int</span> w <span style="color:#f92672">=</span> index <span style="color:#f92672">+</span> rand<span style="color:#f92672">.</span><span style="color:#a6e22e">nextInt</span><span style="color:#f92672">(</span>length <span style="color:#f92672">-</span> index<span style="color:#f92672">);</span>
-			indexes<span style="color:#f92672">[</span>index<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> w<span style="color:#f92672">;</span>
-		<span style="color:#f92672">}</span>
-		<span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> indexes<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span> index <span style="color:#f92672">&gt;=</span> 0<span style="color:#f92672">;</span> index<span style="color:#f92672">--){</span>
-			swap<span style="color:#f92672">(</span>a<span style="color:#f92672">,</span> index<span style="color:#f92672">,</span> indexes<span style="color:#f92672">[</span>index<span style="color:#f92672">]);</span>
-		<span style="color:#f92672">}</span>
-	<span style="color:#f92672">}</span>
+<p>I profiled quicksort when run against a shuffled array — both with the shuffle seed and with another control seed [4] [5]. The results were actually quite fun.</p>
 
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">swap</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> a<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> index1<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> index2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">int</span> temp <span style="color:#f92672">=</span> a<span style="color:#f92672">[</span>index1<span style="color:#f92672">];</span>
-		a<span style="color:#f92672">[</span>index1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> a<span style="color:#f92672">[</span>index2<span style="color:#f92672">];</span>
-		a<span style="color:#f92672">[</span>index2<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> temp<span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span></code></pre></div>
-Then with a quicksort that looks like this
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">QuickSort</span> <span style="color:#f92672">{</span>
-
-	<span style="color:#66d9ef">private</span> Random rand<span style="color:#f92672">;</span>
-
-	<span style="color:#66d9ef">private</span> <span style="color:#a6e22e">QuickSort</span><span style="color:#f92672">(</span>Random rand<span style="color:#f92672">){</span>
-		<span style="color:#66d9ef">this</span><span style="color:#f92672">.</span><span style="color:#a6e22e">rand</span> <span style="color:#f92672">=</span> rand<span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
-
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">quickSort</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> a<span style="color:#f92672">,</span> Random rand<span style="color:#f92672">){</span>
-		<span style="color:#66d9ef">new</span> QuickSort<span style="color:#f92672">(</span>rand<span style="color:#f92672">).</span><span style="color:#a6e22e">quickSort</span><span style="color:#f92672">(</span>a<span style="color:#f92672">,</span> 0<span style="color:#f92672">,</span> a<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">);</span>
-	<span style="color:#f92672">}</span>
-
-	<span style="color:#66d9ef">private</span> QuickSort <span style="color:#a6e22e">quickSort</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> a<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> bottomIndex<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> topIndex<span style="color:#f92672">){</span>
-		<span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>bottomIndex<span style="color:#f92672">&lt;</span>topIndex<span style="color:#f92672">){</span>
-			<span style="color:#66d9ef">int</span> pivot <span style="color:#f92672">=</span>switchPivot<span style="color:#f92672">(</span>a<span style="color:#f92672">,</span>bottomIndex<span style="color:#f92672">,</span>topIndex<span style="color:#f92672">);</span>
-			quickSort<span style="color:#f92672">(</span>a<span style="color:#f92672">,</span>bottomIndex<span style="color:#f92672">,</span>pivot<span style="color:#f92672">);</span>
-			quickSort<span style="color:#f92672">(</span>a<span style="color:#f92672">,</span>pivot<span style="color:#f92672">+</span>1<span style="color:#f92672">,</span>topIndex<span style="color:#f92672">);</span>
-		<span style="color:#f92672">}</span>
-		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">this</span><span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
-
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">int</span> <span style="color:#a6e22e">switchPivot</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> a<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> bottomIndex<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> topIndex<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> bottomIndex <span style="color:#f92672">+</span> rand<span style="color:#f92672">.</span><span style="color:#a6e22e">nextInt</span><span style="color:#f92672">(</span>topIndex <span style="color:#f92672">-</span> bottomIndex<span style="color:#f92672">);</span>
-		<span style="color:#66d9ef">int</span> value <span style="color:#f92672">=</span> a<span style="color:#f92672">[</span>index<span style="color:#f92672">];</span>
-		<span style="color:#66d9ef">int</span> bottomSearch <span style="color:#f92672">=</span> bottomIndex<span style="color:#f92672">-</span>1 <span style="color:#f92672">;</span>
-		<span style="color:#66d9ef">int</span> topSearch <span style="color:#f92672">=</span> topIndex<span style="color:#f92672">+</span>1 <span style="color:#f92672">;</span>
-
-		<span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span><span style="color:#66d9ef">true</span><span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		    <span style="color:#66d9ef">do</span><span style="color:#f92672">{</span>
-		    	bottomSearch<span style="color:#f92672">++;</span>
-		    <span style="color:#f92672">}</span><span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span> bottomSearch <span style="color:#f92672">&lt;</span> topIndex <span style="color:#f92672">&amp;&amp;</span> a<span style="color:#f92672">[</span>bottomSearch<span style="color:#f92672">]</span> <span style="color:#f92672">&lt;</span> value<span style="color:#f92672">);</span>
-
-		    <span style="color:#66d9ef">do</span><span style="color:#f92672">{</span>
-		    	topSearch<span style="color:#f92672">--;</span>
-		    <span style="color:#f92672">}</span><span style="color:#66d9ef">while</span> <span style="color:#f92672">(</span>topSearch <span style="color:#f92672">&gt;</span> bottomIndex <span style="color:#f92672">&amp;&amp;</span> a<span style="color:#f92672">[</span>topSearch<span style="color:#f92672">]</span> <span style="color:#f92672">&gt;</span> value<span style="color:#f92672">);</span>
-
-		    <span style="color:#66d9ef">if</span> <span style="color:#f92672">(</span>bottomSearch <span style="color:#f92672">&lt;</span> topSearch<span style="color:#f92672">)</span>
-		    	swap<span style="color:#f92672">(</span>a<span style="color:#f92672">,</span> bottomSearch<span style="color:#f92672">,</span> topSearch<span style="color:#f92672">);</span>
-		    <span style="color:#66d9ef">else</span>
-		    	<span style="color:#66d9ef">return</span> topSearch<span style="color:#f92672">;</span>
-		<span style="color:#f92672">}</span>
-	<span style="color:#f92672">}</span>
-
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">swap</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> a<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> index1<span style="color:#f92672">,</span> <span style="color:#66d9ef">int</span> index2<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">int</span> temp <span style="color:#f92672">=</span> a<span style="color:#f92672">[</span>index1<span style="color:#f92672">];</span>
-		a<span style="color:#f92672">[</span>index1<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> a<span style="color:#f92672">[</span>index2<span style="color:#f92672">];</span>
-		a<span style="color:#f92672">[</span>index2<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> temp<span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span></code></pre></div>
-We can do some profiling and check to see if their is any validity to this worst case scenario.
-I threw together this simple profiler to check out the results of a worst case scenario. (I had to increase Java&rsquo;s stack size using -Xss to run this)</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#66d9ef">public</span> <span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Main</span> <span style="color:#f92672">{</span>
-
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> NUMBER_OF_ITERATIONS<span style="color:#f92672">=</span> 12<span style="color:#f92672">;</span>
-	<span style="color:#66d9ef">private</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">final</span> <span style="color:#66d9ef">int</span> STARTING_N <span style="color:#f92672">=</span> 256<span style="color:#f92672">;</span>
-
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">void</span> <span style="color:#a6e22e">main</span><span style="color:#f92672">(</span>String<span style="color:#f92672">[]</span> args<span style="color:#f92672">)</span> <span style="color:#f92672">{</span>
-		<span style="color:#66d9ef">int</span> n <span style="color:#f92672">=</span> STARTING_N<span style="color:#f92672">;</span>
-		<span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> index <span style="color:#f92672">&lt;</span> NUMBER_OF_ITERATIONS<span style="color:#f92672">;</span> index<span style="color:#f92672">++){</span>
-			<span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> array <span style="color:#f92672">=</span> <span style="color:#66d9ef">new</span> <span style="color:#66d9ef">int</span><span style="color:#f92672">[</span>n<span style="color:#f92672">];</span>
-			<span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> i <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> i <span style="color:#f92672">&lt;</span> array<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span><span style="color:#f92672">;){</span>
-				array<span style="color:#f92672">[</span>i<span style="color:#f92672">]</span> <span style="color:#f92672">=</span> <span style="color:#f92672">++</span>i<span style="color:#f92672">;</span>
-			<span style="color:#f92672">}</span>
-			QuickShuffle<span style="color:#f92672">.</span><span style="color:#a6e22e">quickShuffle</span><span style="color:#f92672">(</span>array<span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>3<span style="color:#f92672">));</span>
-			<span style="color:#66d9ef">long</span> start <span style="color:#f92672">=</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">currentTimeMillis</span><span style="color:#f92672">();</span>
-			QuickSort<span style="color:#f92672">.</span><span style="color:#a6e22e">quickSort</span><span style="color:#f92672">(</span>array<span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>3<span style="color:#f92672">));</span>
-			<span style="color:#66d9ef">long</span> sameSeedResults <span style="color:#f92672">=</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">currentTimeMillis</span><span style="color:#f92672">()</span> <span style="color:#f92672">-</span> start<span style="color:#f92672">;</span>
-			<span style="color:#66d9ef">if</span><span style="color:#f92672">(!</span>isSorted<span style="color:#f92672">(</span>array<span style="color:#f92672">))</span>
-				<span style="color:#66d9ef">throw</span> <span style="color:#66d9ef">new</span> RuntimeException<span style="color:#f92672">();</span>
-			QuickShuffle<span style="color:#f92672">.</span><span style="color:#a6e22e">quickShuffle</span><span style="color:#f92672">(</span>array<span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>3<span style="color:#f92672">));</span>
-			start <span style="color:#f92672">=</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">currentTimeMillis</span><span style="color:#f92672">();</span>
-			QuickSort<span style="color:#f92672">.</span><span style="color:#a6e22e">quickSort</span><span style="color:#f92672">(</span>array<span style="color:#f92672">,</span> <span style="color:#66d9ef">new</span> Random<span style="color:#f92672">(</span>4<span style="color:#f92672">));</span>
-			<span style="color:#66d9ef">long</span> differentSeedResults <span style="color:#f92672">=</span> System<span style="color:#f92672">.</span><span style="color:#a6e22e">currentTimeMillis</span><span style="color:#f92672">()</span> <span style="color:#f92672">-</span> start<span style="color:#f92672">;</span>
-			System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Same seed      : size = &#34;</span> <span style="color:#f92672">+</span> n <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;\ttime = &#34;</span> <span style="color:#f92672">+</span> sameSeedResults<span style="color:#f92672">);</span>
-			System<span style="color:#f92672">.</span><span style="color:#a6e22e">out</span><span style="color:#f92672">.</span><span style="color:#a6e22e">println</span><span style="color:#f92672">(</span><span style="color:#e6db74">&#34;Different seeds: size = &#34;</span> <span style="color:#f92672">+</span> n <span style="color:#f92672">+</span> <span style="color:#e6db74">&#34;\ttime = &#34;</span> <span style="color:#f92672">+</span> differentSeedResults<span style="color:#f92672">);</span>
-			n <span style="color:#f92672">&lt;&lt;=</span> 1<span style="color:#f92672">;</span>
-		<span style="color:#f92672">}</span>			
-	<span style="color:#f92672">}</span>
-
-	<span style="color:#66d9ef">public</span> <span style="color:#66d9ef">static</span> <span style="color:#66d9ef">boolean</span> <span style="color:#a6e22e">isSorted</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span><span style="color:#f92672">[]</span> array<span style="color:#f92672">){</span>
-		<span style="color:#66d9ef">for</span><span style="color:#f92672">(</span><span style="color:#66d9ef">int</span> index <span style="color:#f92672">=</span> 0<span style="color:#f92672">;</span> index <span style="color:#f92672">&lt;</span> array<span style="color:#f92672">.</span><span style="color:#a6e22e">length</span> <span style="color:#f92672">-</span> 1<span style="color:#f92672">;</span> index<span style="color:#f92672">++){</span>
-			<span style="color:#66d9ef">if</span><span style="color:#f92672">(</span>array<span style="color:#f92672">[</span>index<span style="color:#f92672">]</span> <span style="color:#f92672">&gt;</span> array<span style="color:#f92672">[</span>index <span style="color:#f92672">+</span> 1<span style="color:#f92672">])</span>
-				<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">false</span><span style="color:#f92672">;</span>
-		<span style="color:#f92672">}</span>
-		<span style="color:#66d9ef">return</span> <span style="color:#66d9ef">true</span><span style="color:#f92672">;</span>
-	<span style="color:#f92672">}</span>
-<span style="color:#f92672">}</span></code></pre></div>
-
-<p>The profiler starts at n = 256 and then increases n by a power of 2 for each following iteration. Each iteration, an array of size n is created and filled with numbers from 1 - n. The array is shuffled and sorted using the same seed then the array is shuffled and sorted using different seeds. Here is the output from that profiler.</p>
-
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript"><span style="color:#a6e22e">Same</span> <span style="color:#a6e22e">seed</span>      <span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">256</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-<span style="color:#a6e22e">Different</span> <span style="color:#a6e22e">seeds</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">256</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-<span style="color:#a6e22e">Same</span> <span style="color:#a6e22e">seed</span>      <span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">512</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-<span style="color:#a6e22e">Different</span> <span style="color:#a6e22e">seeds</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">512</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-<span style="color:#a6e22e">Same</span> <span style="color:#a6e22e">seed</span>      <span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1024</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-<span style="color:#a6e22e">Different</span> <span style="color:#a6e22e">seeds</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1024</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-<span style="color:#a6e22e">Same</span> <span style="color:#a6e22e">seed</span>      <span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2048</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">6</span>
-<span style="color:#a6e22e">Different</span> <span style="color:#a6e22e">seeds</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2048</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-<span style="color:#a6e22e">Same</span> <span style="color:#a6e22e">seed</span>      <span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4096</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
-<span style="color:#a6e22e">Different</span> <span style="color:#a6e22e">seeds</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">4096</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">0</span>
-<span style="color:#a6e22e">Same</span> <span style="color:#a6e22e">seed</span>      <span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">8192</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>
-<span style="color:#a6e22e">Different</span> <span style="color:#a6e22e">seeds</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">8192</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">1</span>
-<span style="color:#a6e22e">Same</span> <span style="color:#a6e22e">seed</span>      <span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">16384</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">47</span>
-<span style="color:#a6e22e">Different</span> <span style="color:#a6e22e">seeds</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">16384</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
-<span style="color:#a6e22e">Same</span> <span style="color:#a6e22e">seed</span>      <span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">32768</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">187</span>
-<span style="color:#a6e22e">Different</span> <span style="color:#a6e22e">seeds</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">32768</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>
-<span style="color:#a6e22e">Same</span> <span style="color:#a6e22e">seed</span>      <span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">65536</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">743</span>
-<span style="color:#a6e22e">Different</span> <span style="color:#a6e22e">seeds</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">65536</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">8</span>
-<span style="color:#a6e22e">Same</span> <span style="color:#a6e22e">seed</span>      <span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">131072</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">2960</span>
-<span style="color:#a6e22e">Different</span> <span style="color:#a6e22e">seeds</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">131072</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">19</span>
-<span style="color:#a6e22e">Same</span> <span style="color:#a6e22e">seed</span>      <span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">262144</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">11936</span>
-<span style="color:#a6e22e">Different</span> <span style="color:#a6e22e">seeds</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">262144</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">34</span>
-<span style="color:#a6e22e">Same</span> <span style="color:#a6e22e">seed</span>      <span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">524288</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">48304</span>
-<span style="color:#a6e22e">Different</span> <span style="color:#a6e22e">seeds</span><span style="color:#f92672">:</span> <span style="color:#a6e22e">size</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">524288</span>	<span style="color:#a6e22e">time</span> <span style="color:#f92672">=</span> <span style="color:#ae81ff">72</span>
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-javascript" data-lang="javascript">Same seed      <span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">256</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">1</span>
+Different seeds<span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">256</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">1</span>
+Same seed      <span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">512</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">0</span>
+Different seeds<span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">512</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">1</span>
+Same seed      <span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">1024</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">1</span>
+Different seeds<span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">1024</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">1</span>
+Same seed      <span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">2048</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">6</span>
+Different seeds<span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">2048</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">1</span>
+Same seed      <span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">4096</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">3</span>
+Different seeds<span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">4096</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">0</span>
+Same seed      <span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">8192</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">12</span>
+Different seeds<span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">8192</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">1</span>
+Same seed      <span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">16384</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">47</span>
+Different seeds<span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">16384</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">2</span>
+Same seed      <span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">32768</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">187</span>
+Different seeds<span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">32768</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">3</span>
+Same seed      <span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">65536</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">743</span>
+Different seeds<span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">65536</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">8</span>
+Same seed      <span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">131072</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">2960</span>
+Different seeds<span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">131072</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">19</span>
+Same seed      <span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">262144</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">11936</span>
+Different seeds<span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">262144</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">34</span>
+Same seed      <span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">524288</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">48304</span>
+Different seeds<span style="color:#333">:</span> size <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">524288</span>	time <span style="color:#333">=</span> <span style="color:#66f;font-weight:bold">72</span>
 </code></pre></div>
 
-<p>Holy cow. Lets look at that in a graph. (They are sorting the exact same array!)
+<p>I only tested 12 iterations on my old laptop after the 12th iteration took almost a minute.
 <img src="/images/20150202030320.png" alt="Graph showing exponential curve" /></p>
 
-<p>The sorter using the same seed as the shuffler definitely looks exponential while the sorter using a different seed is hardly seen at all.</p>
+<p>You can clearly see in the results that the average case is exhibited when using the control seed and the worst case complexity is exhibited when using the same seed as the shuffle.</p>
 
-<h4 id="conclusion">Conclusion</h4>
+<h6 id="references">References</h6>
 
-<p>There is a possiblity to hit the worst case using a randomized pivot point for your quicksort algorithm, but I &lsquo;forgot&rsquo; to mention that the possiblity of you finding one of these arrays that match up do perfectly in the &lsquo;wild&rsquo; is extremely rare. Using a random pivot is still probably the safest way to do it. Just don&rsquo;t forget that it is not a guarantee that you will always perform at O(n*log(n)).</p>
+<p>[1] <a href="https://en.wikipedia.org/wiki/Quicksort#Analysis_of_randomized_quicksort#Best-case_analysis">https://en.wikipedia.org/wiki/Quicksort#Analysis_of_randomized_quicksort#Best-case_analysis</a></p>
+
+<p>[2] <a href="https://en.wikipedia.org/wiki/Quicksort#Analysis_of_randomized_quicksort#Using_percentiles">https://en.wikipedia.org/wiki/Quicksort#Analysis_of_randomized_quicksort#Using_percentiles</a></p>
+
+<p>[3] Shuffle Implementation
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#666;font-style:italic">/**
+</span><span style="color:#666;font-style:italic"> * This class creates the worst case scenario for a quick sort
+</span><span style="color:#666;font-style:italic"> */</span>
+<span style="color:#289;font-weight:bold">public</span> <span style="color:#289;font-weight:bold">class</span> <span style="color:#e9e;font-weight:bold">QuickShuffle</span> <span style="color:#333">{</span>
+	<span style="color:#666;font-style:italic">/**
+</span><span style="color:#666;font-style:italic">	* assumes a sorted array is passed in
+</span><span style="color:#666;font-style:italic">	*/</span>
+	<span style="color:#289;font-weight:bold">public</span> <span style="color:#289;font-weight:bold">static</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">quickShuffle</span><span style="color:#333">(</span><span style="color:#66f;font-weight:bold">int</span><span style="color:#333">[]</span> a<span style="color:#333">,</span> Random rand<span style="color:#333">){</span>		
+		<span style="color:#66f;font-weight:bold">int</span> length <span style="color:#333">=</span> a<span style="color:#333">.</span><span style="color:#007">length</span> <span style="color:#333">-</span> 1<span style="color:#333">;</span>
+		<span style="color:#66f;font-weight:bold">int</span><span style="color:#333">[]</span> indexes<span style="color:#333">=</span> <span style="color:#289;font-weight:bold">new</span> <span style="color:#66f;font-weight:bold">int</span><span style="color:#333">[</span>length<span style="color:#333">];</span>
+		<span style="color:#289;font-weight:bold">for</span><span style="color:#333">(</span><span style="color:#66f;font-weight:bold">int</span> index <span style="color:#333">=</span> 0<span style="color:#333">;</span> index <span style="color:#333">&lt;</span> length<span style="color:#333">;</span> index<span style="color:#333">++){</span>
+			<span style="color:#66f;font-weight:bold">int</span> w <span style="color:#333">=</span> index <span style="color:#333">+</span> rand<span style="color:#333">.</span><span style="color:#007">nextInt</span><span style="color:#333">(</span>length <span style="color:#333">-</span> index<span style="color:#333">);</span>
+			indexes<span style="color:#333">[</span>index<span style="color:#333">]</span> <span style="color:#333">=</span> w<span style="color:#333">;</span>
+		<span style="color:#333">}</span>
+		<span style="color:#289;font-weight:bold">for</span><span style="color:#333">(</span><span style="color:#66f;font-weight:bold">int</span> index <span style="color:#333">=</span> indexes<span style="color:#333">.</span><span style="color:#007">length</span> <span style="color:#333">-</span> 1<span style="color:#333">;</span> index <span style="color:#333">&gt;=</span> 0<span style="color:#333">;</span> index<span style="color:#333">--){</span>
+			swap<span style="color:#333">(</span>a<span style="color:#333">,</span> index<span style="color:#333">,</span> indexes<span style="color:#333">[</span>index<span style="color:#333">]);</span>
+		<span style="color:#333">}</span>
+	<span style="color:#333">}</span>
+
+	<span style="color:#289;font-weight:bold">private</span> <span style="color:#289;font-weight:bold">static</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">swap</span><span style="color:#333">(</span><span style="color:#66f;font-weight:bold">int</span><span style="color:#333">[]</span> a<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">int</span> index1<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">int</span> index2<span style="color:#333">)</span> <span style="color:#333">{</span>
+		<span style="color:#66f;font-weight:bold">int</span> temp <span style="color:#333">=</span> a<span style="color:#333">[</span>index1<span style="color:#333">];</span>
+		a<span style="color:#333">[</span>index1<span style="color:#333">]</span> <span style="color:#333">=</span> a<span style="color:#333">[</span>index2<span style="color:#333">];</span>
+		a<span style="color:#333">[</span>index2<span style="color:#333">]</span> <span style="color:#333">=</span> temp<span style="color:#333">;</span>
+	<span style="color:#333">}</span>
+<span style="color:#333">}</span></code></pre></div></p>
+
+<p>[4] Quick Sort Implementation
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#289;font-weight:bold">public</span> <span style="color:#289;font-weight:bold">class</span> <span style="color:#e9e;font-weight:bold">QuickSort</span> <span style="color:#333">{</span>
+
+	<span style="color:#289;font-weight:bold">private</span> Random rand<span style="color:#333">;</span>
+
+	<span style="color:#289;font-weight:bold">private</span> <span style="color:#5ed;font-weight:bold">QuickSort</span><span style="color:#333">(</span>Random rand<span style="color:#333">){</span>
+		<span style="color:#289;font-weight:bold">this</span><span style="color:#333">.</span><span style="color:#007">rand</span> <span style="color:#333">=</span> rand<span style="color:#333">;</span>
+	<span style="color:#333">}</span>
+
+	<span style="color:#289;font-weight:bold">public</span> <span style="color:#289;font-weight:bold">static</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">quickSort</span><span style="color:#333">(</span><span style="color:#66f;font-weight:bold">int</span><span style="color:#333">[]</span> a<span style="color:#333">,</span> Random rand<span style="color:#333">){</span>
+		<span style="color:#289;font-weight:bold">new</span> QuickSort<span style="color:#333">(</span>rand<span style="color:#333">).</span><span style="color:#007">quickSort</span><span style="color:#333">(</span>a<span style="color:#333">,</span> 0<span style="color:#333">,</span> a<span style="color:#333">.</span><span style="color:#007">length</span> <span style="color:#333">-</span> 1<span style="color:#333">);</span>
+	<span style="color:#333">}</span>
+
+	<span style="color:#289;font-weight:bold">private</span> QuickSort <span style="color:#5ed;font-weight:bold">quickSort</span><span style="color:#333">(</span><span style="color:#66f;font-weight:bold">int</span><span style="color:#333">[]</span> a<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">int</span> bottomIndex<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">int</span> topIndex<span style="color:#333">){</span>
+		<span style="color:#289;font-weight:bold">if</span><span style="color:#333">(</span>bottomIndex<span style="color:#333">&lt;</span>topIndex<span style="color:#333">){</span>
+			<span style="color:#66f;font-weight:bold">int</span> pivot <span style="color:#333">=</span>switchPivot<span style="color:#333">(</span>a<span style="color:#333">,</span>bottomIndex<span style="color:#333">,</span>topIndex<span style="color:#333">);</span>
+			quickSort<span style="color:#333">(</span>a<span style="color:#333">,</span>bottomIndex<span style="color:#333">,</span>pivot<span style="color:#333">);</span>
+			quickSort<span style="color:#333">(</span>a<span style="color:#333">,</span>pivot<span style="color:#333">+</span>1<span style="color:#333">,</span>topIndex<span style="color:#333">);</span>
+		<span style="color:#333">}</span>
+		<span style="color:#289;font-weight:bold">return</span> <span style="color:#289;font-weight:bold">this</span><span style="color:#333">;</span>
+	<span style="color:#333">}</span>
+
+	<span style="color:#289;font-weight:bold">private</span> <span style="color:#66f;font-weight:bold">int</span> <span style="color:#5ed;font-weight:bold">switchPivot</span><span style="color:#333">(</span><span style="color:#66f;font-weight:bold">int</span><span style="color:#333">[]</span> a<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">int</span> bottomIndex<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">int</span> topIndex<span style="color:#333">)</span> <span style="color:#333">{</span>
+		<span style="color:#66f;font-weight:bold">int</span> index <span style="color:#333">=</span> bottomIndex <span style="color:#333">+</span> rand<span style="color:#333">.</span><span style="color:#007">nextInt</span><span style="color:#333">(</span>topIndex <span style="color:#333">-</span> bottomIndex<span style="color:#333">);</span>
+		<span style="color:#66f;font-weight:bold">int</span> value <span style="color:#333">=</span> a<span style="color:#333">[</span>index<span style="color:#333">];</span>
+		<span style="color:#66f;font-weight:bold">int</span> bottomSearch <span style="color:#333">=</span> bottomIndex<span style="color:#333">-</span>1 <span style="color:#333">;</span>
+		<span style="color:#66f;font-weight:bold">int</span> topSearch <span style="color:#333">=</span> topIndex<span style="color:#333">+</span>1 <span style="color:#333">;</span>
+
+		<span style="color:#289;font-weight:bold">while</span> <span style="color:#333">(</span><span style="color:#289;font-weight:bold">true</span><span style="color:#333">)</span> <span style="color:#333">{</span>
+		    <span style="color:#289;font-weight:bold">do</span><span style="color:#333">{</span>
+		    	bottomSearch<span style="color:#333">++;</span>
+		    <span style="color:#333">}</span><span style="color:#289;font-weight:bold">while</span> <span style="color:#333">(</span> bottomSearch <span style="color:#333">&lt;</span> topIndex <span style="color:#333">&amp;&amp;</span> a<span style="color:#333">[</span>bottomSearch<span style="color:#333">]</span> <span style="color:#333">&lt;</span> value<span style="color:#333">);</span>
+
+		    <span style="color:#289;font-weight:bold">do</span><span style="color:#333">{</span>
+		    	topSearch<span style="color:#333">--;</span>
+		    <span style="color:#333">}</span><span style="color:#289;font-weight:bold">while</span> <span style="color:#333">(</span>topSearch <span style="color:#333">&gt;</span> bottomIndex <span style="color:#333">&amp;&amp;</span> a<span style="color:#333">[</span>topSearch<span style="color:#333">]</span> <span style="color:#333">&gt;</span> value<span style="color:#333">);</span>
+
+		    <span style="color:#289;font-weight:bold">if</span> <span style="color:#333">(</span>bottomSearch <span style="color:#333">&lt;</span> topSearch<span style="color:#333">)</span>
+		    	swap<span style="color:#333">(</span>a<span style="color:#333">,</span> bottomSearch<span style="color:#333">,</span> topSearch<span style="color:#333">);</span>
+		    <span style="color:#289;font-weight:bold">else</span>
+		    	<span style="color:#289;font-weight:bold">return</span> topSearch<span style="color:#333">;</span>
+		<span style="color:#333">}</span>
+	<span style="color:#333">}</span>
+
+	<span style="color:#289;font-weight:bold">private</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">swap</span><span style="color:#333">(</span><span style="color:#66f;font-weight:bold">int</span><span style="color:#333">[]</span> a<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">int</span> index1<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">int</span> index2<span style="color:#333">)</span> <span style="color:#333">{</span>
+		<span style="color:#66f;font-weight:bold">int</span> temp <span style="color:#333">=</span> a<span style="color:#333">[</span>index1<span style="color:#333">];</span>
+		a<span style="color:#333">[</span>index1<span style="color:#333">]</span> <span style="color:#333">=</span> a<span style="color:#333">[</span>index2<span style="color:#333">];</span>
+		a<span style="color:#333">[</span>index2<span style="color:#333">]</span> <span style="color:#333">=</span> temp<span style="color:#333">;</span>
+	<span style="color:#333">}</span>
+<span style="color:#333">}</span></code></pre></div></p>
+
+<p>[5] Profile Implementation
+<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#289;font-weight:bold">public</span> <span style="color:#289;font-weight:bold">class</span> <span style="color:#e9e;font-weight:bold">Main</span> <span style="color:#333">{</span>
+
+	<span style="color:#289;font-weight:bold">private</span> <span style="color:#289;font-weight:bold">static</span> <span style="color:#289;font-weight:bold">final</span> <span style="color:#66f;font-weight:bold">int</span> NUMBER_OF_ITERATIONS<span style="color:#333">=</span> 12<span style="color:#333">;</span>
+	<span style="color:#289;font-weight:bold">private</span> <span style="color:#289;font-weight:bold">static</span> <span style="color:#289;font-weight:bold">final</span> <span style="color:#66f;font-weight:bold">int</span> STARTING_N <span style="color:#333">=</span> 256<span style="color:#333">;</span>
+
+	<span style="color:#289;font-weight:bold">public</span> <span style="color:#289;font-weight:bold">static</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">main</span><span style="color:#333">(</span>String<span style="color:#333">[]</span> args<span style="color:#333">)</span> <span style="color:#333">{</span>
+		<span style="color:#66f;font-weight:bold">int</span> n <span style="color:#333">=</span> STARTING_N<span style="color:#333">;</span>
+		<span style="color:#289;font-weight:bold">for</span><span style="color:#333">(</span><span style="color:#66f;font-weight:bold">int</span> index <span style="color:#333">=</span> 0<span style="color:#333">;</span> index <span style="color:#333">&lt;</span> NUMBER_OF_ITERATIONS<span style="color:#333">;</span> index<span style="color:#333">++){</span>
+			<span style="color:#66f;font-weight:bold">int</span><span style="color:#333">[]</span> array <span style="color:#333">=</span> <span style="color:#289;font-weight:bold">new</span> <span style="color:#66f;font-weight:bold">int</span><span style="color:#333">[</span>n<span style="color:#333">];</span>
+			<span style="color:#289;font-weight:bold">for</span><span style="color:#333">(</span><span style="color:#66f;font-weight:bold">int</span> i <span style="color:#333">=</span> 0<span style="color:#333">;</span> i <span style="color:#333">&lt;</span> array<span style="color:#333">.</span><span style="color:#007">length</span><span style="color:#333">;){</span>
+				array<span style="color:#333">[</span>i<span style="color:#333">]</span> <span style="color:#333">=</span> <span style="color:#333">++</span>i<span style="color:#333">;</span>
+			<span style="color:#333">}</span>
+			QuickShuffle<span style="color:#333">.</span><span style="color:#007">quickShuffle</span><span style="color:#333">(</span>array<span style="color:#333">,</span> <span style="color:#289;font-weight:bold">new</span> Random<span style="color:#333">(</span>3<span style="color:#333">));</span>
+			<span style="color:#66f;font-weight:bold">long</span> start <span style="color:#333">=</span> System<span style="color:#333">.</span><span style="color:#007">currentTimeMillis</span><span style="color:#333">();</span>
+			QuickSort<span style="color:#333">.</span><span style="color:#007">quickSort</span><span style="color:#333">(</span>array<span style="color:#333">,</span> <span style="color:#289;font-weight:bold">new</span> Random<span style="color:#333">(</span>3<span style="color:#333">));</span>
+			<span style="color:#66f;font-weight:bold">long</span> sameSeedResults <span style="color:#333">=</span> System<span style="color:#333">.</span><span style="color:#007">currentTimeMillis</span><span style="color:#333">()</span> <span style="color:#333">-</span> start<span style="color:#333">;</span>
+			<span style="color:#289;font-weight:bold">if</span><span style="color:#333">(!</span>isSorted<span style="color:#333">(</span>array<span style="color:#333">))</span>
+				<span style="color:#289;font-weight:bold">throw</span> <span style="color:#289;font-weight:bold">new</span> RuntimeException<span style="color:#333">();</span>
+			QuickShuffle<span style="color:#333">.</span><span style="color:#007">quickShuffle</span><span style="color:#333">(</span>array<span style="color:#333">,</span> <span style="color:#289;font-weight:bold">new</span> Random<span style="color:#333">(</span>3<span style="color:#333">));</span>
+			start <span style="color:#333">=</span> System<span style="color:#333">.</span><span style="color:#007">currentTimeMillis</span><span style="color:#333">();</span>
+			QuickSort<span style="color:#333">.</span><span style="color:#007">quickSort</span><span style="color:#333">(</span>array<span style="color:#333">,</span> <span style="color:#289;font-weight:bold">new</span> Random<span style="color:#333">(</span>4<span style="color:#333">));</span>
+			<span style="color:#66f;font-weight:bold">long</span> differentSeedResults <span style="color:#333">=</span> System<span style="color:#333">.</span><span style="color:#007">currentTimeMillis</span><span style="color:#333">()</span> <span style="color:#333">-</span> start<span style="color:#333">;</span>
+			System<span style="color:#333">.</span><span style="color:#007">out</span><span style="color:#333">.</span><span style="color:#007">println</span><span style="color:#333">(</span><span style="background-color:#e0e0ff">&#34;Same seed      : size = &#34;</span> <span style="color:#333">+</span> n <span style="color:#333">+</span> <span style="background-color:#e0e0ff">&#34;\ttime = &#34;</span> <span style="color:#333">+</span> sameSeedResults<span style="color:#333">);</span>
+			System<span style="color:#333">.</span><span style="color:#007">out</span><span style="color:#333">.</span><span style="color:#007">println</span><span style="color:#333">(</span><span style="background-color:#e0e0ff">&#34;Different seeds: size = &#34;</span> <span style="color:#333">+</span> n <span style="color:#333">+</span> <span style="background-color:#e0e0ff">&#34;\ttime = &#34;</span> <span style="color:#333">+</span> differentSeedResults<span style="color:#333">);</span>
+			n <span style="color:#333">&lt;&lt;=</span> 1<span style="color:#333">;</span>
+		<span style="color:#333">}</span>			
+	<span style="color:#333">}</span>
+
+	<span style="color:#289;font-weight:bold">public</span> <span style="color:#289;font-weight:bold">static</span> <span style="color:#66f;font-weight:bold">boolean</span> <span style="color:#5ed;font-weight:bold">isSorted</span><span style="color:#333">(</span><span style="color:#66f;font-weight:bold">int</span><span style="color:#333">[]</span> array<span style="color:#333">){</span>
+		<span style="color:#289;font-weight:bold">for</span><span style="color:#333">(</span><span style="color:#66f;font-weight:bold">int</span> index <span style="color:#333">=</span> 0<span style="color:#333">;</span> index <span style="color:#333">&lt;</span> array<span style="color:#333">.</span><span style="color:#007">length</span> <span style="color:#333">-</span> 1<span style="color:#333">;</span> index<span style="color:#333">++){</span>
+			<span style="color:#289;font-weight:bold">if</span><span style="color:#333">(</span>array<span style="color:#333">[</span>index<span style="color:#333">]</span> <span style="color:#333">&gt;</span> array<span style="color:#333">[</span>index <span style="color:#333">+</span> 1<span style="color:#333">])</span>
+				<span style="color:#289;font-weight:bold">return</span> <span style="color:#289;font-weight:bold">false</span><span style="color:#333">;</span>
+		<span style="color:#333">}</span>
+		<span style="color:#289;font-weight:bold">return</span> <span style="color:#289;font-weight:bold">true</span><span style="color:#333">;</span>
+	<span style="color:#333">}</span>
+<span style="color:#333">}</span></code></pre></div></p>
     </section>
 
     <hr>
@@ -290,7 +285,7 @@ I threw together this simple profiler to check out the results of a worst case s
         <section class="f-2">
             <section class="share">
                 <span>Share:
-                <a class="icon-twitter" href="http://twitter.com/share?text=QuickSort%20-%20Worst%20Case%20with%20Random%20Pivot&url=https%3a%2f%2fdavityle.github.io%2fpost%2fquicksort-randomize-worst-case%2f"
+                <a class="icon-twitter" href="http://twitter.com/share?text=Exploring%20the%20Worst%20Case%20Complexity%20of%20Quicksort&url=https%3a%2f%2fdavityle.github.io%2fpost%2fquicksort-randomize-worst-case%2f"
                     onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
                     <i class="fa fa-twitter"></i>
                 </a>

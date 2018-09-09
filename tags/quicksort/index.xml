@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Quicksort on Einu sinni á Koala - Tyler Davis</title>
+    <title>Quicksort on Einu sinni á Koala</title>
     <link>https://davityle.github.io/tags/quicksort/</link>
-    <description>Recent content in Quicksort on Einu sinni á Koala - Tyler Davis</description>
+    <description>Recent content in Quicksort on Einu sinni á Koala</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 03 Oct 2015 10:01:16 -0700</lastBuildDate>
@@ -12,27 +12,22 @@
     
     
     <item>
-      <title>QuickSort - Worst Case with Random Pivot</title>
+      <title>Exploring the Worst Case Complexity of Quicksort</title>
       <link>https://davityle.github.io/post/quicksort-randomize-worst-case/</link>
       <pubDate>Sat, 03 Oct 2015 10:01:16 -0700</pubDate>
       
       <guid>https://davityle.github.io/post/quicksort-randomize-worst-case/</guid>
-      <description>&lt;h4 id=&#34;problem&#34;&gt;Problem&lt;/h4&gt;
+      <description>&lt;p&gt;The quicksort algorithm has the best case complexity of O(n log n) when each pivot in the sort divides the list into two equal uniform pieces [1]. The worst case occurs when the pivot always divides the list into one list of size 1 and one list of size N - 1. Such as when sorting an already sorted array and the pivot is always chosen as the last element in the list. The complexity of quicksort in this case is an unfortunate O(n&lt;span style=&#34;position: relative; bottom: 1ex; font-size: 80%;&#34;&gt;2&lt;/span&gt;). For this reason, it is recommended to use a random pivot point. This gives an average case of O(n log n) [2]. However, this does not remove the worst case scenario.&lt;/p&gt;
 
-&lt;p&gt;I&amp;rsquo;ve read in a few places that Randomizing the pivot point removes the worst case of O(n&lt;span style=&#34;position: relative; bottom: 1ex; font-size: 80%;&#34;&gt;2&lt;/span&gt;) from the quicksort algorithm. &lt;a href=&#34;http://en.wikipedia.org/wiki/Quicksort#Analysis_of_randomized_quicksort&#34;&gt;Wikipedia&lt;/a&gt; is one of those places. Other places write the whole story but don&amp;rsquo;t show any proof. The whole story is that randomizing the pivot point does not, necessarily, remove the worst case. It&amp;rsquo;s easy to show that this is the case. This article assumes basic knowledge of the quicksort algorithm and big O notation.&lt;/p&gt;
+&lt;p&gt;For example, consider this array:&lt;/p&gt;
 
-&lt;p&gt;The worst case in quick sort happens when each pivot point always contains the next lowest, or always contains the next highest, number in the sequence.&lt;/p&gt;
-
-&lt;p&gt;For example. &lt;br&gt; You have an unsorted array&lt;/p&gt;
-
-&lt;p&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#a6e22e&#34;&gt;array&lt;/span&gt; &lt;span style=&#34;color:#f92672&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#ae81ff&#34;&gt;44&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;88&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;999&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;1040&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;23&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;123&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;89&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;2009&lt;/span&gt;}
+&lt;p&gt;&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;array &lt;span style=&#34;color:#333&#34;&gt;=&lt;/span&gt; {&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;44&lt;/span&gt;,&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;88&lt;/span&gt;,&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;7&lt;/span&gt;,&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;2&lt;/span&gt;,&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;1&lt;/span&gt;,&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;999&lt;/span&gt;,&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;1040&lt;/span&gt;,&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;23&lt;/span&gt;,&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;123&lt;/span&gt;,&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;89&lt;/span&gt;,&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;2009&lt;/span&gt;}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-and you want to traverse this array using random pivots. Lets just say that the random number generator produces theses numbers.
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;3&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;2&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;4&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;7&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;8&lt;/span&gt;,&lt;span style=&#34;color:#ae81ff&#34;&gt;9&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-Those look random enough. In fact, I would be perfectly comfortable sorting my array with those random numbers just off of the first glance.&lt;/p&gt;
+with these given &amp;ldquo;random&amp;rdquo; pivots:
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre style=&#34;background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4&#34;&gt;&lt;code class=&#34;language-javascript&#34; data-lang=&#34;javascript&#34;&gt;&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;4&lt;/span&gt;,&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;3&lt;/span&gt;,&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;2&lt;/span&gt;,&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;7&lt;/span&gt;,&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;4&lt;/span&gt;,&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;7&lt;/span&gt;,&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;9&lt;/span&gt;,&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;8&lt;/span&gt;,&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;8&lt;/span&gt;,&lt;span style=&#34;color:#66f;font-weight:bold&#34;&gt;9&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/p&gt;
 
-&lt;p&gt;Look at what actually happens when you sort the array using those pivots.&lt;/p&gt;</description>
+&lt;p&gt;You get this result:&lt;/p&gt;</description>
     </item>
     
   </channel>
