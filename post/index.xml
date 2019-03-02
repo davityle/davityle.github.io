@@ -6,10 +6,19 @@
     <description>Recent content in Posts on Einu sinni á Koala</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 23 Feb 2016 05:27:09 -0600</lastBuildDate>
+    <lastBuildDate>Fri, 01 Mar 2019 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="https://davityle.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Why I&#39;m an Employee and Not a Founder</title>
+      <link>https://davityle.github.io/post/employee-not-employer/</link>
+      <pubDate>Fri, 01 Mar 2019 00:00:00 +0000</pubDate>
+      
+      <guid>https://davityle.github.io/post/employee-not-employer/</guid>
+      <description>I have been working very closely with the founder of a successful startup [1]. For the sake of this post we&amp;rsquo;ll call him John. John has the title of CTO but he works in the company as an individual contributor. I have lead the team of engineers that John has contributed to for most of the last year. Being in the position of both leader/coordinator and mentee I have become painstakingly aware of a trait that John embodies, seemingly with his whole soul, that I fail to even register on a scale of any measure in comparison.</description>
+    </item>
     
     <item>
       <title>Basic Data Structures and Algorithms</title>
