@@ -17,7 +17,9 @@
       <pubDate>Tue, 23 Feb 2016 05:27:09 -0600</pubDate>
       
       <guid>https://davityle.github.io/post/computer-science-basics/</guid>
-      <description>&lt;p&gt;This post contains the implementations, in Java 8, of a few data structures and algorithms commonly discussed within computer science.&lt;/p&gt;
+      <description>&lt;h4 id=&#34;description&#34;&gt;Description&lt;/h4&gt;
+
+&lt;p&gt;This post contains the implementations, in Java 8, of a few data structures and algorithms commonly discussed within computer science.&lt;/p&gt;
 
 &lt;p&gt;The full source code for this post can be found &lt;a href=&#34;https://github.com/davityle/cs-basics-java&#34;&gt;here&lt;/a&gt;&lt;/p&gt;
 

@@ -86,96 +86,96 @@
 <h4 id="two-way-data-binding">Two Way Data Binding</h4>
 
 <p>When you create a view in XML that the user is going to interact with you usually end up with something that looks like this.
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#579">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
-<span style="color:#070">&lt;RelativeLayout</span> <span style="color:#007">xmlns:android=</span><span style="background-color:#e0e0ff">&#34;http://schemas.android.com/apk/res/android&#34;</span>
-    <span style="color:#f00;background-color:#faa">...</span><span style="color:#070">&gt;</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;RelativeLayout</span> <span style="color:#c4a000">xmlns:android=</span><span style="color:#4e9a06">&#34;http://schemas.android.com/apk/res/android&#34;</span>
+    <span style="color:#a40000">...</span><span style="color:#204a87;font-weight:bold">&gt;</span>
 
-    <span style="color:#070">&lt;TextView</span>
-        <span style="color:#007">android:id=</span><span style="background-color:#e0e0ff">&#34;@+id/tv_title&#34;</span>
-        <span style="color:#f00;background-color:#faa">...</span><span style="color:#070">/&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;TextView</span>
+        <span style="color:#c4a000">android:id=</span><span style="color:#4e9a06">&#34;@+id/tv_title&#34;</span>
+        <span style="color:#a40000">...</span><span style="color:#204a87;font-weight:bold">/&gt;</span>
 
-    <span style="color:#070">&lt;CheckBox</span>
-        <span style="color:#007">android:id=</span><span style="background-color:#e0e0ff">&#34;@+id/cb_active&#34;</span>
-        <span style="color:#f00;background-color:#faa">...</span><span style="color:#070">/&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;CheckBox</span>
+        <span style="color:#c4a000">android:id=</span><span style="color:#4e9a06">&#34;@+id/cb_active&#34;</span>
+        <span style="color:#a40000">...</span><span style="color:#204a87;font-weight:bold">/&gt;</span>
 
-    <span style="color:#070">&lt;EditText</span>
-        <span style="color:#007">android:id=</span><span style="background-color:#e0e0ff">&#34;@+id/et_text&#34;</span>
-        <span style="color:#f00;background-color:#faa">...</span> <span style="color:#070">/&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;EditText</span>
+        <span style="color:#c4a000">android:id=</span><span style="color:#4e9a06">&#34;@+id/et_text&#34;</span>
+        <span style="color:#a40000">...</span> <span style="color:#204a87;font-weight:bold">/&gt;</span>
 
-    <span style="color:#070">&lt;ImageView</span>
-        <span style="color:#007">android:id=</span><span style="background-color:#e0e0ff">&#34;@+id/iv_ico&#34;</span>
-        <span style="color:#f00;background-color:#faa">...</span><span style="color:#070">/&gt;</span>
-<span style="color:#070">&lt;/RelativeLayout&gt;</span></code></pre></div>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#289;font-weight:bold">public</span> <span style="color:#289;font-weight:bold">class</span> <span style="color:#e9e;font-weight:bold">Model</span> <span style="color:#333">{</span>
-    <span style="color:#289;font-weight:bold">private</span> String title<span style="color:#333">;</span>
-    <span style="color:#289;font-weight:bold">private</span> String text<span style="color:#333">;</span>
-    <span style="color:#289;font-weight:bold">private</span> <span style="color:#66f;font-weight:bold">boolean</span> isActive<span style="color:#333">;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;ImageView</span>
+        <span style="color:#c4a000">android:id=</span><span style="color:#4e9a06">&#34;@+id/iv_ico&#34;</span>
+        <span style="color:#a40000">...</span><span style="color:#204a87;font-weight:bold">/&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/RelativeLayout&gt;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">class</span> <span style="color:#000">Model</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#000">String</span> <span style="color:#000">title</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#000">String</span> <span style="color:#000">text</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">boolean</span> <span style="color:#000">isActive</span><span style="color:#ce5c00;font-weight:bold">;</span>
 
-    <span style="color:#289;font-weight:bold">public</span> <span style="color:#66f;font-weight:bold">boolean</span> <span style="color:#5ed;font-weight:bold">isActive</span><span style="color:#333">()</span> <span style="color:#333">{</span>
-        <span style="color:#289;font-weight:bold">return</span> isActive<span style="color:#333">;</span>
-    <span style="color:#333">}</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">boolean</span> <span style="color:#000">isActive</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">isActive</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
 
-    <span style="color:#289;font-weight:bold">public</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">setActive</span><span style="color:#333">(</span><span style="color:#66f;font-weight:bold">boolean</span> isActive<span style="color:#333">)</span> <span style="color:#333">{</span>
-        <span style="color:#289;font-weight:bold">this</span><span style="color:#333">.</span><span style="color:#007">isActive</span> <span style="color:#333">=</span> isActive<span style="color:#333">;</span>
-    <span style="color:#333">}</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">setActive</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">boolean</span> <span style="color:#000">isActive</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">isActive</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">isActive</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
 
-    <span style="color:#289;font-weight:bold">public</span> String <span style="color:#5ed;font-weight:bold">getText</span><span style="color:#333">()</span> <span style="color:#333">{</span>
-        <span style="color:#289;font-weight:bold">return</span> text<span style="color:#333">;</span>
-    <span style="color:#333">}</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">String</span> <span style="color:#000">getText</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">text</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
 
-    <span style="color:#289;font-weight:bold">public</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">setText</span><span style="color:#333">(</span>String text<span style="color:#333">)</span> <span style="color:#333">{</span>
-        <span style="color:#289;font-weight:bold">this</span><span style="color:#333">.</span><span style="color:#007">text</span> <span style="color:#333">=</span> text<span style="color:#333">;</span>
-    <span style="color:#333">}</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">setText</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span> <span style="color:#000">text</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">text</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">text</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
 
-    <span style="color:#289;font-weight:bold">public</span> String <span style="color:#5ed;font-weight:bold">getTitle</span><span style="color:#333">()</span> <span style="color:#333">{</span>
-        <span style="color:#289;font-weight:bold">return</span> title<span style="color:#333">;</span>
-    <span style="color:#333">}</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">String</span> <span style="color:#000">getTitle</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">return</span> <span style="color:#000">title</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
 
-    <span style="color:#289;font-weight:bold">public</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">setTitle</span><span style="color:#333">(</span>String title<span style="color:#333">)</span> <span style="color:#333">{</span>
-        <span style="color:#289;font-weight:bold">this</span><span style="color:#333">.</span><span style="color:#007">title</span> <span style="color:#333">=</span> title<span style="color:#333">;</span>
-    <span style="color:#333">}</span>
-<span style="color:#333">}</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">setTitle</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span> <span style="color:#000">title</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">title</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">title</span><span style="color:#ce5c00;font-weight:bold">;</span>
+    <span style="color:#ce5c00;font-weight:bold">}</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
 
-<span style="color:#666;font-style:italic">// View
-</span><span style="color:#666;font-style:italic"></span>
-<span style="color:#289;font-weight:bold">private</span> Model model<span style="color:#333">;</span>
+<span style="color:#8f5902;font-style:italic">// View
+</span><span style="color:#8f5902;font-style:italic"></span>
+<span style="color:#204a87;font-weight:bold">private</span> <span style="color:#000">Model</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">;</span>
 
-<span style="color:#555;font-weight:bold">@Override</span>
-<span style="color:#289;font-weight:bold">protected</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">onCreate</span><span style="color:#333">(</span>Bundle savedInstanceState<span style="color:#333">)</span> <span style="color:#333">{</span>
-    <span style="color:#289;font-weight:bold">super</span><span style="color:#333">.</span><span style="color:#007">onCreate</span><span style="color:#333">(</span>savedInstanceState<span style="color:#333">);</span>
-    setContentView<span style="color:#333">(</span>R<span style="color:#333">.</span><span style="color:#007">layout</span><span style="color:#333">.</span><span style="color:#007">activity_demo</span><span style="color:#333">);</span>
+<span style="color:#5c35cc;font-weight:bold">@Override</span>
+<span style="color:#204a87;font-weight:bold">protected</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">onCreate</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Bundle</span> <span style="color:#000">savedInstanceState</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">super</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">onCreate</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">savedInstanceState</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#000">setContentView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">R</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">layout</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">activity_demo</span><span style="color:#ce5c00;font-weight:bold">);</span>
 
-    TextView tv <span style="color:#333">=</span> <span style="color:#333">(</span>TextView<span style="color:#333">)</span> findViewById<span style="color:#333">(</span>R<span style="color:#333">.</span><span style="color:#007">id</span><span style="color:#333">.</span><span style="color:#007">tv_title</span><span style="color:#333">);</span>
-    tv<span style="color:#333">.</span><span style="color:#007">setText</span><span style="color:#333">(</span>model<span style="color:#333">.</span><span style="color:#007">getTitle</span><span style="color:#333">());</span>
+    <span style="color:#000">TextView</span> <span style="color:#000">tv</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">TextView</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">findViewById</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">R</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">id</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">tv_title</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#000">tv</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setText</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getTitle</span><span style="color:#ce5c00;font-weight:bold">());</span>
 
-    CheckBox cb <span style="color:#333">=</span> <span style="color:#333">(</span>CheckBox<span style="color:#333">)</span> findViewById<span style="color:#333">(</span>R<span style="color:#333">.</span><span style="color:#007">id</span><span style="color:#333">.</span><span style="color:#007">cb_active</span><span style="color:#333">);</span>
-    cb<span style="color:#333">.</span><span style="color:#007">setChecked</span><span style="color:#333">(</span>model<span style="color:#333">.</span><span style="color:#007">isActive</span><span style="color:#333">());</span>
-    cb<span style="color:#333">.</span><span style="color:#007">setOnCheckedChangeListener</span><span style="color:#333">(</span><span style="color:#289;font-weight:bold">new</span> CompoundButton<span style="color:#333">.</span><span style="color:#007">OnCheckedChangeListener</span><span style="color:#333">()</span> <span style="color:#333">{</span>
-        <span style="color:#555;font-weight:bold">@Override</span>
-        <span style="color:#289;font-weight:bold">public</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">onCheckedChanged</span><span style="color:#333">(</span>CompoundButton buttonView<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">boolean</span> isChecked<span style="color:#333">)</span> <span style="color:#333">{</span>
-            model<span style="color:#333">.</span><span style="color:#007">setIsActive</span><span style="color:#333">(</span>isChecked<span style="color:#333">);</span>
-        <span style="color:#333">}</span>
-    <span style="color:#333">});</span>
+    <span style="color:#000">CheckBox</span> <span style="color:#000">cb</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">CheckBox</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">findViewById</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">R</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">id</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">cb_active</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#000">cb</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setChecked</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">isActive</span><span style="color:#ce5c00;font-weight:bold">());</span>
+    <span style="color:#000">cb</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setOnCheckedChangeListener</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">CompoundButton</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">OnCheckedChangeListener</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#5c35cc;font-weight:bold">@Override</span>
+        <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">onCheckedChanged</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">CompoundButton</span> <span style="color:#000">buttonView</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">boolean</span> <span style="color:#000">isChecked</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setIsActive</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">isChecked</span><span style="color:#ce5c00;font-weight:bold">);</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+    <span style="color:#ce5c00;font-weight:bold">});</span>
 
 
-    EditText et <span style="color:#333">=</span> <span style="color:#333">(</span>EditText<span style="color:#333">)</span> findViewById<span style="color:#333">(</span>R<span style="color:#333">.</span><span style="color:#007">id</span><span style="color:#333">.</span><span style="color:#007">et_text</span><span style="color:#333">);</span>
-    et<span style="color:#333">.</span><span style="color:#007">addTextChangedListener</span><span style="color:#333">(</span><span style="color:#289;font-weight:bold">new</span> TextWatcher<span style="color:#333">()</span> <span style="color:#333">{</span>
-        <span style="color:#555;font-weight:bold">@Override</span> <span style="color:#289;font-weight:bold">public</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">beforeTextChanged</span><span style="color:#333">(</span>CharSequence s<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">int</span> start<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">int</span> count<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">int</span> after<span style="color:#333">)</span> <span style="color:#333">{}</span>
-        <span style="color:#555;font-weight:bold">@Override</span> <span style="color:#289;font-weight:bold">public</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">onTextChanged</span><span style="color:#333">(</span>CharSequence s<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">int</span> start<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">int</span> before<span style="color:#333">,</span> <span style="color:#66f;font-weight:bold">int</span> count<span style="color:#333">)</span> <span style="color:#333">{}</span>
-        <span style="color:#555;font-weight:bold">@Override</span>
-        <span style="color:#289;font-weight:bold">public</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">afterTextChanged</span><span style="color:#333">(</span>Editable s<span style="color:#333">)</span> <span style="color:#333">{</span>
-            model<span style="color:#333">.</span><span style="color:#007">setText</span><span style="color:#333">(</span>s<span style="color:#333">.</span><span style="color:#007">toString</span><span style="color:#333">());</span>
-        <span style="color:#333">}</span>
-    <span style="color:#333">});</span>
+    <span style="color:#000">EditText</span> <span style="color:#000">et</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">EditText</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#000">findViewById</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">R</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">id</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">et_text</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#000">et</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">addTextChangedListener</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">TextWatcher</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#5c35cc;font-weight:bold">@Override</span> <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">beforeTextChanged</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">CharSequence</span> <span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">start</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">count</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">after</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{}</span>
+        <span style="color:#5c35cc;font-weight:bold">@Override</span> <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">onTextChanged</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">CharSequence</span> <span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">start</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">before</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#204a87;font-weight:bold">int</span> <span style="color:#000">count</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{}</span>
+        <span style="color:#5c35cc;font-weight:bold">@Override</span>
+        <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">afterTextChanged</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Editable</span> <span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setText</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">s</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">toString</span><span style="color:#ce5c00;font-weight:bold">());</span>
+        <span style="color:#ce5c00;font-weight:bold">}</span>
+    <span style="color:#ce5c00;font-weight:bold">});</span>
 
-    findViewById<span style="color:#333">(</span>R<span style="color:#333">.</span><span style="color:#007">id</span><span style="color:#333">.</span><span style="color:#007">iv_ico</span><span style="color:#333">).</span><span style="color:#007">setOnClickListener</span><span style="color:#333">(</span><span style="color:#289;font-weight:bold">new</span> View<span style="color:#333">.</span><span style="color:#007">OnClickListener</span><span style="color:#333">()</span> <span style="color:#333">{</span>
-        <span style="color:#555;font-weight:bold">@Override</span>
-        <span style="color:#289;font-weight:bold">public</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">onClick</span><span style="color:#333">(</span>View v<span style="color:#333">)</span> <span style="color:#333">{</span>
-            <span style="color:#666;font-style:italic">// do stuff here
-</span><span style="color:#666;font-style:italic"></span>        <span style="color:#333">}</span>
-    <span style="color:#333">});</span>
+    <span style="color:#000">findViewById</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">R</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">id</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">iv_ico</span><span style="color:#ce5c00;font-weight:bold">).</span><span style="color:#c4a000">setOnClickListener</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">new</span> <span style="color:#000">View</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">OnClickListener</span><span style="color:#ce5c00;font-weight:bold">()</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+        <span style="color:#5c35cc;font-weight:bold">@Override</span>
+        <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">onClick</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">View</span> <span style="color:#000">v</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+            <span style="color:#8f5902;font-style:italic">// do stuff here
+</span><span style="color:#8f5902;font-style:italic"></span>        <span style="color:#ce5c00;font-weight:bold">}</span>
+    <span style="color:#ce5c00;font-weight:bold">});</span>
 
-<span style="color:#333">}</span></code></pre></div></p>
+<span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div></p>
 
 <p>Most of that code is template code. You are doing the same mundane work every time you make a new view.</p>
 
@@ -196,54 +196,54 @@
 </blockquote>
 
 <p>With ngAndroid now your view can look like this.
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#579">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
-<span style="color:#070">&lt;RelativeLayout</span> <span style="color:#007">xmlns:android=</span><span style="background-color:#e0e0ff">&#34;http://schemas.android.com/apk/res/android&#34;</span>
-    <span style="color:#007">xmlns:ngAndroid=</span><span style="background-color:#e0e0ff">&#34;http://schemas.android.com/apk/res-auto&#34;</span>
-    <span style="color:#007">xmlns:tools=</span><span style="background-color:#e0e0ff">&#34;http://schemas.android.com/tools&#34;</span>
-    <span style="color:#007">tools:ignore=</span><span style="background-color:#e0e0ff">&#34;MissingPrefix&#34;</span>
-    <span style="color:#f00;background-color:#faa">...</span><span style="color:#070">&gt;</span>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-xml" data-lang="xml"><span style="color:#8f5902;font-style:italic">&lt;?xml version=&#34;1.0&#34; encoding=&#34;utf-8&#34;?&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;RelativeLayout</span> <span style="color:#c4a000">xmlns:android=</span><span style="color:#4e9a06">&#34;http://schemas.android.com/apk/res/android&#34;</span>
+    <span style="color:#c4a000">xmlns:ngAndroid=</span><span style="color:#4e9a06">&#34;http://schemas.android.com/apk/res-auto&#34;</span>
+    <span style="color:#c4a000">xmlns:tools=</span><span style="color:#4e9a06">&#34;http://schemas.android.com/tools&#34;</span>
+    <span style="color:#c4a000">tools:ignore=</span><span style="color:#4e9a06">&#34;MissingPrefix&#34;</span>
+    <span style="color:#a40000">...</span><span style="color:#204a87;font-weight:bold">&gt;</span>
 
-    <span style="color:#070">&lt;TextView</span>
-        <span style="color:#007">android:id=</span><span style="background-color:#e0e0ff">&#34;@+id/tv_title&#34;</span>
-        <span style="color:#007">ngAndroid:ngModel=</span><span style="background-color:#e0e0ff">&#34;model.title&#34;</span>
-        <span style="color:#f00;background-color:#faa">...</span><span style="color:#070">/&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;TextView</span>
+        <span style="color:#c4a000">android:id=</span><span style="color:#4e9a06">&#34;@+id/tv_title&#34;</span>
+        <span style="color:#c4a000">ngAndroid:ngModel=</span><span style="color:#4e9a06">&#34;model.title&#34;</span>
+        <span style="color:#a40000">...</span><span style="color:#204a87;font-weight:bold">/&gt;</span>
 
-    <span style="color:#070">&lt;CheckBox</span>
-        <span style="color:#007">android:id=</span><span style="background-color:#e0e0ff">&#34;@+id/cb_active&#34;</span>
-        <span style="color:#007">ngAndroid:ngModel=</span><span style="background-color:#e0e0ff">&#34;model.isActive&#34;</span>
-        <span style="color:#f00;background-color:#faa">...</span><span style="color:#070">/&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;CheckBox</span>
+        <span style="color:#c4a000">android:id=</span><span style="color:#4e9a06">&#34;@+id/cb_active&#34;</span>
+        <span style="color:#c4a000">ngAndroid:ngModel=</span><span style="color:#4e9a06">&#34;model.isActive&#34;</span>
+        <span style="color:#a40000">...</span><span style="color:#204a87;font-weight:bold">/&gt;</span>
 
-    <span style="color:#070">&lt;EditText</span>
-        <span style="color:#007">android:id=</span><span style="background-color:#e0e0ff">&#34;@+id/et_text&#34;</span>
-        <span style="color:#007">ngAndroid:ngModel=</span><span style="background-color:#e0e0ff">&#34;model.text&#34;</span>
-        <span style="color:#f00;background-color:#faa">...</span><span style="color:#070">/&gt;</span>
+    <span style="color:#204a87;font-weight:bold">&lt;EditText</span>
+        <span style="color:#c4a000">android:id=</span><span style="color:#4e9a06">&#34;@+id/et_text&#34;</span>
+        <span style="color:#c4a000">ngAndroid:ngModel=</span><span style="color:#4e9a06">&#34;model.text&#34;</span>
+        <span style="color:#a40000">...</span><span style="color:#204a87;font-weight:bold">/&gt;</span>
 
-    <span style="color:#070">&lt;ImageView</span>
-        <span style="color:#007">android:id=</span><span style="background-color:#e0e0ff">&#34;@+id/iv_ico&#34;</span>
-        <span style="color:#007">ngAndroid:ngClick=</span><span style="background-color:#e0e0ff">&#34;onIvClick()&#34;</span>
-        <span style="color:#f00;background-color:#faa">...</span><span style="color:#070">/&gt;</span>
-<span style="color:#070">&lt;/RelativeLayout&gt;</span></code></pre></div>
-<div class="highlight"><pre style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#289;font-weight:bold">public</span> <span style="color:#289;font-weight:bold">interface</span> <span style="color:#e9e;font-weight:bold">Model</span> <span style="color:#333">{</span>
-    <span style="color:#289;font-weight:bold">public</span> <span style="color:#66f;font-weight:bold">boolean</span> <span style="color:#5ed;font-weight:bold">isActive</span><span style="color:#333">();</span>
-    <span style="color:#289;font-weight:bold">public</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">setIsActive</span><span style="color:#333">(</span><span style="color:#66f;font-weight:bold">boolean</span> isActive<span style="color:#333">);</span>
-    <span style="color:#289;font-weight:bold">public</span> String <span style="color:#5ed;font-weight:bold">getText</span><span style="color:#333">();</span>
-    <span style="color:#289;font-weight:bold">public</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">setText</span><span style="color:#333">(</span>String text<span style="color:#333">);</span>
-    <span style="color:#289;font-weight:bold">public</span> String <span style="color:#5ed;font-weight:bold">getTitle</span><span style="color:#333">();</span>
-    <span style="color:#289;font-weight:bold">public</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">setTitle</span><span style="color:#333">(</span>String title<span style="color:#333">);</span>
-<span style="color:#333">}</span>
+    <span style="color:#204a87;font-weight:bold">&lt;ImageView</span>
+        <span style="color:#c4a000">android:id=</span><span style="color:#4e9a06">&#34;@+id/iv_ico&#34;</span>
+        <span style="color:#c4a000">ngAndroid:ngClick=</span><span style="color:#4e9a06">&#34;onIvClick()&#34;</span>
+        <span style="color:#a40000">...</span><span style="color:#204a87;font-weight:bold">/&gt;</span>
+<span style="color:#204a87;font-weight:bold">&lt;/RelativeLayout&gt;</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#f8f8f8;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">interface</span> <span style="color:#000">Model</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">boolean</span> <span style="color:#000">isActive</span><span style="color:#ce5c00;font-weight:bold">();</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">setIsActive</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">boolean</span> <span style="color:#000">isActive</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">String</span> <span style="color:#000">getText</span><span style="color:#ce5c00;font-weight:bold">();</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">setText</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span> <span style="color:#000">text</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#000">String</span> <span style="color:#000">getTitle</span><span style="color:#ce5c00;font-weight:bold">();</span>
+    <span style="color:#204a87;font-weight:bold">public</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">setTitle</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">String</span> <span style="color:#000">title</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
 
-<span style="color:#289;font-weight:bold">private</span> NgAndroid ngAndroid <span style="color:#333">=</span> NgAndroid<span style="color:#333">.</span><span style="color:#007">getInstance</span><span style="color:#333">();</span>
-<span style="color:#289;font-weight:bold">private</span> Model model<span style="color:#333">;</span>
+<span style="color:#204a87;font-weight:bold">private</span> <span style="color:#000">NgAndroid</span> <span style="color:#000">ngAndroid</span> <span style="color:#ce5c00;font-weight:bold">=</span> <span style="color:#000">NgAndroid</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">getInstance</span><span style="color:#ce5c00;font-weight:bold">();</span>
+<span style="color:#204a87;font-weight:bold">private</span> <span style="color:#000">Model</span> <span style="color:#000">model</span><span style="color:#ce5c00;font-weight:bold">;</span>
 
-<span style="color:#555;font-weight:bold">@Override</span>
-<span style="color:#289;font-weight:bold">protected</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">onCreate</span><span style="color:#333">(</span>Bundle savedInstanceState<span style="color:#333">)</span> <span style="color:#333">{</span>
-    <span style="color:#289;font-weight:bold">super</span><span style="color:#333">.</span><span style="color:#007">onCreate</span><span style="color:#333">(</span>savedInstanceState<span style="color:#333">);</span>
-    ngAndroid<span style="color:#333">.</span><span style="color:#007">setContentView</span><span style="color:#333">(</span><span style="color:#289;font-weight:bold">this</span><span style="color:#333">,</span> R<span style="color:#333">.</span><span style="color:#007">layout</span><span style="color:#333">.</span><span style="color:#007">activity_ng_android</span><span style="color:#333">);</span>
-<span style="color:#333">}</span>
+<span style="color:#5c35cc;font-weight:bold">@Override</span>
+<span style="color:#204a87;font-weight:bold">protected</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">onCreate</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">Bundle</span> <span style="color:#000">savedInstanceState</span><span style="color:#ce5c00;font-weight:bold">)</span> <span style="color:#ce5c00;font-weight:bold">{</span>
+    <span style="color:#204a87;font-weight:bold">super</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">onCreate</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#000">savedInstanceState</span><span style="color:#ce5c00;font-weight:bold">);</span>
+    <span style="color:#000">ngAndroid</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">setContentView</span><span style="color:#ce5c00;font-weight:bold">(</span><span style="color:#204a87;font-weight:bold">this</span><span style="color:#ce5c00;font-weight:bold">,</span> <span style="color:#000">R</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">layout</span><span style="color:#ce5c00;font-weight:bold">.</span><span style="color:#c4a000">activity_ng_android</span><span style="color:#ce5c00;font-weight:bold">);</span>
+<span style="color:#ce5c00;font-weight:bold">}</span>
 
-<span style="color:#289;font-weight:bold">private</span> <span style="color:#66f;font-weight:bold">void</span> <span style="color:#5ed;font-weight:bold">onIvClick</span><span style="color:#333">(){</span>
-    <span style="color:#666;font-style:italic">// do something with the click
-</span><span style="color:#666;font-style:italic"></span><span style="color:#333">}</span></code></pre></div>
+<span style="color:#204a87;font-weight:bold">private</span> <span style="color:#204a87;font-weight:bold">void</span> <span style="color:#000">onIvClick</span><span style="color:#ce5c00;font-weight:bold">(){</span>
+    <span style="color:#8f5902;font-style:italic">// do something with the click
+</span><span style="color:#8f5902;font-style:italic"></span><span style="color:#ce5c00;font-weight:bold">}</span></code></pre></div>
 With just that you have two way databinding. Your model will always reflect your application state. We also get identical funcionality to the previous code. Pretty sweet ey?</p>
 
 <p><a href="http://www.wintellect.com/devcenter/jlikness/10-reasons-web-developers-should-learn-angularjs">Most</a> <a href="http://code.tutsplus.com/tutorials/5-awesome-angularjs-features--net-25651">people</a> <a href="http://anandmanisankar.com/posts/angularjs-best-parts/">agree</a> that two-way data binding is an amazing, if not the best, feature of AngularJS. I tend to agree with them. I also believe that it is one of the greatest features of NgAndroid but it does not end there.</p>
